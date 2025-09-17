@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300vh;
+    }
+    form {
+      width: 700px;
+      padding: 20px;
+      text-align: center;
+    }
+    input {
+      display: block;
+      margin: 10px auto;
+      width: 250px;
+      height: 30px;
+    }
+    input[type="submit"] {
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="loginForm">
+    <h3>LOGIN</h3>
+    <input type="text" placeholder="Login" id="login" required>
+    <input type="password" placeholder="Senha" id="senha" required>
+    <input type="submit" onclick="logar"() return false>
+  </form>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault(); 
+      const login = document.getElementById("login").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+
+      if (login === "admin" && senha === "admin") {
+        alert("Sucesso!");
+        location.href ="index.html"
+      } else {
+        alert("Usuário ou senha incorretos");
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
