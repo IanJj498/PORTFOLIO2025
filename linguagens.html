@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINGUAGENS </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --darker: #1a252f;
+            --light: #ecf0f1;
+            --text: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            padding: 1.5rem 1rem;
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .nav-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.5rem;
+            margin: 1rem auto;
+            max-width: 800px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: var(--transition);
+            display: block;
+        }
+        
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            font-weight: 500;
+        }
+       
+    
+        .section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        .section-description {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .image-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 280px;
+            background: #f8f9fa;
+        }
+        
+        .image-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-card .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1rem;
+            color: white;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .image-card:hover .overlay {
+            opacity: 1;
+        }
+        footer {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: white;
+            padding: 3.5rem 1.5rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 100% 100%;
+            transform: rotate(180deg);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin:  auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.0rem;
+            position: relative;
+        }
+        
+        .footer-section {
+            padding: 1rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+            display: inline-block;
+            color: white;
+        }
+        
+        .footer-section p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-name {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .footer-divider {
+            height: 2px;
+            width: 80px;
+            background: var(--secondary);
+            margin: 1.2rem auto;
+            border-radius: 2px;
+        }
+        
+        .institution {
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 1.2rem;
+            display: block;
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.4rem;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LINGUAGENS</h1>
+        <section id="eixo1" class="section fade-in delay-1">
+            <h2 class="section-title">EIXO 1</h2>
+            <p class="section-description">
+           
+            </p>
+            <div class="image-container">
+                <div class="image-card" data-category="linguagem">
+                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1" loading="lazy">
+                    <div class="overlay">
+                       
+                    </div>
+                </div>
+                <div class="image-card" data-category="linguagem">
+                    <img src="ATVLINGUAGEN2.jpg" alt="Atividade de Linguagem 2" loading="lazy">
+                    <div class="overlay">
+           
+                    </div>
+                </div>
+                <div class="image-card" data-category="redacao">
+                    <img src="REDAÇÃOO2.png" alt="Redação" loading="lazy">
+                    <div class="overlay">
+     
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EIXO 2 -->
+        <section id="eixo2" class="section fade-in delay-2">
+            <h2 class="section-title">EIXO 2</h2>
+            <p class="section-description">
+
+            </p>
+            <div class="image-container">
+                <div class="image-card" data-category="projeto">
+                    <img src="timbradohumanass (1).jpg" alt="Trabalho de Humanas" loading="lazy">
+                    <div class="overlay">
+                    
+                    </div>
+                </div>
+                <div class="image-card" data-category="redacao">
+                    <img src="REDAÇÃOO.png" alt="Redação" loading="lazy">
+                    <div class="overlay">
+           
+                    </div>
+                </div>
+                <div class="image-card" data-category="projeto">
+                    <img src="emma.jpg" alt="Projeto Emma" loading="lazy">
+                    <div class="overlay">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="eixo3" class="section fade-in delay-3">
+            <h2 class="section-title">EIXO 3</h2>
+            <p class="section-description">
+            </p>
+            <div class="image-container">
+                <div class="image-card" data-category="projeto">
+                    <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens" loading="lazy">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <div class="image-card" data-category="projeto">
+                    <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina" loading="lazy">
+                    <div class="overlay">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="eixo4" class="section fade-in delay-4">
+            <h2 class="section-title">EIXO 4</h2>
+            <p class="section-description">
+            </p>
+            <div class="empty-state">
+                <i class="fas fa-folder-plus"></i>
+            </div>
+        </section>
+    </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Orientação</h3>
+                <p><i class="fas fa-user-graduate"></i> Professor: <span class="footer-name">Cleiton Jérico</span></p>
+                <p><i class="fas fa-chalkboard-teacher"></i> Orientadora: <span class="footer-name">Regiane Leal</span></p>
+                <div class="footer-divider"></div>
+                <span class="institution">SESI / SENAI</span>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <div class="contact-info">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 LINGUAGENS - Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>

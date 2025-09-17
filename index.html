@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Escolar - Ian Joseph</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #020103;
+            --accent: #159fd6;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-bg: #edf2f4;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --text-primary: #1a1a2e;
+            --text-secondary: #6c757d;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --nav-link: rgba(26, 26, 46, 0.8);
+            --nav-link-hover: #4361ee;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --text-primary: #f8f9fa;
+            --text-secondary: #c9c9c9;
+            --card-bg: #16213e;
+            --header-bg: rgba(26, 26, 46, 0.95);
+            --nav-link: rgba(255, 255, 255, 0.9);
+            --nav-link-hover: #4361ee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header {
+            background: var(--header-bg);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--text-primary);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            color: var(--nav-link);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: rgba(67, 97, 238, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a:hover, nav a:focus {
+            color: var(--nav-link-hover);
+            background: rgba(67, 97, 238, 0.15);
+            transform: translateY(-2px);
+        }
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(58, 86, 212, 0.85) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a1a2e"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%234361ee" stroke-width="0.5" opacity="0.2"/></svg>');
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(transparent, var(--bg-primary));
+        }
+
+        .profile-image-container {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .profile-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--light);
+            font-weight: 400;
+        }
+
+        .typing-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            min-height: 1.5em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            z-index: 2;
+            position: relative;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links a:hover::before {
+            opacity: 1;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .info-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 3rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+
+        .info-section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .info-item {
+            margin-bottom: 2rem;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-item h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+        }
+
+        .info-item h3 i {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .info-item p {
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .info-item a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .info-item a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+            color: var(--light);rgb(255, 255, 255);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-text {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+
+        .footer-name {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .footer-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 1.5rem auto;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .institution {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @media (max-width: 1024px) {
+            .profile-title {
+                font-size: 2.8rem;
+            }
+            
+            nav {
+                gap: 0.3rem;
+            }
+            
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: var(--header-bg);
+                width: 100%;
+                padding: 1rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(10px);
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .theme-toggle {
+                margin-left: 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .profile-title {
+                font-size: 2.5rem;
+            }
+            
+            .profile-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .profile-image-container {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .info-section {
+                padding: 1.8rem;
+            }
+            
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-title {
+                font-size: 2rem;
+            }
+            
+            .profile-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero {
+                padding: 1rem;
+            }
+            
+            .profile-image-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .info-section {
+                padding: 1.5rem;
+            }
+            
+            .info-item h3 {
+                font-size: 1.3rem;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+            
+            footer {
+                padding: 2rem 1rem;
+            }
+            
+            .institution {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-graduation-cap"></i> Ian<span>Joseph</span>
+        </a>
+        
+        <div class="nav-container">
+            <nav id="nav">
+                <a href="historiadevida.html">História</a>
+                <a href="projetos.html">Projetos</a>
+                <a href="PPE.html">PPE</a>
+                <a href="linguagens.html">Linguagens</a>
+                <a href="humanas.html">Humanas</a>
+                <a href="naturezas.html">Naturezas</a>
+                <a href="MATEMÁTICA.html">Matemática</a>
+                <a href="senai.html">SENAI</a>
+                <a href="CURRÍCULO.html">Currículo</a>
+                <a href="Referências.html">Referências</a>
+                <a href="anexos.html">Anexos</a>
+                <a href="consideraçõesfinais.html">Considerações</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-image-container">
+                <img src="ijjj.png" alt="Ian Joseph" class="profile-image">
+            </div>
+            <h1 class="profile-title">Ian Joseph</h1>
+            <h2 class="profile-subtitle">Estudante do SESI/SENAI</h2>
+            <div class="typing-text" id="typing-element"></div>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/ianjosepph/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.canva.com/" target="_blank" aria-label="Canva">
+                    <i class="fab fa-canva" style="font-style: normal; font-weight: bold;">C</i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main id="main-content">
+        <section class="info-section fade-in">
+            <div class="info-item">
+                <h3><i class="fas fa-user"></i>Identificação Pessoal</h3>
+                <p><strong>Nome:</strong> Ian Joseph Pinheiro de Amorim</p>
+                <p><strong>Responsáveis:</strong> José Martins de Sousa Júnior e Patricia Aparecida Pinheiro de Amorim</p>
+                <p><strong>Email:</strong> <a href="mailto:ianjoseph348@gmail.com">ianjoseph348@gmail.com</a></p>
+                <p><strong>Endereço:</strong> Parque Industrial Vila Serrana</p>
+            </div>
+
+            <div class="info-item">
+                <h3><i class="fas fa-graduation-cap"></i>Sobre mim</h3>
+                <p><strong>Instituição:</strong> SESI/SENAI</p>
+                <p><strong>Curso:</strong> Ensino Médio com Técnico em Informática para Internet</p>
+                <p><strong>Status:</strong> Cursando</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
+            <p class="footer-text">Orientadora: <span class="footer-name">Regiane Leal</span></p>
+            <div class="footer-divider"></div>
+            <span class="institution">SESI / SENAI</span>
+        </div>
+    </footer>
+</body>
+</html>
