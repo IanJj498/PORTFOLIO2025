@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATUREZAS - Ciências da Natureza</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e4fff;
+            --primary-dark: #000000;
+            --accent: #ffffec;
+            --light: #f5f5f5;
+            --gray: #2c2c2c;
+            --text-light: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(135deg, #0e0d3b 0%, #0964ec 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 3.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C30,80 70,0 100,80 L100,0 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
+            background-size: 120% 120%;
+            background-position: center;
+        }
+        
+        header h1 {
+            font-size: 4.2rem;
+            margin: 0;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .header-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+            position: relative;
+            font-style: italic;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--accent);
+            position: relative;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .section-title {
+            color: var(--accent);
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .image-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 280px;
+            background: var(--gray);
+        }
+        
+        .image-card:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .image-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+        
+        .image-card:hover .image-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .image-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .image-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #0d3b2a 100%);
+            color: var(--text-light);
+            padding: 3.5rem 1rem;
+            text-align: center;
+            margin-top: 5rem;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .footer-text {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .footer-name {
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .footer-divider {
+            height: 3px;
+            width: 120px;
+            background: var(--accent);
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+        
+        .institution {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 1.5rem;
+            display: block;
+        }
+        
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.3rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 2.5rem 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+            
+            .image-card {
+                height: 300px;
+            }
+            
+            .pdf-viewer {
+                height: 400px;
+            }
+            
+            .nature-decoration {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .empty-title {
+                font-size: 1.6rem;
+            }
+            
+            .footer-text {
+                font-size: 1.1rem;
+            }
+            
+            .institution {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NATUREZAS</h1>
+        <div class="header-subtitle">Ciências da Natureza e suas Tecnologias</div>
+    </header>
+
+    <div class="container">
+        <section id="eixo1" class="section">
+            <h2 class="section-title">EIXO 1</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="CADEIASCARBONICAS.png" alt="Cadeias carbônicas">
+                    <div class="image-overlay">
+                        <div class="image-title">Cadeias Carbônicas</div>
+                        <div class="image-desc">Estruturas moleculares de compostos orgânicos</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="naturezas2.5.jpg" alt="Natureza 2.5">
+                    <div class="image-overlay">
+                        <div class="image-title">Experimentos</div>
+                        <div class="image-desc">Práticas laboratoriais em ciências</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="naturezas3.jpg" alt="Natureza 3">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="eixo2" class="section">
+            <h2 class="section-title">EIXO 2</h2>
+            <div class="image-grid">
+                <div class="pdf-viewer">
+                </div>
+                <div class="image-card">
+                    <img src="naturezas4.jpg" alt="Natureza 4">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="naturezas4.5.jpg" alt="Natureza 4.5">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="natureza5.jpg" alt="Natureza 5">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="LISTADEWALLACE.png" alt="Lista de Wallace">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="oxigenadas.png" alt="Oxigenadas">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="TRABALHOFISICA.png" alt="Trabalho de Física">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="eixo3" class="section">
+            <i class="nature-decoration atom-icon"><i class="fas fa-microscope"></i></i>
+            <h2 class="section-title">EIXO 3</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="modelosatomicos.jpg" alt="Modelos Atômicos">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="fisicamoderna.png" alt="Física Moderna">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="isomeria.jpg" alt="Isomeria">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="atividadefisicasetembro.png" alt="Atividade de Física">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="eixo4" class="section">
+            <h2 class="section-title">EIXO 4</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <div style="background:linear-gradient(135deg, #1e4fff 0%, #0d3b2a 100%); height:100%; display:flex; align-items:center; justify-content:center; color:white; font: size 20px;;">
+                    </div>
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <div style="background:linear-gradient(135deg, #0d3b2a 0%, #1e4fff 100%); height:100%; display:flex; align-items:center; justify-content:center; color:white; font-size: 20px;">
+                       
+                    </div>
+                    <div class="image-overlay">
+                       
+                    </div>
+                </div>
+                <div class="image-card">
+                    <div style="background:linear-gradient(135deg, #1e4fff 0%, #0964ec 100%); height:100%; display:flex; align-items:center; justify-content:center; color:white; font-size:2rem;">
+                    </div>
+                    <div class="image-overlay">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
+            <p class="footer-text">Orientadora: <span class="footer-name">Regiane Leal</span></p>
+            <div class="footer-divider"></div>
+            <span class="institution">SESI / SENAI</span>
+        </div>
+    </footer>
+</body>
+</html>
