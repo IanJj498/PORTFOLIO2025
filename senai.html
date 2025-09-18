@@ -544,71 +544,9 @@
             <p class="senai-logo">SENAI/SESI</p>
         </div>
     </footer>
-
-    <script>
-        // Navegação por abas
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.nav-tab');
-            const sections = document.querySelectorAll('.section');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const target = tab.getAttribute('data-target');
-                    
-                    // Atualizar aba ativa
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    
-                    // Scroll para a seção
-                    document.getElementById(target).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            
-            // Botão voltar ao topo
-            const backToTopBtn = document.getElementById('backToTop');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            });
-            
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // Carregamento otimizado de imagens
-            const lazyImages = document.querySelectorAll('.image-card img');
-            
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.getAttribute('data-src');
-                            img.classList.add('loaded');
-                            imageObserver.unobserve(img);
-                        }
-                    });
-                });
-                
-                lazyImages.forEach(img => {
-                    img.setAttribute('data-src', img.src);
-                    img.src = '';
-                    imageObserver.observe(img);
-                });
-            }
-        });
-    </script>
 </body>
 </html>
+
 
 
 
