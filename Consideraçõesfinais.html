@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio Escolar - Ian Joseph</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00040b;
+      --primary-dark: #02040e;
+      --secondary: #f59e0b;
+      --dark: #0f172a;
+      --light: #1075da;
+      --gray: #94a3b8;
+      --light-bg: #f1f5f9;
+      --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: rgba(12, 30, 234, 0.528);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--dark), #1e293b);
+      padding: 1.2rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 2.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo span {
+      color: var(--primary);
+      margin-left: 4px;
+    }
+
+    .logo i {
+      margin-right: 10px;
+      font-size: 2rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background: var(--secondary);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after, nav a.active::after {
+      width: 70%;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(0, 0, 0, 0.9)),;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--light);
+      padding: 6rem 2rem 4rem;
+    }
+
+    .profile-container {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .profile-image {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--primary);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+      transition: all 0.4s ease;
+    }
+
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid var(--light);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      color: var(--dark);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .experience-section {
+      background: white;
+      border-radius: 15px;
+      padding: 3rem;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 4rem;
+    }
+
+    .info-item {
+      margin-bottom: 2.5rem;
+    }
+
+    .info-item h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .info-item h3 i {
+      color: var(--secondary);
+    }
+
+    .info-item p {
+      color: #334155;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, rgba(37, 99, 235, 0.1), rgba(245, 158, 11, 0.1));
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+      margin: 1.5rem 0;
+    }
+
+    .skills-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .skill-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-card h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .skill-card ul {
+      list-style-type: none;
+    }
+
+    .skill-card li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-card li i {
+      color: var(--secondary);
+    }
+
+    .projects-section {
+      margin-bottom: 4rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-img {
+      height: 200px;
+      background: linear-gradient(45deg, #2563eb, #1e40af);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      font-size: 1.4rem;
+      color: var(--dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .project-content p {
+      color: #64748b;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: var(--light-bg);
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--dark), #1e293b);
+      color: var(--light);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .footer-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--secondary);
+    }
+
+    .footer-info p {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .social-links a {
+      color: var(--light);
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">
+        <i class="fas fa-graduation-cap"></i>História de vida<span></span>
+      </a>
+      <nav>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="profile-container">
+    </div>
+    <h1 class="profile-title">Ian Joseph Pinheiro de Amorim</h1>
+    <h2 class="profile-subtitle">Estudante SESI/SENAI</h2>
+    <div class="hero-buttons">
+     
+
+  <main>
+    <section id="experience" class="experience-section fade-in">
+      <h2 class="section-title">Minha Experiência</h2>
+      
+      <div class="info-item">
+        <h3><i class="fas fa-graduation-cap"></i>Experiência SESI/SENAI</h3>
+        <p>Minha jornada no <strong>SESI</strong> e <strong>SENAI</strong> foi uma experiência transformadora, repleta de aprendizados significativos que certamente serão fundamentais para minha carreira profissional.</p>
+        
+        <div class="highlight">
+          <p>Através dos cursos e atividades oferecidos, pude aprimorar minha capacidade de resolver problemas, trabalhar em equipe e liderar projetos, desenvolvendo competências técnicas e interpessoais essenciais para o mercado de trabalho.</p>
+        </div>
+        
+        <p>A exposição a diversas áreas do conhecimento, desde fundamentos técnicos até aplicações práticas em ambiente simulado, proporcionou uma base sólida para meu desenvolvimento como futuro profissional da área de tecnologia.</p>
+        
+        <p>Além disso, o contato com professores especializados e a estrutura de qualidade disponível enriqueceram ainda mais minha experiência educacional, preparando-me para os desafios do mundo profissional.</p>
+      </div>
+    </section>
+
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Orientadores</h3>
+        <p><i class="fas fa-user-tie"></i><strong>Orientador:</strong> Cleiton Jérico</p>
+        <p><i class="fas fa-user-tie"></i><strong>Orientadora:</strong> Regiane Leal</p>
+      </div>
+      
+      <div class="footer-info">
+        <h3>Instituição</h3>
+        <p><i class="fas fa-school"></i><strong>Instituição:</strong> SESI/SENAI</p>
+        <p><i class="fas fa-calendar-alt"></i><strong>Ano:</strong> 2025</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Ian Joseph Pinheiro de Amorim. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
