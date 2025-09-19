@@ -580,26 +580,23 @@
     </footer>
 
     <script>
-        // JavaScript para funcionalidade das abas e botão de voltar ao topo
+       
         document.addEventListener('DOMContentLoaded', function() {
-            // Navegação por abas
+
             const tabs = document.querySelectorAll('.nav-tab');
             const sections = document.querySelectorAll('.section');
             
-            // Função para ativar uma aba e sua seção correspondente
+           
             function activateTab(tabId) {
-                // Remove a classe ativa de todas as abas e seções
                 tabs.forEach(tab => tab.classList.remove('active'));
                 sections.forEach(section => section.classList.remove('active'));
                 
-                // Ativa a aba clicada
                 document.querySelector(`.nav-tab[data-target="${tabId}"]`).classList.add('active');
                 
-                // Mostra a seção correspondente
                 document.getElementById(tabId).classList.add('active');
             }
             
-            // Adiciona event listeners para as abas
+     
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const target = tab.getAttribute('data-target');
@@ -607,12 +604,10 @@
                 });
             });
             
-            // Ativa a primeira aba por padrão
             if (tabs.length > 0) {
                 activateTab(tabs[0].getAttribute('data-target'));
             }
             
-            // Botão de voltar ao topo
             const backToTopButton = document.getElementById('backToTop');
             
             window.addEventListener('scroll', () => {
@@ -630,14 +625,12 @@
                 });
             });
             
-            // Verificar se as imagens existem e carregá-las se possível
             document.querySelectorAll('.image-card').forEach(card => {
                 const errorElement = card.querySelector('.image-error');
                 if (errorElement) {
                     const fileName = errorElement.textContent.replace(/[()]/g, '');
                     const img = new Image();
                     img.onload = function() {
-                        // Se a imagem carregar, substituir o placeholder
                         card.querySelector('.placeholder-img').style.display = 'none';
                         const imgElement = document.createElement('img');
                         imgElement.src = fileName;
@@ -645,7 +638,6 @@
                         card.insertBefore(imgElement, card.firstChild);
                     };
                     img.onerror = function() {
-                        // Se a imagem não carregar, manter o placeholder
                         console.log('Imagem não encontrada: ' + fileName);
                     };
                     img.src = fileName;
@@ -655,5 +647,4 @@
     </script>
 </body>
 </html>
-
 
