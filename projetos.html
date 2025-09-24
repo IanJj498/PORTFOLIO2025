@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Projeto de Vida</title>
+    <title>Projeto de Vida - Ian Joseph</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #3498db;
-            --primary-dark: #2980b9;
-            --accent: #ffffff;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #1a1a2e;
             --text-dark: #2c3e50;
             --text-light: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
+            --border-radius: 12px;
         }
         
         * {
@@ -37,13 +40,14 @@
             max-width: 1200px;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
         }
         
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             padding: 3rem 2rem;
             text-align: center;
             color: var(--text-light);
@@ -87,14 +91,25 @@
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
             }
         }
         
         .project-image {
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             height: 400px;
+            transition: var(--transition);
+        }
+        
+        .project-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .project-image img {
@@ -110,16 +125,28 @@
         
         .presentation {
             background: var(--light);
-            padding: 1rem;
-            border-radius: 10px;
+            padding: 2rem;
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .presentation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
         }
         
         .presentation h2 {
             color: var(--primary);
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            padding-bottom: 0.1rem;
+            padding-bottom: 0.5rem;
             border-bottom: 3px solid var(--accent);
             display: inline-block;
         }
@@ -130,6 +157,32 @@
             margin-bottom: 1.5rem;
         }
         
+        .timeline {
+            margin-top: 2rem;
+        }
+        
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        
+        .timeline-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
         .info-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -138,12 +191,14 @@
         }
         
         .card {
-            background: rgb(6, 1, 1);
+            background: var(--card-bg);
             padding: 1.5rem;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-left: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
         }
         
         .card:hover {
@@ -164,15 +219,24 @@
             font-size: 1.2rem;
         }
         
+        .card ul {
+            padding-left: 1.5rem;
+        }
+        
+        .card li {
+            margin-bottom: 0.5rem;
+        }
+        
         footer {
-            background:  #0073e6 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--text-light);
             text-align: center;
+            padding: 2rem;
         }
         
         .footer-content {
             max-width: 800px;
-            margin:  auto;
+            margin: 0 auto;
         }
         
         .footer-text {
@@ -192,9 +256,35 @@
             margin: 1.5rem auto;
         }
         
-    
-        .container {
-            animation: fadeIn 0.8s ease-out;
+        .institution {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .back-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -202,6 +292,7 @@
     <div class="container">
         <header>
             <h1>PROJETO DE VIDA</h1>
+            <p class="header-subtitle">Planejamento e objetivos pessoais e profissionais</p>
         </header>
         
         <div class="main-content">
@@ -210,7 +301,69 @@
             </div>
             
             <div class="presentation">
-                <h2><i class="fas fa-user"></i> Projeto de vida
+                <h2><i class="fas fa-user-graduate"></i> Meu Projeto de Vida</h2>
+                <p>Meu projeto de vida é um planejamento estratégico que engloba meus objetivos pessoais, acadêmicos e profissionais. Através dele, busco direcionar minhas ações e decisões para alcançar meus sonhos e aspirações.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Objetivos de Curto Prazo (1-2 anos)</h3>
+                        <p>Concluir o ensino médio com excelência, desenvolver habilidades técnicas em programação e participar de projetos extracurriculares que ampliem minha experiência.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>Objetivos de Médio Prazo (3-5 anos)</h3>
+                        <p>Ingressar em uma faculdade de Ciência da Computação ou Engenharia de Software, conseguir um estágio na área de tecnologia e desenvolver projetos pessoais significativos.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>Objetivos de Longo Prazo (5+ anos)</h3>
+                        <p>Tornar-me um desenvolvedor sênior, especializar-me em inteligência artificial ou desenvolvimento de jogos, e contribuir para projetos de impacto social através da tecnologia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content" style="grid-template-columns: 1fr; padding-top: 0;">
+            <div class="info-cards">
+                <div class="card">
+                    <h3><i class="fas fa-heart"></i> Valores Pessoais</h3>
+                    <ul>
+                        <li>Integridade e ética em todas as ações</li>
+                        <li>Persistência diante dos desafios</li>
+                        <li>Colaboração e trabalho em equipe</li>
+                        <li>Responsabilidade social e ambiental</li>
+                        <li>Aprendizado contínuo</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-tools"></i> Habilidades a Desenvolver</h3>
+                    <ul>
+                        <li>Programação em múltiplas linguagens</li>
+                        <li>Gestão de projetos</li>
+                        <li>Comunicação eficaz</li>
+                        <li>Inglês fluente</li>
+                        <li>Liderança e tomada de decisão</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-chart-line"></i> Metas Acadêmicas</h3>
+                    <ul>
+                        <li>Concluir o ensino médio com média acima de 8.5</li>
+                        <li>Participar de olimpíadas científicas</li>
+                        <li>Desenvolver um projeto de TCC relevante</li>
+                        <li>Conseguir bolsa em universidade de ponta</li>
+                        <li>Publicar artigo científico ainda na graduação</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Voltar ao Portfólio
+            </a>
+        </div>
+        
         <footer>
             <div class="footer-content">
                 <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
