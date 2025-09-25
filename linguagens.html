@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINGUAGENS </title>
+    <title>LINGUAGENS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
         :root {
-            --primary: #3498db;
-            --secondary: #2ecc71;
+            --primary: #000000;
+            --secondary: #000000b1;
             --accent: #e74c3c;
-            --dark: #2c3e50;
+            --dark: #01060b;
             --darker: #1a252f;
-            --light: #ecf0f1;
             --text: #333;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
@@ -28,7 +27,7 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #082a32 0%, #000000 100%);
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
@@ -43,7 +42,6 @@
             position: relative;
             overflow: hidden;
         }
-        
         
         h1 {
             font-size: 3.5rem;
@@ -88,7 +86,6 @@
             padding: 0 1rem;
         }
         
-        
         .filter-container {
             display: flex;
             justify-content: center;
@@ -108,8 +105,12 @@
             box-shadow: var(--shadow);
             font-weight: 500;
         }
-       
-    
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
         .section {
             background: white;
             border-radius: var(--radius);
@@ -138,6 +139,7 @@
         .section-description {
             margin-bottom: 1.5rem;
             color: #555;
+            line-height: 1.8;
         }
         
         .image-container {
@@ -188,6 +190,23 @@
         .image-card:hover .overlay {
             opacity: 1;
         }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #777;
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        
+        .empty-state p {
+            font-size: 1.2rem;
+        }
+        
         footer {
             background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
             color: white;
@@ -212,7 +231,7 @@
         
         .footer-content {
             max-width: 1400px;
-            margin:  auto;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.0rem;
@@ -311,27 +330,100 @@
             gap: 0.7rem;
             margin-bottom: 0.5rem;
         }
+        
+        /* Animações */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .image-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>LINGUAGENS</h1>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#eixo1" class="active">Eixo 1</a></li>
+                <li><a href="#eixo2">Eixo 2</a></li>
+                <li><a href="#eixo3">Eixo 3</a></li>
+                <li><a href="#eixo4">Eixo 4</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="filter-container">
+            <button class="filter-btn active">Todos</button>
+            <button class="filter-btn">Linguagem</button>
+            <button class="filter-btn">Redação</button>
+            <button class="filter-btn">Projetos</button>
+        </div>
+
+
         <section id="eixo1" class="section fade-in delay-1">
-            <h2 class="section-title">EIXO 1</h2>
+            <h2 class="section-title">EIXO 1 - Língua Portuguesa e Literatura</h2>
             <p class="section-description">
-           
-            </p>
             <div class="image-container">
                 <div class="image-card" data-category="linguagem">
                     <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1" loading="lazy">
                     <div class="overlay">
-                       
                     </div>
                 </div>
                 <div class="image-card" data-category="linguagem">
                     <img src="ATVLINGUAGEN2.jpg" alt="Atividade de Linguagem 2" loading="lazy">
                     <div class="overlay">
-           
                     </div>
                 </div>
                 <div class="image-card" data-category="redacao">
@@ -347,52 +439,56 @@
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="projeto">
-                    <img src="emmaatividade.png" alt="emma">
+                    <img src="timbradohumanass (1).jpg" alt="Trabalho de Humanas" loading="lazy">
                     <div class="overlay">
                     </div>
                 </div>
                 <div class="image-card" data-category="redacao">
-                    <img src="repetortoriosocioculturall.png">
+                    <img src="REDAÇÃOO.png" alt="Redação" loading="lazy">
                     <div class="overlay">
                     </div>
                 </div>
                 <div class="image-card" data-category="projeto">
-                    <img src="redacaoeixo2">
+                    <img src="emma.jpg" alt="Projeto Emma" loading="lazy">
                     <div class="overlay">
                     </div>
                 </div>
             </div>
+        </section>
+
+
         <section id="eixo3" class="section fade-in delay-3">
-    <h2 class="section-title">EIXO 3</h2>
-    <p class="section-description">
-    </p>
-    <div class="image-container">
-        <div class="image-card" data-category="projeto">
-            <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens" loading="lazy">
-            <div class="overlay">
-            </div>
-        </div>
-        <div class="image-card" data-category="projeto">
-            <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina" loading="lazy">
-            <div class="overlay">
-            </div>
-        </div>
-        <div class="image-card" data-category="projeto">
-            <img src="literaturacontemporanea.png" alt="Literatura Contemporânea" loading="lazy">
-            <div class="overlay">
-            </div>
-        </div>
-    </div>
-</section>
-        <section id="eixo4" class="section fade-in delay-4">
-            <h2 class="section-title">EIXO 4</h2>
+            <h2 class="section-title">EIXO 3 </h2>
             <p class="section-description">
+             
+            <div class="image-container">
+                <div class="image-card" data-category="projeto">
+                    <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens" loading="lazy">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <div class="image-card" data-category="projeto">
+                    <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina" loading="lazy">
+                    <div class="overlay">
+                    </div>
+                </div>
+                <div class="image-card" data-category="projeto">
+                    <img src="listadeingles2.png" alt="Atividade de Inglês" loading="lazy">
+                    <div class="overlay">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="eixo4" class="section fade-in delay-4">
+            <h2 class="section-title">EIXO 4 - Projeto Integrador</h2>
+            <p class="section-description">
+
             </p>
             <div class="empty-state">
                 <i class="fas fa-folder-plus"></i>
             </div>
         </section>
-    </div>
     </div>
     <footer>
         <div class="footer-content">
@@ -403,9 +499,8 @@
                 <div class="footer-divider"></div>
                 <span class="institution">SESI / SENAI</span>
             </div>
-            <div class="footer-section">
-                <h3>Contato</h3>
-                <div class="contact-info">
+                    </div>
+                </div>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -420,8 +515,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
-
