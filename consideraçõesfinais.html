@@ -322,89 +322,6 @@
       font-size: 0.8rem;
       font-weight: 500;
     }
-
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: var(--secondary);
-      transform: translateX(-50%);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 3rem;
-      width: 50%;
-      padding: 0 2rem;
-    }
-
-    .timeline-item:nth-child(odd) {
-      left: 0;
-    }
-
-    .timeline-item:nth-child(even) {
-      left: 50%;
-    }
-
-    .timeline-content {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: var(--card-shadow);
-      position: relative;
-    }
-
-    .timeline-content::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content::before {
-      right: -10px;
-      border-width: 10px 0 10px 10px;
-      border-color: transparent transparent transparent white;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content::before {
-      left: -10px;
-      border-width: 10px 10px 10px 0;
-      border-color: transparent white transparent transparent;
-    }
-
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      top: 20px;
-      width: 20px;
-      height: 20px;
-      background: var(--secondary);
-      border-radius: 50%;
-      z-index: 1;
-    }
-
-    .timeline-item:nth-child(odd)::after {
-      right: -10px;
-      transform: translateX(50%);
-    }
-
-    .timeline-item:nth-child(even)::after {
-      left: -10px;
-      transform: translateX(-50%);
-    }
-
     footer {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: var(--light);
@@ -466,7 +383,6 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Animações */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -476,7 +392,6 @@
       animation: fadeIn 0.8s ease forwards;
     }
 
-    /* Responsividade */
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
@@ -501,32 +416,7 @@
         align-items: center;
       }
 
-      .timeline::before {
-        left: 20px;
       }
-
-      .timeline-item {
-        width: 100%;
-        padding-left: 50px;
-        padding-right: 0;
-      }
-
-      .timeline-item:nth-child(even) {
-        left: 0;
-      }
-
-      .timeline-item::after {
-        left: 10px;
-        transform: translateX(-50%);
-      }
-
-      .timeline-item:nth-child(odd) .timeline-content::before,
-      .timeline-item:nth-child(even) .timeline-content::before {
-        left: -10px;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent white transparent transparent;
-      }
-    }
   </style>
 </head>
 <body>
@@ -537,9 +427,6 @@
       </a>
       <nav>
         <a href="#experience" class="active">Experiência</a>
-        <a href="#skills">Habilidades</a>
-        <a href="#projects">Projetos</a>
-        <a href="#timeline">Trajetória</a>
         <a href="#contact">Contato</a>
       </nav>
     </div>
@@ -555,9 +442,6 @@
     <h2 class="profile-subtitle">Estudante SESI/SENAI</h2>
     </p>
     <div class="hero-buttons">
-      <a href="#projects" class="btn btn-primary">
-        <i class="fas fa-project-diagram"></i> Ver Projetos
-      </a>
       <a href="#contact" class="btn btn-secondary">
         <i class="fas fa-envelope"></i> Entrar em Contato
       </a>
@@ -611,9 +495,8 @@
     </div>
     
     <div class="copyright">
-      <p>&copy; 2025 Ian Joseph Pinheiro de Amorim. Todos os direitos reservados.</p>
+      <p>&copy; 2025 Ian Joseph. Todos os direitos reservados.</p>
     </div>
   </footer>
 </body>
 </html>
-
