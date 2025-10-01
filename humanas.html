@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>humanas</title>
+    <title>Portfólio de Ciências Humanas</title>
+    <meta name="description" content="Portfólio acadêmico de Ciências Humanas - Análises, pesquisas e trabalhos desenvolvidos">
+    <meta name="keywords" content="humanas, portfolio, geografia, história, sociologia, filosofia">
+    <meta name="author" content="Seu Nome">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/Portfolio-Senia/style.css"> 
     <style>
         :root {
-            --primary: #1100ff; 
+            --primary: #1100ff;
             --primary-dark: #000000;
             --accent: #e0f0ee;
             --light: #f5f5f5;
             --dark: #121212d0;
             --gray: #2c2c2c;
             --text-light: #ffffff;
+            --success: #4CAF50;
+            --warning: #FF9800;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s ease;
         }
@@ -24,6 +28,11 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -31,14 +40,58 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+        
+        /* Navegação */
+        .main-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .main-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            transition: var(--transition);
+            font-weight: 500;
+            display: block;
+        }
+        
+        .main-nav a:hover,
+        .main-nav a.active {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Header */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 2rem 1rem;
+            padding: 4rem 1rem 3rem;
             text-align: center;
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
         }
+        
         header::before {
             content: "";
             position: absolute;
@@ -49,6 +102,7 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L100,0 L100,100 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
             background-size: 100% 100%;
         }
+        
         header h1 {
             font-size: 4rem;
             margin: 0;
@@ -56,17 +110,22 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             letter-spacing: 2px;
         }
+        
         .header-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             opacity: 0.9;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
             position: relative;
+            font-weight: 300;
         }
+        
+        /* Container e Seções */
         .container {
             max-width: 1400px;
             margin: 2rem auto;
             padding: 0 1.5rem;
         }
+        
         .section {
             background: rgba(30, 30, 30, 0.8);
             backdrop-filter: blur(10px);
@@ -76,12 +135,14 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-left: 4px solid var(--accent);
+            animation: fadeIn 0.6s ease forwards;
         }
         
         .section:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
         }
+        
         .section-title {
             color: var(--accent);
             font-size: 2.5rem;
@@ -91,6 +152,12 @@
             display: inline-block;
         }
         
+        .section-subtitle {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+        }
+        
         .section-description {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
@@ -98,6 +165,7 @@
             opacity: 0.9;
         }
         
+        /* Grid de Imagens */
         .image-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -113,10 +181,11 @@
             position: relative;
             height: 260px;
             background: var(--gray);
+            cursor: pointer;
         }
         
         .image-card:hover {
-            transform: scale(1.03) rotate(1deg);
+            transform: scale(1.03);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
@@ -136,13 +205,62 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-            padding: 1.2rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 1.5rem;
             color: white;
-            opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(100%);
             transition: var(--transition);
         }
+        
+        .image-card:hover .image-overlay {
+            transform: translateY(0);
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .card-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.8rem;
+        }
+        
+        .card-date {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+        }
+        
+        /* Seção Vazia */
+        .empty-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--accent);
+        }
+        
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
+        }
+        
+        .empty-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-text {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark) 100%);
             color: var(--text-light);
@@ -150,24 +268,29 @@
             text-align: center;
             margin-top: 4rem;
         }
+        
         .footer-content {
             max-width: 1000px;
             margin: 0 auto;
         }
+        
         .footer-text {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
         }
+        
         .footer-name {
             font-weight: bold;
             color: var(--accent);
         }
+        
         .footer-divider {
             height: 2px;
             width: 100px;
             background: var(--accent);
             margin: 1.5rem auto;
         }
+        
         .senai-logo {
             font-size: 2rem;
             font-weight: bold;
@@ -175,6 +298,7 @@
             margin-top: 1.5rem;
         }
         
+        /* Botão Voltar ao Topo */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -193,29 +317,60 @@
             visibility: hidden;
             z-index: 1000;
             box-shadow: var(--shadow);
+            border: none;
         }
+        
         .back-to-top.visible {
             opacity: 1;
             visibility: visible;
         }
+        
         .back-to-top:hover {
             background: var(--accent);
             transform: translateY(-5px);
+            color: var(--dark);
         }
+        
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .section:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        .section:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        
+        /* Responsividade */
         @media (max-width: 992px) {
             header h1 {
                 font-size: 3rem;
             }
+            
             .section-title {
                 font-size: 2rem;
             }
+            
             .image-grid {
                 grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             }
         }
+        
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.5rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.2rem;
             }
             
             .section {
@@ -235,14 +390,14 @@
                 height: 300px;
             }
             
-            .nav-tabs {
+            .main-nav ul {
                 flex-direction: column;
                 align-items: center;
+                gap: 0.5rem;
             }
             
-            .nav-tab {
+            .main-nav a {
                 width: 80%;
-                margin-bottom: 0.8rem;
                 text-align: center;
             }
         }
@@ -275,172 +430,260 @@
                 height: 40px;
             }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        /* Acessibilidade - Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            html {
+                scroll-behavior: auto;
+            }
         }
         
-        .section {
-            animation: fadeIn 0.6s ease forwards;
-        }
-        
-        .section:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .section:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        .section:nth-child(4) {
-            animation-delay: 0.6s;
+        /* Estados de Foco para Acessibilidade */
+        button:focus, 
+        .image-card:focus,
+        .main-nav a:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>HUMANAS</h1>
-    </header>
-    <div class="container">
+    <!-- Navegação -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul>
+                <li><a href="#eixo1" class="active">Eixo 1</a></li>
+                <li><a href="#eixo2">Eixo 2</a></li>
+                <li><a href="#eixo3">Eixo 3</a></li>
+                <li><a href="#eixo4">Eixo 4</a></li>
+            </ul>
         </div>
+    </nav>
+    
+    <!-- Cabeçalho -->
+    <header>
+        <h1>CIÊNCIAS HUMANAS</h1>
+        <p class="header-subtitle">Portfólio Acadêmico - Análises e Pesquisas</p>
+    </header>
+    
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <!-- Eixo 1 -->
         <section id="eixo1" class="section">
-            <h2 class="section-title">EIXO 1 </h2>
+            <h2 class="section-title">EIXO 1 - Território e Sociedade</h2>
+            <p class="section-description">
+                Estudo sobre as relações entre espaço geográfico, organização social e dinâmicas populacionais, 
+                com foco em fluxos migratórios e transformações territoriais.
+            </p>
+            
+            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="fluxomigratorio.png" alt="Fluxos Migratórios - Mapa mostrando rotas de migração global">
+                    <img src="fluxomigratorio.png" alt="Fluxos Migratórios - Mapa mostrando rotas de migração global com destaque para América do Sul e Europa">
                     <div class="image-overlay">
+                        <h3 class="card-title">Fluxos Migratórios Globais</h3>
+                        <p class="card-description">Análise das principais rotas de migração internacional e seus impactos socioeconômicos</p>
+                        <span class="card-date">2024</span>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="venezuelaportfolioo.png" alt="Venezuela ">
+                    <img src="venezuelaportfolioo.png" alt="Crise Venezuelana - Gráficos mostrando fluxo de refugiados venezuelanos para países vizinhos">
                     <div class="image-overlay">
+                        <h3 class="card-title">Crise Venezuelana</h3>
+                        <p class="card-description">Estudo sobre o êxodo populacional da Venezuela e seus impactos regionais</p>
+                        <span class="card-date">2024</span>
+                    </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Eixo 2 -->
         <section id="eixo2" class="section">
-            <h2 class="section-title">EIXO 2 </h2>
+            <h2 class="section-title">EIXO 2 - Estado e Poder</h2>
+            <p class="section-description">
+                Análise das estruturas de poder, regimes políticos e organização estatal ao longo da história, 
+                com ênfase no caso brasileiro e suas particularidades.
+            </p>
+            
+            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="atosinstitucionais.png" alt="Atos Institucionais - Documentos do período militar no Brasil">
+                    <img src="atosinstitucionais.png" alt="Atos Institucionais - Documentos históricos do período militar brasileiro (1964-1985)">
                     <div class="image-overlay">
+                        <h3 class="card-title">Regime Militar no Brasil</h3>
+                        <p class="card-description">Análise dos Atos Institucionais e sua influência na estrutura estatal brasileira</p>
+                        <span class="card-date">2024</span>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="biomasdobrasiil.png" alt="Biomas do Brasil - Mapa dos ecossistemas brasileiros">
+                    <img src="biomasdobrasiil.png" alt="Biomas do Brasil - Mapa dos seis biomas brasileiros: Amazônia, Cerrado, Mata Atlântica, Caatinga, Pampa e Pantanal">
                     <div class="image-overlay">
+                        <h3 class="card-title">Biomas Brasileiros</h3>
+                        <p class="card-description">Estudo sobre a diversidade ambiental do Brasil e políticas de conservação</p>
+                        <span class="card-date">2024</span>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Eixo 3 -->
         <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3 </h2>
+            <h2 class="section-title">EIXO 3 - Cultura e Identidade</h2>
+            <p class="section-description">
+                Investigação sobre a construção de identidades culturais, representações midiáticas 
+                e conflitos contemporâneos em perspectiva global.
+            </p>
+            
+            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="midiaepolitica.jpg">
+                    <img src="midiaepolitica.jpg" alt="Mídia e Política - Análise da influência dos meios de comunicação na formação de opinião pública">
                     <div class="image-overlay">
+                        <h3 class="card-title">Mídia e Política</h3>
+                        <p class="card-description">Relação entre comunicação de massa e processos políticos democráticos</p>
+                        <span class="card-date">2024</span>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="constituição.jpg">
+                    <img src="constituição.jpg" alt="Constituição Brasileira - Análise dos direitos e garantias fundamentais na Carta de 1988">
                     <div class="image-overlay">
+                        <h3 class="card-title">Direitos Constitucionais</h3>
+                        <p class="card-description">Estudo sobre a evolução dos direitos fundamentais no ordenamento jurídico brasileiro</p>
+                        <span class="card-date">2024</span>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="israelvspalestina.png" alt="Conflito Israel vs Palestina - Análise geopolítica">
+                    <img src="israelvspalestina.png" alt="Conflito Israel vs Palestina - Mapa geopolítico mostrando divisões territoriais e áreas de conflito">
                     <div class="image-overlay">
+                        <h3 class="card-title">Conflito Israel-Palestina</h3>
+                        <p class="card-description">Análise histórica e geopolítica do conflito no Oriente Médio</p>
+                        <span class="card-date">2024</span>
                     </div>
-                </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Eixo 4 -->
         <section id="eixo4" class="section">
-            <h2 class="section-title">EIXO 4 - </h2>
+            <h2 class="section-title">EIXO 4 - Trabalhos Futuros</h2>
             <div class="empty-section">
                 <i class="fas fa-folder-open empty-icon"></i>
-
-                .main-nav {
-                 position: sticky;
-                top: 0;
-                background:  rgba(30, 30, 30, 0.95);
-                backdrop-filter: blur(10px);
-                z-index: 1000;
-                padding: 1rem 0;
-                }
-
-                .main-nav ul {
-                display: flex;
-                justify-content: center;
-                list-style:none;
-                gap: 2re;
-                } 
-
-                .main-nav a {
-                color: var(--text--light);
-                text-decoration: none;
-                padding: 0.5 rem 1rem;
-                border-radius: 25px;
-                transition: var(--transition);
-                }
-
-                .main-nav a:hover {
-                background:  var(--primary);
-                }
-                .image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-    padding: 1.5rem;
-    color: white;
-    transform: translateY(100%);
-    transition: var(--transition);
-}
-
-.image-card:hover .image-overlay {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Loading states */
-.image-card {
-    position: relative;
-    overflow: hidden;
-}
-
-.image-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gray);
-    z-index: 1;
-}
-
-.image-card.loaded::before {
-    display: none;
-}
+                <h3 class="empty-title">Em Desenvolvimento</h3>
+                <p class="empty-text">Novos trabalhos e pesquisas serão adicionados em breve</p>
             </div>
         </section>
     </div>
-    <div class="back-to-top" id="backToTop">
+    
+    <!-- Botão Voltar ao Topo -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
         <i class="fas fa-arrow-up"></i>
-    </div>
+    </button>
+    
+    <!-- Rodapé -->
     <footer>
         <div class="footer-content">
             <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
-            <p> Orientadora: Regiane leal</p>
+            <p>Orientadora: <span class="footer-name">Regiane Leal</span></p>
             <div class="footer-divider"></div>
             <p class="senai-logo">SENAI/SESI</p>
         </div>
     </footer>
+
+    <script>
+        // Back to top functionality
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Navegação suave
+        document.querySelectorAll('.main-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Atualizar navegação ativa
+                    document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Scroll suave
+                    targetElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Atualizar navegação ativa ao scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.main-nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Lazy loading para imagens (simulação)
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.style.opacity = '1';
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => {
+                img.style.opacity = '0.7';
+                img.style.transition = 'opacity 0.5s ease';
+                imageObserver.observe(img);
+            });
+        });
+
+        // Feedback visual para cards
+        document.querySelectorAll('.image-card').forEach(card => {
+            card.addEventListener('focus', function() {
+                this.style.transform = 'scale(1.03)';
+            });
+            
+            card.addEventListener('blur', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
