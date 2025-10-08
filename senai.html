@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio SENAI</title>
+    <title> SENAI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -82,12 +82,6 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-left: 4px solid var(--accent);
-            display: none;
-        }
-        
-        .section.active {
-            display: block;
-            animation: fadeIn 0.6s ease forwards;
         }
         
         .section:hover {
@@ -205,13 +199,6 @@
             justify-content: center;
             margin-bottom: 2rem;
             flex-wrap: wrap;
-            position: sticky;
-            top: 10px;
-            z-index: 100;
-            background: rgba(18, 18, 18, 0.9);
-            padding: 10px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
         }
         
         .nav-tab {
@@ -296,26 +283,6 @@
             transform: translateY(-5px);
         }
         
-        .placeholder-img {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
-            color: white;
-            font-size: 1.1rem;
-            text-align: center;
-            padding: 1rem;
-        }
-        
-        .image-error {
-            color: #ff6b6b;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 1rem;
-        }
-        
         @media (max-width: 992px) {
             header h1 {
                 font-size: 3rem;
@@ -397,14 +364,41 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+        .section {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .section:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        .section:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        
+
+        .image-card img {
+            transition: opacity 0.3s;
+        }
+        
+        .image-card img[data-src] {
+            opacity: 0;
+        }
+        
+        .image-card img.loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>SENAI</h1>
-        <p class="header-subtitle">Portfólio de Projetos</p>
     </header>
-
     <div class="container">
         <div class="nav-tabs">
             <div class="nav-tab active" data-target="eixo1">EIXO 1</div>
@@ -413,35 +407,27 @@
             <div class="nav-tab" data-target="eixo4">EIXO 4</div>
         </div>
         
-        <section id="eixo1" class="section active">
+        <section id="eixo1" class="section">
             <h2 class="section-title">EIXO 1</h2>
             <div class="image-grid">
                 <div class="image-card">
-                    <div class="placeholder-img">Cadeias Carbônicas<br><span class="image-error">(CADEIASCARBONICAS.png)</span></div>
+                    <img src="CADEIASCARBONICAS.png">
                     <div class="image-overlay">
-                        <div class="image-title">Cadeias Carbônicas</div>
-                        <div class="image-desc">Estudo de química orgânica aplicada</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Atividade SENAI 1<br><span class="image-error">(SENAIATV1.jpg)</span></div>
+                    <img src="SENAIATV1.jpg">
                     <div class="image-overlay">
-                        <div class="image-title">Atividade Prática</div>
-                        <div class="image-desc">Primeiro projeto desenvolvido no SENAI</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Cyber Segurança SENAI<br><span class="image-error">(SENAICYBERSEC.jpg)</span></div>
+                    <img src="SENAICYBERSEC.jpg" alt="Cyber Segurança SENAI ">
                     <div class="image-overlay">
-                        <div class="image-title">Cyber Segurança</div>
-                        <div class="image-desc">Fundamentos de segurança digital</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Interface Web<br><span class="image-error">(INTERFACEWEB.jpg)</span></div>
+                    <img src="INTERFACEWEB.jpg" >
                     <div class="image-overlay">
-                        <div class="image-title">Interface Web</div>
-                        <div class="image-desc">Desenvolvimento de front-end</div>
                     </div>
                 </div>
             </div>
@@ -451,122 +437,105 @@
             <h2 class="section-title">EIXO 2</h2>
             <div class="image-grid">
                 <div class="image-card">
-                    <div class="placeholder-img">Banco de Dados<br><span class="image-error">(bancodedados.png)</span></div>
+                    <img src="SENAIMAPAMENTAL1 (1).png">
                     <div class="image-overlay">
-                        <div class="image-title">Banco de Dados</div>
-                        <div class="image-desc">Modelagem e implementação</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Segurança de TI<br><span class="image-error">(segurançadeti.png)</span></div>
+                    <img src="SENAIMAPAMENTAL1.PNG">
                     <div class="image-overlay">
-                        <div class="image-title">Segurança de TI</div>
-                        <div class="image-desc">Proteção de sistemas e dados</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Programação Client Side<br><span class="image-error">(programacaoclientsid.png)</span></div>
+                    <img src="RELOGIODIGITAL.PNG" >
                     <div class="image-overlay">
-                        <div class="image-title">Programação Client Side</div>
-                        <div class="image-desc">Desenvolvimento front-end</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Logomarca<br><span class="image-error">(LOGOMARCA.png)</span></div>
+                    <img src="bancodedados.png" alt="Banco de Dados ">
                     <div class="image-overlay">
-                        <div class="image-title">Logomarca</div>
-                        <div class="image-desc">Design de identidade visual</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Codificação do Portfólio<br><span class="image-error">(codificaçãodoportfolio.png)</span></div>
+                    <img src="SIMBOLO (1).png" alt="Símbolo l">
                     <div class="image-overlay">
-                        <div class="image-title">Codificação</div>
-                        <div class="image-desc">Desenvolvimento deste portfólio</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="DIAGRAMASUML.PNG">
+                    <img src="LOGOMARCA.png" alt="Logomarca">
                     <div class="image-overlay">
-                        <div class="image-title">Diagrama UML</div>
-                        <div class="image-desc">Modelagem de sistemas</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Timbrado Client Side<br><span class="image-error">(timbrado clientside.png)</span></div>
+                    <img src="codificaçãodoportfolio.png" alt="Timbrado Portfólio HTML">
                     <div class="image-overlay">
-                        <div class="image-title">Timbrado Client Side</div>
-                        <div class="image-desc">Desenvolvimento front-end</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="DIAGRAMASUML.png" alt="Diagrama UML ">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="timbrado clientside.png" alt="Timbrado Client Side">
+                    <div class="image-overlay">
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3</h2>
+            <h2 class="section-title">EIXO 3 </h2>
             <div class="image-grid">
                 <div class="image-card">
-                    <div class="placeholder-img">Mapa Mental de Comunicação Profissional<br><span class="image-error">(mapamentaldecomunicaçãoprofissional.png)</span></div>
+                    <img src="mapamentaldecomunicaçãoprofissional.png" alt="Mapa Mental de Comunicação Profissional - Técnicas de comunicação">
                     <div class="image-overlay">
-                        <div class="image-title">Comunicação Profissional</div>
-                        <div class="image-desc">Técnicas de comunicação eficaz</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Login SENAI<br><span class="image-error">(LOGINSENAI.png)</span></div>
+                    <img src="LOGINSENAI.png" alt="Login SENAI ">
                     <div class="image-overlay">
-                        <div class="image-title">Sistema de Login</div>
-                        <div class="image-desc">Autenticação e segurança</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Timbrado Portfólio HTML<br><span class="image-error">(timbrado portfoliohtml (3).png)</span></div>
+                    <img src="timbrado portfoliohtml (3).png" alt="Timbrado Portfólio HTML ">
                     <div class="image-overlay">
-                        <div class="image-title">Portfólio HTML</div>
-                        <div class="image-desc">Desenvolvimento deste projeto</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Comunicação Profissional<br><span class="image-error">(comunicaçãoprofissional.jpg)</span></div>
+                    <img src="comunicaçãoprofissional.jpg" alt="Comunicação Profissional - Desenvolvimento de soft skills">
                     <div class="image-overlay">
-                        <div class="image-title">Soft Skills</div>
-                        <div class="image-desc">Desenvolvimento de habilidades interpessoais</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Exercício de Pontes<br><span class="image-error">(exerciciopontes.png)</span></div>
+                    <img src="exerciciopontes.png" alt="Exercício de Pontes ">
                     <div class="image-overlay">
-                        <div class="image-title">Exercício de Pontes</div>
-                        <div class="image-desc">Lógica e resolução de problemas</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Edraw Max<br><span class="image-error">(edrawmax.png)</span></div>
+                    <img src="edrawmax.png" alt="Edraw Max - Ferramenta de diagramação">
                     <div class="image-overlay">
-                        <div class="image-title">Edraw Max</div>
-                        <div class="image-desc">Ferramenta de diagramação</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <div class="placeholder-img">Design Patterns<br><span class="image-error">(designpatterns.jpg)</span></div>
+                    <img src="designpatterns.jpg" alt="Design Patterns - Padrões de projeto de software">
                     <div class="image-overlay">
-                        <div class="image-title">Design Patterns</div>
-                        <div class="image-desc">Padrões de projeto de software</div>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="eixo4" class="section">
-            <h2 class="section-title">EIXO 4</h2>
+            <h2 class="section-title">EIXO 4 </h2>
             <div class="empty-section">
-                <i class="fas fa-folder-open empty-icon"></i>
-                <h3 class="empty-title">Em Desenvolvimento</h3>
-                <p class="empty-text">Esta seção será atualizada em breve com novos projetos.</p>
+                <img src="planejamentosistemicosenai.png" alt="planejamentosistemico">
+                <img src="jogodeadivinhação.jpg">
+                <img src="calculadora.png">
+                <img src="calculadoradeimcc.png">
+                <img src="algoritmophp1.png">
             </div>
         </section>
     </div>
-
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
@@ -578,74 +547,5 @@
             <p class="senai-logo">SENAI/SESI</p>
         </div>
     </footer>
-
-    <script>
-       
-        document.addEventListener('DOMContentLoaded', function() {
-
-            const tabs = document.querySelectorAll('.nav-tab');
-            const sections = document.querySelectorAll('.section');
-            
-           
-            function activateTab(tabId) {
-                tabs.forEach(tab => tab.classList.remove('active'));
-                sections.forEach(section => section.classList.remove('active'));
-                
-                document.querySelector(`.nav-tab[data-target="${tabId}"]`).classList.add('active');
-                
-                document.getElementById(tabId).classList.add('active');
-            }
-            
-     
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const target = tab.getAttribute('data-target');
-                    activateTab(target);
-                });
-            });
-            
-            if (tabs.length > 0) {
-                activateTab(tabs[0].getAttribute('data-target'));
-            }
-            
-            const backToTopButton = document.getElementById('backToTop');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTopButton.classList.add('visible');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                }
-            });
-            
-            backToTopButton.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            document.querySelectorAll('.image-card').forEach(card => {
-                const errorElement = card.querySelector('.image-error');
-                if (errorElement) {
-                    const fileName = errorElement.textContent.replace(/[()]/g, '');
-                    const img = new Image();
-                    img.onload = function() {
-                        card.querySelector('.placeholder-img').style.display = 'none';
-                        const imgElement = document.createElement('img');
-                        imgElement.src = fileName;
-                        imgElement.alt = card.querySelector('.image-title').textContent;
-                        card.insertBefore(imgElement, card.firstChild);
-                    };
-                    img.onerror = function() {
-                        console.log('Imagem não encontrada: ' + fileName);
-                    };
-                    img.src = fileName;
-                }
-            });
-        });
-    </script>
 </body>
 </html>
-
-
