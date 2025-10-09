@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio SENAI</title>
+    <title> SENAI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -22,10 +22,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
         }
         
         body {
@@ -77,30 +73,6 @@
             padding: 0 1.5rem;
         }
         
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .nav-tab {
-            padding: 0.8rem 1.5rem;
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 1px solid var(--primary);
-            color: var(--text-light);
-            text-decoration: none;
-        }
-        
-        .nav-tab:hover, .nav-tab.active {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-        
         .section {
             background: rgba(30, 30, 30, 0.8);
             backdrop-filter: blur(10px);
@@ -110,12 +82,6 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-left: 4px solid var(--accent);
-            display: none;
-        }
-        
-        .section.active {
-            display: block;
-            animation: fadeIn 0.6s ease forwards;
         }
         
         .section:hover {
@@ -157,7 +123,7 @@
         }
         
         .image-card:hover {
-            transform: scale(1.03);
+            transform: scale(1.03) rotate(1deg);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
@@ -190,13 +156,13 @@
             transform: translateY(0);
         }
         
-        .card-title {
+        .image-title {
             font-weight: 600;
             margin-bottom: 0.3rem;
             font-size: 1.1rem;
         }
         
-        .card-description {
+        .image-desc {
             font-size: 0.9rem;
             opacity: 0.8;
         }
@@ -226,6 +192,28 @@
             max-width: 500px;
             margin: 0 auto;
             opacity: 0.8;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            padding: 0.8rem 1.5rem;
+            background: rgba(30, 30, 30, 0.7);
+            margin: 0 0.5rem 0.5rem 0;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--primary);
+        }
+        
+        .nav-tab:hover, .nav-tab.active {
+            background: var(--primary);
+            transform: translateY(-3px);
         }
         
         footer {
@@ -283,7 +271,6 @@
             visibility: hidden;
             z-index: 1000;
             box-shadow: var(--shadow);
-            border: none;
         }
         
         .back-to-top.visible {
@@ -294,7 +281,6 @@
         .back-to-top:hover {
             background: var(--accent);
             transform: translateY(-5px);
-            color: var(--dark);
         }
         
         @media (max-width: 992px) {
@@ -378,47 +364,69 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+        .section {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .section:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        .section:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        
+
+        .image-card img {
+            transition: opacity 0.3s;
+        }
+        
+        .image-card img[data-src] {
+            opacity: 0;
+        }
+        
+        .image-card img.loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>PORTFÓLIO SENAI</h1>
-        <p class="header-subtitle">s</p>
+        <h1>SENAI</h1>
     </header>
-    
     <div class="container">
         <div class="nav-tabs">
-            <a href="#" class="nav-tab active" data-target="eixo1">EIXO 1 </a>
-            <a href="#" class="nav-tab" data-target="eixo2">EIXO 2 </a>
-            <a href="#" class="nav-tab" data-target="eixo3">EIXO 3 </a>
-            <a href="#" class="nav-tab" data-target="eixo4">EIXO 4 </a>
+            <div class="nav-tab active" data-target="eixo1">EIXO 1</div>
+            <div class="nav-tab" data-target="eixo2">EIXO 2</div>
+            <div class="nav-tab" data-target="eixo3">EIXO 3</div>
+            <div class="nav-tab" data-target="eixo4">EIXO 4</div>
         </div>
         
-        <section id="eixo1" class="section active">
-            <h2 class="section-title">EIXO 1 </h2>
-            <p class="section-description">
-            </p>
-            
+        <section id="eixo1" class="section">
+            <h2 class="section-title">EIXO 1</h2>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="CADEIASCARBONICAS.png" alt="Estruturas de Dados - Representação de cadeias e algoritmos">
+                    <img src="CADEIASCARBONICAS.png">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SENAIATV1.jpg" alt="Atividade Prática - Exercícios de programação básica">
-                    <div class="image-overlay">
-                        <div class="card-title">Atividades Práticas</div>
-                        <div class="card-description">Exercícios de lógica e programação</div>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="SENAICYBERSEC.jpg" alt="Cyber Segurança SENAI - Conceitos de segurança digital">
+                    <img src="SENAIATV1.jpg">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="INTERFACEWEB.jpg" alt="Interface Web - Desenvolvimento front-end básico">
+                    <img src="SENAICYBERSEC.jpg" alt="Cyber Segurança SENAI ">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="INTERFACEWEB.jpg" >
                     <div class="image-overlay">
                     </div>
                 </div>
@@ -426,46 +434,50 @@
         </section>
 
         <section id="eixo2" class="section">
-            <h2 class="section-title">EIXO 2 </h2>
-            </p>
-            
+            <h2 class="section-title">EIXO 2</h2>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="SENAIMAPAMENTAL1 (1).png" alt="Mapa Mental ">
+                    <img src="SENAIMAPAMENTAL1 (1).png">
+                    <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SENAIMAPAMENTAL1.PNG" alt="Diagrama de Sistema ">
+                    <img src="SENAIMAPAMENTAL1.PNG">
+                    <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="RELOGIODIGITAL.PNG" alt="Relógio Digital">
+                    <img src="RELOGIODIGITAL.PNG" >
+                    <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="bancodedados.png" alt="Banco de Dados ">
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="SIMBOLO (1).png" alt="Símbolos Lógicos - Elementos de diagramação">
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="LOGOMARCA.png" alt="Logomarca - Identidade visual de projetos">
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="codificaçãodoportfolio.png" alt="Portfólio HTML - Estruturação web">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="DIAGRAMASUML.png" alt="Diagrama UML - Modelagem de software">
+                    <img src="SIMBOLO (1).png" alt="Símbolo l">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="timbrado clientside.png" alt="Client Side - Desenvolvimento front-end">
+                    <img src="LOGOMARCA.png" alt="Logomarca">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="codificaçãodoportfolio.png" alt="Timbrado Portfólio HTML">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="DIAGRAMASUML.png" alt="Diagrama UML ">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="timbrado clientside.png" alt="Timbrado Client Side">
                     <div class="image-overlay">
                     </div>
                 </div>
@@ -473,44 +485,40 @@
         </section>
         
         <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3 - Desenvolvimento Profissional</h2>
-            <p class="section-description">
-           
-            </p>
-            
+            <h2 class="section-title">EIXO 3 </h2>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="mapamentaldecomunicaçãoprofissional.png" alt="Comunicação Profissional - Técnicas de comunicação">
+                    <img src="mapamentaldecomunicaçãoprofissional.png" alt="Mapa Mental de Comunicação Profissional - Técnicas de comunicação">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="LOGINSENAI.png" alt="Sistema de Login - Autenticação e segurança">
+                    <img src="LOGINSENAI.png" alt="Login SENAI ">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="timbrado portfoliohtml (3).png" alt="Portfólio HTML - Documentação técnica">
+                    <img src="timbrado portfoliohtml (3).png" alt="Timbrado Portfólio HTML ">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="comunicaçãoprofissional.jpg" alt="Soft Skills - Desenvolvimento interpessoal">
+                    <img src="comunicaçãoprofissional.jpg" alt="Comunicação Profissional - Desenvolvimento de soft skills">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="exerciciopontes.png" alt="Exercício de Pontes - Solução de problemas">
+                    <img src="exerciciopontes.png" alt="Exercício de Pontes ">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="edrawmax.png" alt="Edraw Max - Ferramentas de diagramação">
+                    <img src="edrawmax.png" alt="Edraw Max - Ferramenta de diagramação">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="designpatterns.jpg" alt="Design Patterns - Padrões de projeto">
+                    <img src="designpatterns.jpg" alt="Design Patterns - Padrões de projeto de software">
                     <div class="image-overlay">
                     </div>
                 </div>
@@ -518,93 +526,30 @@
         </section>
         
         <section id="eixo4" class="section">
-            <h2 class="section-title">EIXO 4 /h2>
-           
-            </p>
-            
-            <div class="image-grid">
-                <div class="image-card">
-                    <img src="planejamentosistemicosenai.png" alt="Planejamento Sistemico">
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="jogodeadivinhação.jpg" alt="Jogo de Adivinhação ">
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="calculadora.png" alt="Calculadora - Aplicação matemática">
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="calculadoradeimcc.png" alt="Calculadora de IMC - Aplicação saúde">
-                     
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="algoritmophp1.png" alt="Algoritmo PHP - Lógica de programação">
-                    </div>
-                </div>
+            <h2 class="section-title">EIXO 4 </h2>
+            <div class="empty-section">
+                <img src="planejamentosistemicosenai.png" alt="planejamentosistemico">
+                <img src="jogodeadivinhação.jpg">
+                <img src="calculadora.png">
+                <img src="calculadoradeimcc.png">
+                <img src="algoritmophp1.png">
             </div>
         </section>
     </div>
-    
-    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+    <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
-    </button>
+    </div>
 
     <footer>
         <div class="footer-content">
             <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
             <div class="footer-divider"></div>
-            <p class="senai-logo">SENAI</p>
+            <p class="senai-logo">SENAI/SESI</p>
         </div>
     </footer>
-
-    <script>
-        // Navegação entre abas
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Remove classe active de todas as abas
-                document.querySelectorAll('.nav-tab').forEach(t => {
-                    t.classList.remove('active');
-                });
-                
-                // Adiciona classe active na aba clicada
-                this.classList.add('active');
-                
-                // Esconde todas as seções
-                document.querySelectorAll('.section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Mostra a seção correspondente
-                const targetId = this.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
-            });
-        });
-
-        // Back to top functionality
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Mostrar primeira seção por padrão
-        document.getElementById('eixo1').classList.add('active');
-    </script>
 </body>
 </html>
+
 
 
 
