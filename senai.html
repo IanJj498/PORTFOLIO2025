@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SENAI</title>
+    <title>Portfólio SENAI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -22,6 +22,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -73,6 +77,30 @@
             padding: 0 1.5rem;
         }
         
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .nav-tab {
+            padding: 0.8rem 1.5rem;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--primary);
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        
+        .nav-tab:hover, .nav-tab.active {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
         .section {
             background: rgba(30, 30, 30, 0.8);
             backdrop-filter: blur(10px);
@@ -82,6 +110,12 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-left: 4px solid var(--accent);
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.6s ease forwards;
         }
         
         .section:hover {
@@ -123,7 +157,7 @@
         }
         
         .image-card:hover {
-            transform: scale(1.03) rotate(1deg);
+            transform: scale(1.03);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
@@ -156,13 +190,13 @@
             transform: translateY(0);
         }
         
-        .image-title {
+        .card-title {
             font-weight: 600;
             margin-bottom: 0.3rem;
             font-size: 1.1rem;
         }
         
-        .image-desc {
+        .card-description {
             font-size: 0.9rem;
             opacity: 0.8;
         }
@@ -192,28 +226,6 @@
             max-width: 500px;
             margin: 0 auto;
             opacity: 0.8;
-        }
-        
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .nav-tab {
-            padding: 0.8rem 1.5rem;
-            background: rgba(30, 30, 30, 0.7);
-            margin: 0 0.5rem 0.5rem 0;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 1px solid var(--primary);
-        }
-        
-        .nav-tab:hover, .nav-tab.active {
-            background: var(--primary);
-            transform: translateY(-3px);
         }
         
         footer {
@@ -271,6 +283,7 @@
             visibility: hidden;
             z-index: 1000;
             box-shadow: var(--shadow);
+            border: none;
         }
         
         .back-to-top.visible {
@@ -281,6 +294,7 @@
         .back-to-top:hover {
             background: var(--accent);
             transform: translateY(-5px);
+            color: var(--dark);
         }
         
         @media (max-width: 992px) {
@@ -364,161 +378,175 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .section {
-            animation: fadeIn 0.6s ease forwards;
-        }
-        
-        .section:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .section:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        .section:nth-child(4) {
-            animation-delay: 0.6s;
-        }
-        
-
-        .image-card img {
-            transition: opacity 0.3s;
-        }
-        
-        .image-card img[data-src] {
-            opacity: 0;
-        }
-        
-        .image-card img.loaded {
-            opacity: 1;
-        }
     </style>
 </head>
 <body>
     <header>
-        <h1>SENAI</h1>
+        <h1>PORTFÓLIO SENAI</h1>
+        <p class="header-subtitle">Desenvolvimento de Sistemas - Trabalhos e Projetos</p>
     </header>
+    
     <div class="container">
         <div class="nav-tabs">
-            <div class="nav-tab active" data-target="eixo1">EIXO 1</div>
-            <div class="nav-tab" data-target="eixo2">EIXO 2</div>
-            <div class="nav-tab" data-target="eixo3">EIXO 3</div>
-            <div class="nav-tab" data-target="eixo4">EIXO 4</div>
+            <a href="#" class="nav-tab active" data-target="eixo1">EIXO 1 - Fundamentos</a>
+            <a href="#" class="nav-tab" data-target="eixo2">EIXO 2 - Desenvolvimento</a>
+            <a href="#" class="nav-tab" data-target="eixo3">EIXO 3 - Profissional</a>
+            <a href="#" class="nav-tab" data-target="eixo4">EIXO 4 - Projetos</a>
         </div>
         
-        <section id="eixo1" class="section">
-            <h2 class="section-title">EIXO 1</h2>
+        <section id="eixo1" class="section active">
+            <h2 class="section-title">EIXO 1 - Fundamentos da Programação</h2>
+            <p class="section-description">
+                Estudo dos conceitos fundamentais de programação, estruturas de dados e lógica computacional 
+                que formam a base do desenvolvimento de sistemas.
+            </p>
+            
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="CADEIASCARBONICAS.png">
+                    <img src="CADEIASCARBONICAS.png" alt="Estruturas de Dados - Representação de cadeias e algoritmos">
                     <div class="image-overlay">
+                        <div class="card-title">Estruturas de Dados</div>
+                        <div class="card-description">Fundamentos de organização e manipulação de dados</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SENAIATV1.jpg">
+                    <img src="SENAIATV1.jpg" alt="Atividade Prática - Exercícios de programação básica">
                     <div class="image-overlay">
+                        <div class="card-title">Atividades Práticas</div>
+                        <div class="card-description">Exercícios de lógica e programação</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SENAICYBERSEC.jpg" alt="Cyber Segurança SENAI ">
+                    <img src="SENAICYBERSEC.jpg" alt="Cyber Segurança SENAI - Conceitos de segurança digital">
                     <div class="image-overlay">
+                        <div class="card-title">Cyber Segurança</div>
+                        <div class="card-description">Fundamentos de proteção digital</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="INTERFACEWEB.jpg" >
+                    <img src="INTERFACEWEB.jpg" alt="Interface Web - Desenvolvimento front-end básico">
                     <div class="image-overlay">
+                        <div class="card-title">Interface Web</div>
+                        <div class="card-description">Princípios de desenvolvimento front-end</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo2" class="section">
-            <h2 class="section-title">EIXO 2</h2>
+            <h2 class="section-title">EIXO 2 - Desenvolvimento de Sistemas</h2>
+            <p class="section-description">
+                Aplicação prática dos conceitos de programação no desenvolvimento de sistemas, 
+                incluindo banco de dados, interfaces e arquitetura de software.
+            </p>
+            
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="SENAIMAPAMENTAL1 (1).png">
+                    <img src="SENAIMAPAMENTAL1 (1).png" alt="Mapa Mental - Estruturação de sistemas">
                     <div class="image-overlay">
+                        <div class="card-title">Mapa Mental</div>
+                        <div class="card-description">Planejamento de arquitetura de sistemas</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SENAIMAPAMENTAL1.PNG">
+                    <img src="SENAIMAPAMENTAL1.PNG" alt="Diagrama de Sistema - Fluxos e processos">
                     <div class="image-overlay">
+                        <div class="card-title">Diagrama de Sistema</div>
+                        <div class="card-description">Mapeamento de fluxos e processos</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="RELOGIODIGITAL.PNG" >
+                    <img src="RELOGIODIGITAL.PNG" alt="Relógio Digital - Projeto de interface">
                     <div class="image-overlay">
+                        <div class="card-title">Relógio Digital</div>
+                        <div class="card-description">Projeto de interface interativa</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="bancodedados.png" alt="Banco de Dados ">
+                    <img src="bancodedados.png" alt="Banco de Dados - Modelagem e estrutura">
                     <div class="image-overlay">
+                        <div class="card-title">Banco de Dados</div>
+                        <div class="card-description">Modelagem e estruturação de dados</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SIMBOLO (1).png" alt="Símbolo l">
+                    <img src="SIMBOLO (1).png" alt="Símbolos Lógicos - Elementos de diagramação">
                     <div class="image-overlay">
+                        <div class="card-title">Símbolos Lógicos</div>
+                        <div class="card-description">Elementos para diagramas técnicos</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="LOGOMARCA.png" alt="Logomarca">
+                    <img src="LOGOMARCA.png" alt="Logomarca - Identidade visual de projetos">
                     <div class="image-overlay">
+                        <div class="card-title">Logomarca</div>
+                        <div class="card-description">Design de identidade visual</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="codificaçãodoportfolio.png" alt="Timbrado Portfólio HTML">
+                    <img src="codificaçãodoportfolio.png" alt="Portfólio HTML - Estruturação web">
                     <div class="image-overlay">
+                        <div class="card-title">Portfólio HTML</div>
+                        <div class="card-description">Estruturação e codificação web</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="DIAGRAMASUML.png" alt="Diagrama UML ">
+                    <img src="DIAGRAMASUML.png" alt="Diagrama UML - Modelagem de software">
                     <div class="image-overlay">
+                        <div class="card-title">Diagrama UML</div>
+                        <div class="card-description">Modelagem de arquitetura de software</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="timbrado clientside.png" alt="Timbrado Client Side">
+                    <img src="timbrado clientside.png" alt="Client Side - Desenvolvimento front-end">
                     <div class="image-overlay">
+                        <div class="card-title">Client Side</div>
+                        <div class="card-description">Desenvolvimento front-end avançado</div>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3 </h2>
+            <h2 class="section-title">EIXO 3 - Desenvolvimento Profissional</h2>
+            <p class="section-description">
+                Desenvolvimento de competências profissionais, comunicação técnica e aplicação 
+                de metodologias ágeis no ambiente de trabalho.
+            </p>
+            
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="mapamentaldecomunicaçãoprofissional.png" alt="Mapa Mental de Comunicação Profissional - Técnicas de comunicação">
+                    <img src="mapamentaldecomunicaçãoprofissional.png" alt="Comunicação Profissional - Técnicas de comunicação">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="LOGINSENAI.png" alt="Login SENAI ">
+                    <img src="LOGINSENAI.png" alt="Sistema de Login - Autenticação e segurança">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="timbrado portfoliohtml (3).png" alt="Timbrado Portfólio HTML ">
+                    <img src="timbrado portfoliohtml (3).png" alt="Portfólio HTML - Documentação técnica">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="comunicaçãoprofissional.jpg" alt="Comunicação Profissional - Desenvolvimento de soft skills">
+                    <img src="comunicaçãoprofissional.jpg" alt="Soft Skills - Desenvolvimento interpessoal">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="exerciciopontes.png" alt="Exercício de Pontes ">
+                    <img src="exerciciopontes.png" alt="Exercício de Pontes - Solução de problemas">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="edrawmax.png" alt="Edraw Max - Ferramenta de diagramação">
+                    <img src="edrawmax.png" alt="Edraw Max - Ferramentas de diagramação">
                     <div class="image-overlay">
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="designpatterns.jpg" alt="Design Patterns - Padrões de projeto de software">
+                    <img src="designpatterns.jpg" alt="Design Patterns - Padrões de projeto">
                     <div class="image-overlay">
                     </div>
                 </div>
@@ -526,26 +554,95 @@
         </section>
         
         <section id="eixo4" class="section">
-            <h2 class="section-title">EIXO 4 </h2>
-            <div class="empty-section">
-                <img src="planejamentosistemicosenai.png" alt="planejamentosistemico">
-                <img src="jogodeadivinhação.jpg">
-                <img src="calculadora.png">
-                <img src="calculadoradeimcc.png">
-                <img src="algoritmophp1.png">
+            <h2 class="section-title">EIXO 4 /h2>
+           
+            </p>
+            
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="planejamentosistemicosenai.png" alt="Planejamento Sistêmico - Metodologia de projetos">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="jogodeadivinhação.jpg" alt="Jogo de Adivinhação - Aplicação interativa">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="calculadora.png" alt="Calculadora - Aplicação matemática">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="calculadoradeimcc.png" alt="Calculadora de IMC - Aplicação saúde">
+                    <div class="image-overlay">
+                     
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="algoritmophp1.png" alt="Algoritmo PHP - Lógica de programação">
+                    <div class="image-overlay">
+                    </div>
+                </div>
             </div>
         </section>
     </div>
-    <div class="back-to-top" id="backToTop">
+    
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
         <i class="fas fa-arrow-up"></i>
-    </div>
+    </button>
 
     <footer>
         <div class="footer-content">
             <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
             <div class="footer-divider"></div>
-            <p class="senai-logo">SENAI/SESI</p>
+            <p class="senai-logo">SENAI</p>
         </div>
     </footer>
+
+    <script>
+        // Navegação entre abas
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove classe active de todas as abas
+                document.querySelectorAll('.nav-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Adiciona classe active na aba clicada
+                this.classList.add('active');
+                
+                // Esconde todas as seções
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Mostra a seção correspondente
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Back to top functionality
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mostrar primeira seção por padrão
+        document.getElementById('eixo1').classList.add('active');
+    </script>
 </body>
 </html>
