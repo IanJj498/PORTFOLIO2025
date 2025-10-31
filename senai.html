@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SENAI</title>
+    <meta name="description" content="Portfólio SENAI - Projetos desenvolvidos durante o curso">
+    <meta name="keywords" content="SENAI, desenvolvimento, projetos, programação">
+    <meta name="author" content="Aluno SENAI">
+    <title>Portfólio SENAI - Projetos de Formação</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== VARIÁVEIS CSS ===== */
         :root {
             --primary: #0069b4;
             --primary-dark: #00457c;
@@ -16,12 +20,18 @@
             --text-light: #ffffff;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s ease;
+            --border-radius: 12px;
         }
         
+        /* ===== RESET E ESTILOS GLOBAIS ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -32,7 +42,8 @@
             overflow-x: hidden;
         }
         
-        header {
+        /* ===== HEADER ===== */
+        .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             padding: 2rem 1rem;
             text-align: center;
@@ -41,7 +52,7 @@
             overflow: hidden;
         }
         
-        header::before {
+        .header::before {
             content: "";
             position: absolute;
             top: 0;
@@ -52,7 +63,7 @@
             background-size: 100% 100%;
         }
         
-        header h1 {
+        .header__title {
             font-size: 4rem;
             margin: 0;
             position: relative;
@@ -60,28 +71,32 @@
             letter-spacing: 2px;
         }
         
-        .header-subtitle {
+        .header__subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
             margin-top: 0.5rem;
             position: relative;
         }
         
+        /* ===== LAYOUT ===== */
         .container {
             max-width: 1400px;
             margin: 2rem auto;
             padding: 0 1.5rem;
         }
         
+        /* ===== SEÇÕES ===== */
         .section {
             background: rgba(30, 30, 30, 0.8);
             backdrop-filter: blur(10px);
-            border-radius: 12px;
+            border-radius: var(--border-radius);
             padding: 2.5rem 2rem;
             margin-bottom: 3rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-left: 4px solid var(--accent);
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
         }
         
         .section:hover {
@@ -89,7 +104,15 @@
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
         }
         
-        .section-title {
+        .section--active {
+            display: block;
+        }
+        
+        .section--hidden {
+            display: none;
+        }
+        
+        .section__title {
             color: var(--accent);
             font-size: 2.5rem;
             margin-bottom: 2rem;
@@ -98,13 +121,38 @@
             display: inline-block;
         }
         
-        .section-description {
+        .section__description {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
             line-height: 1.7;
             opacity: 0.9;
         }
         
+        /* ===== NAVEGAÇÃO ===== */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            padding: 0.8rem 1.5rem;
+            background: rgba(30, 30, 30, 0.7);
+            margin: 0 0.5rem 0.5rem 0;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--primary);
+            font-weight: 600;
+        }
+        
+        .nav-tab:hover, .nav-tab--active {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== GALERIA DE IMAGENS ===== */
         .image-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -127,18 +175,18 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .image-card img {
+        .image-card__img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
         
-        .image-card:hover img {
+        .image-card:hover .image-card__img {
             transform: scale(1.1);
         }
         
-        .image-overlay {
+        .image-card__overlay {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -151,22 +199,23 @@
             transition: var(--transition);
         }
         
-        .image-card:hover .image-overlay {
+        .image-card:hover .image-card__overlay {
             opacity: 1;
             transform: translateY(0);
         }
         
-        .image-title {
+        .image-card__title {
             font-weight: 600;
             margin-bottom: 0.3rem;
             font-size: 1.1rem;
         }
         
-        .image-desc {
+        .image-card__description {
             font-size: 0.9rem;
             opacity: 0.8;
         }
         
+        /* ===== SEÇÃO VAZIA ===== */
         .empty-section {
             text-align: center;
             padding: 3rem 2rem;
@@ -175,48 +224,27 @@
             border: 2px dashed var(--primary);
         }
         
-        .empty-icon {
+        .empty-section__icon {
             font-size: 3.5rem;
             color: var(--primary);
             margin-bottom: 1.2rem;
         }
         
-        .empty-title {
+        .empty-section__title {
             font-size: 1.8rem;
             margin-bottom: 0.8rem;
             color: var(--accent);
         }
         
-        .empty-text {
+        .empty-section__text {
             font-size: 1.1rem;
             max-width: 500px;
             margin: 0 auto;
             opacity: 0.8;
         }
         
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .nav-tab {
-            padding: 0.8rem 1.5rem;
-            background: rgba(30, 30, 30, 0.7);
-            margin: 0 0.5rem 0.5rem 0;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 1px solid var(--primary);
-        }
-        
-        .nav-tab:hover, .nav-tab.active {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        footer {
+        /* ===== FOOTER ===== */
+        .footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark) 100%);
             color: var(--text-light);
             padding: 3rem 1rem;
@@ -224,35 +252,36 @@
             margin-top: 4rem;
         }
         
-        .footer-content {
+        .footer__content {
             max-width: 1000px;
             margin: 0 auto;
         }
         
-        .footer-text {
+        .footer__text {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
         }
         
-        .footer-name {
+        .footer__name {
             font-weight: bold;
             color: var(--accent);
         }
         
-        .footer-divider {
+        .footer__divider {
             height: 2px;
             width: 100px;
             background: var(--accent);
             margin: 1.5rem auto;
         }
         
-        .senai-logo {
+        .footer__logo {
             font-size: 2rem;
             font-weight: bold;
             letter-spacing: 2px;
             margin-top: 1.5rem;
         }
         
+        /* ===== BOTÃO VOLTAR AO TOPO ===== */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -273,7 +302,7 @@
             box-shadow: var(--shadow);
         }
         
-        .back-to-top.visible {
+        .back-to-top--visible {
             opacity: 1;
             visibility: visible;
         }
@@ -283,12 +312,48 @@
             transform: translateY(-5px);
         }
         
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        
+        /* ===== LOADING DE IMAGENS ===== */
+        .image-card__img {
+            transition: opacity 0.3s;
+        }
+        
+        .image-card__img[data-src] {
+            opacity: 0;
+        }
+        
+        .image-card__img--loaded {
+            opacity: 1;
+        }
+        
+        /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 992px) {
-            header h1 {
+            .header__title {
                 font-size: 3rem;
             }
             
-            .section-title {
+            .section__title {
                 font-size: 2rem;
             }
             
@@ -298,7 +363,7 @@
         }
         
         @media (max-width: 768px) {
-            header h1 {
+            .header__title {
                 font-size: 2.5rem;
             }
             
@@ -306,7 +371,7 @@
                 padding: 2rem 1.5rem;
             }
             
-            .section-title {
+            .section__title {
                 font-size: 1.8rem;
             }
             
@@ -332,23 +397,23 @@
         }
         
         @media (max-width: 480px) {
-            header h1 {
+            .header__title {
                 font-size: 2rem;
             }
             
-            .header-subtitle {
+            .header__subtitle {
                 font-size: 1rem;
             }
             
-            .section-title {
+            .section__title {
                 font-size: 1.6rem;
             }
             
-            .empty-title {
+            .empty-section__title {
                 font-size: 1.5rem;
             }
             
-            .footer-text {
+            .footer__text {
                 font-size: 1rem;
             }
             
@@ -359,209 +424,343 @@
                 height: 40px;
             }
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .section {
-            animation: fadeIn 0.6s ease forwards;
-        }
-        
-        .section:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .section:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        .section:nth-child(4) {
-            animation-delay: 0.6s;
-        }
-        
-
-        .image-card img {
-            transition: opacity 0.3s;
-        }
-        
-        .image-card img[data-src] {
-            opacity: 0;
-        }
-        
-        .image-card img.loaded {
-            opacity: 1;
-        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>SENAI</h1>
+    <header class="header">
+        <h1 class="header__title">SENAI</h1>
+        <p class="header__subtitle">Portfólio de Projetos de Formação</p>
     </header>
-    <div class="container">
-        <div class="nav-tabs">
-            <div class="nav-tab active" data-target="eixo1">EIXO 1</div>
+    
+    <main class="container">
+        <nav class="nav-tabs" id="navTabs">
+            <div class="nav-tab nav-tab--active" data-target="eixo1">EIXO 1</div>
             <div class="nav-tab" data-target="eixo2">EIXO 2</div>
             <div class="nav-tab" data-target="eixo3">EIXO 3</div>
             <div class="nav-tab" data-target="eixo4">EIXO 4</div>
-        </div>
+        </nav>
         
-        <section id="eixo1" class="section">
-            <h2 class="section-title">EIXO 1</h2>
+        <section id="eixo1" class="section section--active">
+            <h2 class="section__title">EIXO 1 - Fundamentos da Programação</h2>
+            <p class="section__description">
+                Este eixo aborda os conceitos fundamentais de programação, incluindo lógica, algoritmos e estruturas básicas.
+            </p>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="CADEIASCARBONICAS.png">
-                    <div class="image-overlay">
+                    <img src="CADEIASCARBONICAS.png" alt="Cadeias Carbônicas - Estrutura molecular" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Cadeias Carbônicas</div>
+                        <div class="image-card__description">Estrutura molecular em programação</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SENAIATV1.jpg">
-                    <div class="image-overlay">
+                    <img src="SENAIATV1.jpg" alt="Atividade SENAI 1" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Atividade SENAI</div>
+                        <div class="image-card__description">Primeira atividade do curso</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SENAICYBERSEC.jpg" alt="Cyber Segurança SENAI ">
-                    <div class="image-overlay">
+                    <img src="SENAICYBERSEC.jpg" alt="Cyber Segurança SENAI" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Cyber Segurança</div>
+                        <div class="image-card__description">Conceitos de segurança digital</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="INTERFACEWEB.jpg" >
-                    <div class="image-overlay">
+                    <img src="INTERFACEWEB.jpg" alt="Interface Web" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Interface Web</div>
+                        <div class="image-card__description">Desenvolvimento de interfaces</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="eixo2" class="section">
-            <h2 class="section-title">EIXO 2</h2>
+        <section id="eixo2" class="section section--hidden">
+            <h2 class="section__title">EIXO 2 - Desenvolvimento de Sistemas</h2>
+            <p class="section__description">
+                Foco no desenvolvimento de sistemas, incluindo modelagem, banco de dados e interfaces.
+            </p>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="SENAIMAPAMENTAL1 (1).png">
-                    <div class="image-overlay">
+                    <img src="SENAIMAPAMENTAL1 (1).png" alt="Mapa Mental 1" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Mapa Mental</div>
+                        <div class="image-card__description">Organização de ideias</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SENAIMAPAMENTAL1.PNG">
-                    <div class="image-overlay">
+                    <img src="SENAIMAPAMENTAL1.PNG" alt="Mapa Mental 2" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Mapa Mental</div>
+                        <div class="image-card__description">Estruturação de conceitos</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="RELOGIODIGITAL.PNG" >
-                    <div class="image-overlay">
+                    <img src="RELOGIODIGITAL.PNG" alt="Relógio Digital" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Relógio Digital</div>
+                        <div class="image-card__description">Projeto de interface</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="bancodedados.png" alt="Banco de Dados ">
-                    <div class="image-overlay">
+                    <img src="bancodedados.png" alt="Banco de Dados" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Banco de Dados</div>
+                        <div class="image-card__description">Modelagem de dados</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="SIMBOLO.png" alt="Símbolo l">
-                    <div class="image-overlay">
+                    <img src="SIMBOLO.png" alt="Símbolo Lógico" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Símbolo Lógico</div>
+                        <div class="image-card__description">Representação de lógica</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="LOGOMARCA.png" alt="Logomarca">
-                    <div class="image-overlay">
+                    <img src="LOGOMARCA.png" alt="Logomarca" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Logomarca</div>
+                        <div class="image-card__description">Design de identidade visual</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="codificaçãodoportfolio.png" alt="Timbrado Portfólio HTML">
-                    <div class="image-overlay">
+                    <img src="codificaçãodoportfolio.png" alt="Codificação do Portfólio HTML" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Codificação HTML</div>
+                        <div class="image-card__description">Desenvolvimento web</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="DIAGRAMASUML.png" alt="Diagrama UML ">
-                    <div class="image-overlay">
+                    <img src="DIAGRAMASUML.png" alt="Diagrama UML" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Diagrama UML</div>
+                        <div class="image-card__description">Modelagem de sistemas</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="timbrado clientside.png" alt="Timbrado Client Side">
-                    <div class="image-overlay">
+                    <img src="timbrado clientside.png" alt="Timbrado Client Side" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Client Side</div>
+                        <div class="image-card__description">Desenvolvimento front-end</div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3 </h2>
+        <section id="eixo3" class="section section--hidden">
+            <h2 class="section__title">EIXO 3 - Comunicação e Soft Skills</h2>
+            <p class="section__description">
+                Desenvolvimento de habilidades de comunicação e soft skills essenciais para o mercado de trabalho.
+            </p>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="mapamentaldecomunicaçãoprofissional.png" alt="Mapa Mental de Comunicação Profissional - Técnicas de comunicação">
-                    <div class="image-overlay">
+                    <img src="mapamentaldecomunicaçãoprofissional.png" alt="Mapa Mental de Comunicação Profissional" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Comunicação Profissional</div>
+                        <div class="image-card__description">Técnicas de comunicação</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="LOGINSENAI.png" alt="Login SENAI ">
-                    <div class="image-overlay">
+                    <img src="LOGINSENAI.png" alt="Login SENAI" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Login SENAI</div>
+                        <div class="image-card__description">Sistema de autenticação</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="timbrado portfoliohtml (3).png" alt="Timbrado Portfólio HTML ">
-                    <div class="image-overlay">
+                    <img src="timbrado portfoliohtml (3).png" alt="Portfólio HTML" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Portfólio HTML</div>
+                        <div class="image-card__description">Apresentação de projetos</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="comunicaçãoprofissional.jpg" alt="Comunicação Profissional - Desenvolvimento de soft skills">
-                    <div class="image-overlay">
+                    <img src="comunicaçãoprofissional.jpg" alt="Comunicação Profissional" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Soft Skills</div>
+                        <div class="image-card__description">Desenvolvimento de habilidades</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="exerciciopontes.png" alt="Exercício de Pontes ">
-                    <div class="image-overlay">
+                    <img src="exerciciopontes.png" alt="Exercício de Pontes" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Exercício de Pontes</div>
+                        <div class="image-card__description">Resolução de problemas</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="edrawmax.png" alt="Edraw Max - Ferramenta de diagramação">
-                    <div class="image-overlay">
+                    <img src="edrawmax.png" alt="Edraw Max" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Edraw Max</div>
+                        <div class="image-card__description">Ferramenta de diagramação</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="designpatterns.jpg" alt="Design Patterns - Padrões de projeto de software">
-                    <div class="image-overlay">
+                    <img src="designpatterns.jpg" alt="Design Patterns" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Design Patterns</div>
+                        <div class="image-card__description">Padrões de projeto</div>
                     </div>
                 </div>
             </div>
         </section>
-
         
-        <section id="eixo4" class="section">
-  <h2 class="section-title">EIXO 4</h2>
-  <div class="image-container">
-    <div class="image-item">
-      <img src="planejamentosistemicosenai.png" alt="Planejamento Sistêmico SENAI">
-    </div>
-    <div class="image-item">
-      <img src="jogodeadivinhação.jpg" alt="Jogo de Adivinhação">
-    </div>
-    <div class="image-item">
-      <img src="calculadora.png" alt="Calculadora">
-    </div>
-    <div class="image-item">
-      <img src="calculadoradeimcc.png" alt="Calculadora de IMC">
-    </div>
-    <div class="image-item">
-      <img src="algoritmophp1.png" alt="Algoritmo PHP">
-    </div>
-    <div class="image-item">
-      <img src="gerenciadordeeventos.png" alt="Gerenciador de Eventos">
-    </div>
-    <div class="image-item">
-      <img src="exerciciosdephytonephpnoword.png" alt="Exercícios de Python e PHP no Word">
-    </div>
-  </div>
-</section>
-    <div class="back-to-top" id="backToTop">
+        <section id="eixo4" class="section section--hidden">
+            <h2 class="section__title">EIXO 4 - Projetos Integradores</h2>
+            <p class="section__description">
+                Implementação de projetos práticos que integram os conhecimentos adquiridos durante o curso.
+            </p>
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="planejamentosistemicosenai.png" alt="Planejamento Sistêmico SENAI" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Planejamento Sistêmico</div>
+                        <div class="image-card__description">Organização de projetos</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="jogodeadivinhação.jpg" alt="Jogo de Adivinhação" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Jogo de Adivinhação</div>
+                        <div class="image-card__description">Aplicação de lógica</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="calculadora.png" alt="Calculadora" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Calculadora</div>
+                        <div class="image-card__description">Interface e funcionalidade</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="calculadoradeimcc.png" alt="Calculadora de IMC" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Calculadora de IMC</div>
+                        <div class="image-card__description">Aplicação de saúde</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="algoritmophp1.png" alt="Algoritmo PHP" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Algoritmo PHP</div>
+                        <div class="image-card__description">Back-end development</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="gerenciadordeeventos.png" alt="Gerenciador de Eventos" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Gerenciador de Eventos</div>
+                        <div class="image-card__description">Sistema de organização</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="exerciciosdephytonephpnoword.png" alt="Exercícios de Python e PHP" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Exercícios Python/PHP</div>
+                        <div class="image-card__description">Prática de linguagens</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="bibliotecavirtual.png" alt="Biblioteca Virtual" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Biblioteca Virtual</div>
+                        <div class="image-card__description">Sistema de gestão</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
         <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
-            <div class="footer-divider"></div>
-            <p class="senai-logo">SENAI/SESI</p>
+    </button>
+    
+    <footer class="footer">
+        <div class="footer__content">
+            <p class="footer__text">Trabalho orientado pelo professor <span class="footer__name">Cleiton Jérico</span></p>
+            <div class="footer__divider"></div>
+            <p class="footer__logo">SENAI/SESI</p>
         </div>
     </footer>
+
+    <script>
+        // Navegação por abas
+        document.addEventListener('DOMContentLoaded', function() {
+            const navTabs = document.getElementById('navTabs');
+            const sections = document.querySelectorAll('.section');
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            // Configurar navegação por abas
+            navTabs.addEventListener('click', function(e) {
+                if (e.target.classList.contains('nav-tab')) {
+                    // Remover classe ativa de todas as abas
+                    document.querySelectorAll('.nav-tab').forEach(tab => {
+                        tab.classList.remove('nav-tab--active');
+                    });
+                    
+                    // Adicionar classe ativa à aba clicada
+                    e.target.classList.add('nav-tab--active');
+                    
+                    // Obter o alvo da aba
+                    const targetId = e.target.getAttribute('data-target');
+                    
+                    // Esconder todas as seções
+                    sections.forEach(section => {
+                        section.classList.add('section--hidden');
+                        section.classList.remove('section--active');
+                    });
+                    
+                    // Mostrar a seção alvo
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.classList.remove('section--hidden');
+                        targetSection.classList.add('section--active');
+                    }
+                }
+            });
+            
+            // Configurar botão de voltar ao topo
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('back-to-top--visible');
+                } else {
+                    backToTopBtn.classList.remove('back-to-top--visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Carregamento otimizado de imagens
+            const lazyLoadImages = () => {
+                const imageCards = document.querySelectorAll('.image-card__img');
+                
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.getAttribute('src');
+                            img.classList.add('image-card__img--loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                imageCards.forEach(img => {
+                    if (img.hasAttribute('data-src')) {
+                        imageObserver.observe(img);
+                    }
+                });
+            };
+            
+            lazyLoadImages();
+        });
+    </script>
 </body>
 </html>
