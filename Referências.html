@@ -180,7 +180,7 @@
 
         .references-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
@@ -245,11 +245,16 @@
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
+            padding: 10px 20px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            width: fit-content;
         }
 
         .card-link:hover {
             gap: 12px;
-            color: var(--secondary);
+            background-color: var(--primary);
+            color: white;
         }
 
         footer {
@@ -336,6 +341,8 @@
             opacity: 0;
             visibility: hidden;
             z-index: 99;
+            border: none;
+            cursor: pointer;
         }
 
         .back-to-top.visible {
@@ -347,6 +354,62 @@
             background-color: var(--secondary);
             transform: translateY(-5px);
         }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .references-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -356,39 +419,71 @@
         </div>
     </header>
 
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-book"></i>
+                <span>Referências</span>
+            </div>
+            <div class="nav-links">
+                <a href="#youtube">YouTube</a>
+                <a href="#todamateria">Toda Matéria</a>
+                <a href="#github">GitHub</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
     <!-- Main Content -->
     <main>
         <div class="container">
             <div class="section-title">
                 <h2>Fontes de Pesquisa</h2>
+                <p>Recursos e materiais utilizados para desenvolvimento do trabalho acadêmico</p>
+            </div>
 
             <div class="references-grid">
-                <div class="reference-card">
+                <!-- YouTube Card -->
+                <div class="reference-card" id="youtube">
                     <div class="card-img">
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23FF0000'/%3E%3Cpath d='M423.4,203.7L323,277c-9.4,6.7-22.7-1.7-22.7-13.2V136.2c0-11.5,13.3-19.9,22.7-13.2l100.4,73.3 C435.3,203,435.3,201,423.4,203.7z' fill='%23fff'/%3E%3C/svg%3E" alt="YouTube">
                     </div>
                     <div class="card-content">
                         <h3>YouTube</h3>
-                        <p> .</p>
+                        <p>Plataforma de vídeos com conteúdo educacional diversificado, incluindo aulas, documentários e explicações sobre diversos temas acadêmicos.</p>
                         <a href="https://www.youtube.com/watch?v=9ehdRDOn_Gc" target="_blank" rel="noopener noreferrer" class="card-link">
                             Acessar conteúdo <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
-                <div class="reference-card">
+                <!-- Toda Matéria Card -->
+                <div class="reference-card" id="todamateria">
                     <div class="card-img">
-                    </div>
-                    <div class="card-content">
-                <div class="reference-card">
-                    <div class="card-img">
-                        <img src="todamateria.png" alt="Toda Matéria">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%234361ee'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='60' fill='white' text-anchor='middle' dy='.3em'%3EToda Matéria%3C/text%3E%3C/svg%3E" alt="Toda Matéria">
                     </div>
                     <div class="card-content">
                         <h3>Toda Matéria</h3>
-                        <.</p>
+                        <p>Site educacional brasileiro com conteúdo completo sobre diversas disciplinas, incluindo resumos, exercícios e material de apoio para estudos.</p>
                         <a href="https://www.todamateria.com.br" target="_blank" rel="noopener noreferrer" class="card-link">
                             Acessar site <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- GitHub Card -->
+                <div class="reference-card" id="github">
+                    <div class="card-img">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23181717'/%3E%3Cpath d='M400,150c-74.5,0-135,60.5-135,135c0,59.7,38.7,110.3,92.5,128.2c6.8,1.2,9.3-2.9,9.3-6.5 c0-3.2-0.1-11.7-0.1-21.3c-37.6,8.2-45.5-18.1-45.5-18.1c-6.2-15.7-15.1-19.9-15.1-19.9c-12.3-8.4,0.9-8.2,0.9-8.2 c13.6,1,20.8,14,20.8,14c12.1,20.7,31.7,14.7,39.4,11.2c1.2-8.7,4.7-14.7,8.6-18.1c-30-3.4-61.5-15-61.5-66.8 c0-14.8,5.3-26.8,14-36.3c-1.4-3.4-6.1-17.1,1.3-35.7c0,0,11.4-3.6,37.4,13.9c10.9-3,22.5-4.5,34.1-4.6c11.6,0.1,23.2,1.6,34.1,4.6 c26-17.5,37.4-13.9,37.4-13.9c7.4,18.6,2.7,32.3,1.3,35.7c8.7,9.5,14,21.5,14,36.3c0,51.9-31.5,63.4-61.5,66.8 c4.8,4.2,9.1,12.4,9.1,25c0,18.1-0.2,32.7-0.2,37.2c0,3.6,2.5,7.8,9.3,6.5c53.8-17.9,92.5-68.5,92.5-128.2 C535,210.5,474.5,150,400,150z' fill='white'/%3E%3C/svg%3E" alt="GitHub">
+                    </div>
+                    <div class="card-content">
+                        <h3>GitHub</h3>
+                        <p>Plataforma de desenvolvimento colaborativo com projetos de código aberto, documentação técnica e recursos para programação e desenvolvimento.</p>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Acessar plataforma <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
@@ -401,83 +496,92 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Sobre o Trabalho</h3>
-                    <p>Projeto acadêmico desenvolvido com orientação do professor Cleiton Jérico, utilizando as melhores referências disponíveis.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Orientador</h3>
                     <p><strong>Prof. Cleiton Jérico</strong></p>
-                    <p>Especialista na área com vasta experiência acadêmica e profissional.</p>
+                    <p> Regiane leal </p>
                 </div>
                 <div class="footer-column">
                     <h3>Contato</h3>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 - Todos os direitos reservados. Desenvolvido para fins acadêmicos.</p>
+                <p>&copy; 2025 - Todos os direitos reservados. </p>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Image error handling
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                this.alt = 'Imagem não carregada';
+                console.log('Erro ao carregar imagem:', this.src);
+            });
+        });
+    </script>
 </body>
-</html><!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Referências Acadêmicas</title>
-    <meta name="description" content="Página com links e fontes utilizadas no trabalho acadêmico orientado pelo professor Cleiton Jérico.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>" type="image/svg+xml">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #030108;
-            --accent: #002fea;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --success: #4cc9f0;
-            --card-bg: #ffffff;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        .dark-mode {
-            --primary: #4cc9f0;
-            --secondary: #4895ef;
-            --light: #121212;
-            --dark: #f8f9fa;
-            --card-bg: #1e1e1e;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            transition: var(--transition);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
+</html>
