@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Ciências Humanas</title>
-    <meta name="description" content="Portfólio acadêmico de Ciências Humanas - Análises, pesquisas e trabalhos desenvolvidos">
-    <meta name="keywords" content="humanas, portfolio, geografia, história, sociologia, filosofia">
-    <meta name="author" content="Seu Nome">
+    <title>Portfólio Humanas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
         :root {
-            --primary: #1100ff;
-            --primary-dark: #000000;
-            --accent: #e0f0ee;
-            --light: #f5f5f5;
-            --dark: #121212d0;
-            --gray: #2c2c2c;
-            --text-light: #ffffff;
-            --success: #4CAF50;
-            --warning: #FF9800;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --dark: #1a252f;
+            --light: #ecf0f1;
+            --text: #2c3e50;
+            --gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --radius: 16px;
         }
         
         * {
@@ -34,58 +31,17 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+            color: var(--text);
             line-height: 1.6;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
         
-        /* Navegação */
-        .main-nav {
-            position: sticky;
-            top: 0;
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        .main-nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .main-nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 0.5rem 1.2rem;
-            border-radius: 25px;
-            transition: var(--transition);
-            font-weight: 500;
-            display: block;
-        }
-        
-        .main-nav a:hover,
-        .main-nav a.active {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-        
-        /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 4rem 1rem 3rem;
+            background: var(--gradient);
+            padding: 2.5rem 1rem;
+            color: white;
             text-align: center;
             box-shadow: var(--shadow);
             position: relative;
@@ -99,94 +55,123 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L100,0 L100,100 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
             background-size: 100% 100%;
+            transform: rotate(180deg);
         }
         
-        header h1 {
-            font-size: 4rem;
-            margin: 0;
-            position: relative;
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            letter-spacing: 2px;
+            position: relative;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
         .header-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             opacity: 0.9;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             position: relative;
-            font-weight: 300;
         }
         
-        /* Container e Seções */
+        .nav-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 0.8rem;
+            margin: 1.5rem auto;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            transition: var(--transition);
+            display: block;
+            font-weight: 500;
+            border: 2px solid transparent;
+        }
+        
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
         .container {
-            max-width: 1400px;
-            margin: 2rem auto;
+            max-width: 1200px;
+            margin: 3rem auto;
             padding: 0 1.5rem;
         }
         
         .section {
-            background: rgba(30, 30, 30, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 2.5rem 2rem;
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
             margin-bottom: 3rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            border-left: 4px solid var(--accent);
-            animation: fadeIn 0.6s ease forwards;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid var(--secondary);
         }
         
         .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .section-title {
-            color: var(--accent);
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary);
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--secondary);
             display: inline-block;
-        }
-        
-        .section-subtitle {
-            color: var(--accent);
-            font-size: 1.4rem;
-            margin: 1.5rem 0 1rem;
+            font-weight: 600;
         }
         
         .section-description {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            color: #555;
+            line-height: 1.8;
             font-size: 1.1rem;
-            line-height: 1.7;
-            opacity: 0.9;
         }
         
-        /* Grid de Imagens */
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.8rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
             margin-top: 1.5rem;
         }
         
         .image-card {
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
-            height: 260px;
-            background: var(--gray);
-            cursor: pointer;
+            height: 300px;
+            background: #f8f9fa;
         }
         
         .image-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
         }
         
         .image-card img {
@@ -205,107 +190,58 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             padding: 1.5rem;
             color: white;
-            transform: translateY(100%);
+            opacity: 0;
             transition: var(--transition);
+            transform: translateY(20px);
         }
         
         .image-card:hover .image-overlay {
+            opacity: 1;
             transform: translateY(0);
         }
         
         .card-title {
             font-size: 1.3rem;
-            margin-bottom: 0.5rem;
             font-weight: 600;
+            margin-bottom: 0.5rem;
         }
         
         .card-description {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             opacity: 0.9;
-            margin-bottom: 0.8rem;
         }
         
-        .card-date {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.2rem 0.6rem;
-            border-radius: 12px;
-        }
-        
-        /* Seção Vazia */
         .empty-section {
             text-align: center;
-            padding: 3rem 2rem;
-            color: var(--accent);
+            padding: 4rem 2rem;
+            color: #777;
         }
         
         .empty-icon {
-            font-size: 4rem;
+            font-size: 5rem;
             margin-bottom: 1.5rem;
-            opacity: 0.5;
+            color: #ddd;
         }
         
         .empty-title {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
         
         .empty-text {
             font-size: 1.1rem;
-            opacity: 0.8;
         }
         
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark) 100%);
-            color: var(--text-light);
-            padding: 3rem 1rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-        
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .footer-text {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-name {
-            font-weight: bold;
-            color: var(--accent);
-        }
-        
-        .footer-divider {
-            height: 2px;
-            width: 100px;
-            background: var(--accent);
-            margin: 1.5rem auto;
-        }
-        
-        .senai-logo {
-            font-size: 2rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-top: 1.5rem;
-        }
-        
-        /* Botão Voltar ao Topo */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
             width: 50px;
             height: 50px;
-            background: var(--primary);
+            background: var(--secondary);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -326,55 +262,96 @@
         }
         
         .back-to-top:hover {
-            background: var(--accent);
+            background: var(--primary);
             transform: translateY(-5px);
-            color: var(--dark);
         }
         
-        /* Animações */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        footer {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 1.5rem 2.5rem;
+            text-align: center;
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
         }
         
-        .section:nth-child(2) {
-            animation-delay: 0.2s;
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 100% 100%;
+            transform: rotate(180deg);
         }
         
-        .section:nth-child(3) {
-            animation-delay: 0.4s;
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
         }
         
-        .section:nth-child(4) {
-            animation-delay: 0.6s;
+        .footer-text {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
         }
         
-        /* Responsividade */
-        @media (max-width: 992px) {
-            header h1 {
-                font-size: 3rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .image-grid {
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            }
+        .footer-name {
+            font-weight: bold;
+            color: var(--light);
+        }
+        
+        .footer-divider {
+            height: 2px;
+            width: 100px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 1.5rem auto;
+        }
+        
+        .senai-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        
+        /* Efeito de brilho nos cards */
+        .image-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+            z-index: 1;
+        }
+        
+        .image-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Badge para eixos */
+        .eixo-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 1rem;
+            vertical-align: middle;
         }
         
         @media (max-width: 768px) {
-            header h1 {
+            h1 {
                 font-size: 2.5rem;
-            }
-            
-            .header-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section {
-                padding: 2rem 1.5rem;
             }
             
             .section-title {
@@ -383,221 +360,163 @@
             
             .image-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
             
-            .image-card {
-                height: 300px;
-            }
-            
-            .main-nav ul {
+            .nav-menu {
                 flex-direction: column;
                 align-items: center;
-                gap: 0.5rem;
             }
             
-            .main-nav a {
-                width: 80%;
+            .nav-menu li {
+                width: 100%;
                 text-align: center;
+            }
+            
+            .nav-menu li a {
+                width: 100%;
             }
         }
         
         @media (max-width: 480px) {
-            header h1 {
+            h1 {
                 font-size: 2rem;
             }
             
-            .header-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-            
-            .empty-title {
-                font-size: 1.5rem;
-            }
-            
-            .footer-text {
-                font-size: 1rem;
-            }
-            
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
+            .section {
+                padding: 1.5rem;
             }
         }
         
-        /* Acessibilidade - Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            html {
-                scroll-behavior: auto;
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Estados de Foco para Acessibilidade */
-        button:focus, 
-        .image-card:focus,
-        .main-nav a:focus {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
+        .section {
+            animation: fadeIn 0.8s ease forwards;
         }
     </style>
 </head>
 <body>
-    <!-- Navegação -->
-    <nav class="main-nav">
+    <header>
+        <h1>HUMANAS</h1>
+        <p class="header-subtitle">Portfólio de Ciências Humanas e Sociais</p>
+        
         <div class="nav-container">
-            <ul>
+            <ul class="nav-menu">
                 <li><a href="#eixo1" class="active">Eixo 1</a></li>
                 <li><a href="#eixo2">Eixo 2</a></li>
                 <li><a href="#eixo3">Eixo 3</a></li>
                 <li><a href="#eixo4">Eixo 4</a></li>
             </ul>
         </div>
-    </nav>
-    
-    <!-- Cabeçalho -->
-    <header>
-        <h1>CIÊNCIAS HUMANAS</h1>
-        <p class="header-subtitle">Portfólio Acadêmico - Análises e Pesquisas</p>
     </header>
-    
-    <!-- Conteúdo Principal -->
+
     <div class="container">
-        <!-- Eixo 1 -->
         <section id="eixo1" class="section">
-            <h2 class="section-title">EIXO 1 - Território e Sociedade</h2>
+            <h2 class="section-title">EIXO 1 - Movimentos Migratórios <span class="eixo-badge">2 atividades</span></h2>
             <p class="section-description">
-                Estudo sobre as relações entre espaço geográfico, organização social e dinâmicas populacionais, 
-                com foco em fluxos migratórios e transformações territoriais.
             </p>
             
-            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="fluxomigratorio.png" alt="Fluxos Migratórios - Mapa mostrando rotas de migração global com destaque para América do Sul e Europa">
+                    <img src="fluxomigratorio.png" alt="Fluxos Migratórios - Mapa mostrando rotas de migração global">
                     <div class="image-overlay">
-                        <h3 class="card-title">Fluxos Migratórios Globais</h3>
-                        <p class="card-description">Análise das principais rotas de migração internacional e seus impactos socioeconômicos</p>
-                        <span class="card-date">2024</span>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="venezuelaportfolioo.png" alt="Crise Venezuelana - Gráficos mostrando fluxo de refugiados venezuelanos para países vizinhos">
+                    <img src="venezuelaportfolioo.png" alt="Crise Venezuelana - Análise do fluxo migratório venezuelano">
                     <div class="image-overlay">
-                        <h3 class="card-title">Crise Venezuelana</h3>
-                        <p class="card-description">Estudo sobre o êxodo populacional da Venezuela e seus impactos regionais</p>
-                        <span class="card-date">2024</span>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Eixo 2 -->
+
         <section id="eixo2" class="section">
-            <h2 class="section-title">EIXO 2 - Estado e Poder</h2>
+            <h2 class="section-title">EIXO 2 - Estado e Poder <span class="eixo-badge">2 atividades</span></h2>
             <p class="section-description">
-                Análise das estruturas de poder, regimes políticos e organização estatal ao longo da história, 
-                com ênfase no caso brasileiro e suas particularidades.
             </p>
             
-            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="atosinstitucionais.png" alt="Atos Institucionais - Documentos históricos do período militar brasileiro (1964-1985)">
+                    <img src="atosinstitucionais.png" alt="Atos Institucionais - Documentos do período militar no Brasil">
                     <div class="image-overlay">
-                        <h3 class="card-title">Regime Militar no Brasil</h3>
-                        <p class="card-description">Análise dos Atos Institucionais e sua influência na estrutura estatal brasileira</p>
-                        <span class="card-date">2024</span>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="biomasdobrasiil.png" alt="Biomas do Brasil - Mapa dos seis biomas brasileiros: Amazônia, Cerrado, Mata Atlântica, Caatinga, Pampa e Pantanal">
+                    <img src="biomasdobrasiil.png" alt="Biomas do Brasil - Mapa dos ecossistemas brasileiros">
                     <div class="image-overlay">
-                        <h3 class="card-title">Biomas Brasileiros</h3>
-                        <p class="card-description">Estudo sobre a diversidade ambiental do Brasil e políticas de conservação</p>
-                        <span class="card-date">2024</span>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Eixo 3 -->
+
         <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3 - Cultura e Identidade</h2>
+            <h2 class="section-title">EIXO 3 - Mídia e Política <span class="eixo-badge">2 atividades</span></h2>
             <p class="section-description">
-                Investigação sobre a construção de identidades culturais, representações midiáticas 
-                e conflitos contemporâneos em perspectiva global.
             </p>
             
-            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="midiaepolitica.jpg" alt="Mídia e Política - Análise da influência dos meios de comunicação na formação de opinião pública">
+                    <img src="midiaepolitica.jpg" alt="Mídia e Política - Relação entre comunicação e poder">
                     <div class="image-overlay">
-                        <h3 class="card-title">Mídia e Política</h3>
-                        <p class="card-description">Relação entre comunicação de massa e processos políticos democráticos</p>
-                        <span class="card-date">2024</span>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="constituição.jpg" alt="Constituição Brasileira - Análise dos direitos e garantias fundamentais na Carta de 1988">
+                    <img src="israelvspalestina.png" alt="Conflito Israel vs Palestina - Análise geopolítica">
                     <div class="image-overlay">
-                        <h3 class="card-title">Direitos Constitucionais</h3>
-                        <p class="card-description">Estudo sobre a evolução dos direitos fundamentais no ordenamento jurídico brasileiro</p>
-                        <span class="card-date">2024</span>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="israelvspalestina.png" alt="Conflito Israel vs Palestina - Mapa geopolítico mostrando divisões territoriais e áreas de conflito">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Conflito Israel-Palestina</h3>
-                        <p class="card-description">Análise histórica e geopolítica do conflito no Oriente Médio</p>
-                        <span class="card-date">2024</span>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Eixo 4 -->
+
         <section id="eixo4" class="section">
-            <h2 class="section-title">EIXO 4 - Trabalhos Futuros</h2>
-            <div class="empty-section">
-                <i class="fas fa-folder-open empty-icon"></i>
-                <h3 class="empty-title">Em Desenvolvimento</h3>
-                <p class="empty-text">Novos trabalhos e pesquisas serão adicionados em breve</p>
+            <h2 class="section-title">EIXO 4 - Direitos e Cidadania <span class="eixo-badge">3 atividades</span></h2>
+            <p class="section-description">
+            </p>
+            
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="constituição.jpg" alt="Constituição Brasileira - Direitos e garantias fundamentais">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="fimdesemananoparquetexto.png" alt="Texto sobre fim de semana no parque">
+                    <div class="image-overlay">
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="constituiçaocidadã88.png" alt="Imagem da Constituição Cidadã de 1988">
+                    <div class="image-overlay">
+                    </div>
+                </div>
             </div>
         </section>
     </div>
-    
-    <!-- Botão Voltar ao Topo -->
-    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
+
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
         <i class="fas fa-arrow-up"></i>
     </button>
-    
-    <!-- Rodapé -->
+
     <footer>
         <div class="footer-content">
-            <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
-            <p>Orientadora: <span class="footer-name">Regiane Leal</span></p>
+            <p class="footer-text">
+                Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span>
+            </p>
+            <p class="footer-text">
+                Orientadora: <span class="footer-name">Regiane Leal</span>
+            </p>
             <div class="footer-divider"></div>
             <p class="senai-logo">SENAI/SESI</p>
+            <p class="footer-text">Formando cidadãos críticos e conscientes</p>
         </div>
     </footer>
 
     <script>
-        // Back to top functionality
+        // Botão voltar ao topo
         const backToTop = document.getElementById('backToTop');
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTop.classList.add('visible');
@@ -611,21 +530,25 @@
         });
 
         // Navegação suave
-        document.querySelectorAll('.main-nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        document.querySelectorAll('.nav-menu a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
                 
-                if (targetElement) {
-                    // Atualizar navegação ativa
-                    document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Scroll suave
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
+                // Remove active class from all links
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 100,
+                        behavior: 'smooth'
                     });
                 }
             });
@@ -634,13 +557,12 @@
         // Atualizar navegação ativa ao scroll
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.main-nav a');
-            
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 100)) {
+                if (scrollY >= (sectionTop - 150)) {
                     current = section.getAttribute('id');
                 }
             });
@@ -653,35 +575,11 @@
             });
         });
 
-        // Lazy loading para imagens (simulação)
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img');
-            
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.style.opacity = '1';
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-
-            images.forEach(img => {
-                img.style.opacity = '0.7';
-                img.style.transition = 'opacity 0.5s ease';
-                imageObserver.observe(img);
-            });
-        });
-
-        // Feedback visual para cards
-        document.querySelectorAll('.image-card').forEach(card => {
-            card.addEventListener('focus', function() {
-                this.style.transform = 'scale(1.03)';
-            });
-            
-            card.addEventListener('blur', function() {
-                this.style.transform = 'scale(1)';
+        // Prevenir quebra de imagens
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                this.alt = 'Imagem não disponível';
+                this.src = 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f9fa"/><text x="50%" y="50%" font-family="Arial" font-size="18" fill="%236c757d" text-anchor="middle" dy=".3em">Imagem não disponível</text></svg>';
             });
         });
     </script>
