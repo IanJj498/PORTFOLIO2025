@@ -8,15 +8,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
         :root {
-            --primary: #000000;
-            --secondary: #000000b1;
+            --primary: #2c3e50;
+            --secondary: #3498db;
             --accent: #e74c3c;
-            --dark: #01060b;
-            --darker: #1a252f;
-            --text: #333;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-            --radius: 12px;
+            --success: #2ecc71;
+            --dark: #1a252f;
+            --light: #ecf0f1;
+            --text: #2c3e50;
+            --gradient: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --radius: 16px;
         }
         
         * {
@@ -27,15 +29,15 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #082a32 0%, #000000 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
         }
         
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            padding: 1.5rem 1rem;
+            background: var(--gradient);
+            padding: 2.5rem 1rem;
             color: white;
             text-align: center;
             box-shadow: var(--shadow);
@@ -43,19 +45,43 @@
             overflow: hidden;
         }
         
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100% 100%;
+            transform: rotate(180deg);
+        }
+        
         h1 {
             font-size: 3.5rem;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             position: relative;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            position: relative;
+            font-weight: 300;
         }
         
         .nav-container {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 0.5rem;
-            margin: 1rem auto;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 0.8rem;
+            margin: 1.5rem auto;
             max-width: 800px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
         .nav-menu {
@@ -63,105 +89,117 @@
             justify-content: center;
             list-style: none;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
         
         .nav-menu li a {
             color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
             transition: var(--transition);
             display: block;
+            font-weight: 500;
+            border: 2px solid transparent;
         }
         
         .nav-menu li a:hover,
         .nav-menu li a.active {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
         
         .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
         }
         
         .filter-container {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
         
         .filter-btn {
-            padding: 0.5rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             border: none;
             border-radius: 30px;
             background: white;
-            color: var(--dark);
+            color: var(--primary);
             cursor: pointer;
             transition: var(--transition);
             box-shadow: var(--shadow);
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
+            background: var(--secondary);
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
         }
         
         .section {
             background: white;
             border-radius: var(--radius);
-            padding: 2rem;
-            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            border-left: 5px solid var(--secondary);
         }
         
         .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .section-title {
             color: var(--primary);
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.8rem;
             border-bottom: 3px solid var(--secondary);
             display: inline-block;
+            font-weight: 600;
         }
         
         .section-description {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             color: #555;
             line-height: 1.8;
+            font-size: 1.1rem;
         }
         
         .image-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
         }
         
         .image-card {
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
-            height: 280px;
+            height: 300px;
             background: #f8f9fa;
         }
         
         .image-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
         }
         
         .image-card img {
@@ -172,7 +210,7 @@
         }
         
         .image-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         
         .image-card .overlay {
@@ -181,38 +219,53 @@
             left: 0;
             right: 0;
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 1rem;
+            padding: 1.5rem;
             color: white;
             opacity: 0;
             transition: var(--transition);
+            transform: translateY(20px);
         }
         
         .image-card:hover .overlay {
             opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
         }
         
         .empty-state {
             text-align: center;
-            padding: 3rem;
+            padding: 4rem 2rem;
             color: #777;
         }
         
         .empty-state i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
             color: #ddd;
         }
         
         .empty-state p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
         
         footer {
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            background: var(--gradient);
             color: white;
-            padding: 3.5rem 1.5rem 2rem;
+            padding: 4rem 1.5rem 2.5rem;
             text-align: center;
-            margin-top: 4rem;
+            margin-top: 5rem;
             position: relative;
             overflow: hidden;
         }
@@ -233,22 +286,23 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.0rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
             position: relative;
         }
         
         .footer-section {
-            padding: 1rem;
+            padding: 1.5rem;
         }
         
         .footer-section h3 {
             font-size: 1.8rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
             display: inline-block;
             color: white;
+            font-weight: 600;
         }
         
         .footer-section p {
@@ -257,19 +311,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.7rem;
         }
         
         .footer-name {
             font-weight: bold;
-            color: var(--secondary);
+            color: var(--light);
         }
         
         .footer-divider {
             height: 2px;
             width: 80px;
-            background: var(--secondary);
-            margin: 1.2rem auto;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 1.5rem auto;
             border-radius: 2px;
         }
         
@@ -277,7 +331,7 @@
             font-size: 1.4rem;
             font-weight: bold;
             letter-spacing: 1px;
-            margin-top: 1.2rem;
+            margin-top: 1.5rem;
             display: block;
             color: white;
         }
@@ -294,47 +348,48 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
-            margin-top: 1.5rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
         .social-links a {
             color: white;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             transition: var(--transition);
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
         }
         
         .social-links a:hover {
             color: var(--secondary);
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 1rem;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.7rem;
-            margin-bottom: 0.5rem;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
         }
         
         /* Animações */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             animation: fadeIn 0.8s ease forwards;
         }
         
@@ -348,6 +403,35 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        
+        /* Efeito de brilho nos cards */
+        .image-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+            z-index: 1;
+        }
+        
+        .image-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Badge para eixos */
+        .eixo-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 1rem;
+            vertical-align: middle;
         }
         
         @media (max-width: 768px) {
@@ -366,16 +450,25 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-menu li a {
+                width: 100%;
+            }
         }
         
         @media (max-width: 480px) {
             h1 {
                 font-size: 2rem;
-            }
-            
-            .nav-menu {
-                flex-direction: column;
-                align-items: center;
             }
             
             .filter-container {
@@ -387,12 +480,17 @@
                 width: 100%;
                 max-width: 250px;
             }
+            
+            .section {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>LINGUAGENS</h1>
+        <p class="subtitle">Portfólio de Atividades e Projetos</p>
         <div class="nav-container">
             <ul class="nav-menu">
                 <li><a href="#eixo1" class="active">Eixo 1</a></li>
@@ -405,84 +503,122 @@
 
     <div class="container">
         <div class="filter-container">
-            <button class="filter-btn active">Todos</button>
-            <button class="filter-btn">Linguagem</button>
-            <button class="filter-btn">Redação</button>
-            <button class="filter-btn">Projetos</button>
+            <button class="filter-btn active"><i class="fas fa-layer-group"></i> Todos</button>
+            <button class="filter-btn"><i class="fas fa-language"></i> Linguagem</button>
+            <button class="filter-btn"><i class="fas fa-pen-fancy"></i> Redação</button>
+            <button class="filter-btn"><i class="fas fa-project-diagram"></i> Projetos</button>
         </div>
 
-
         <section id="eixo1" class="section fade-in delay-1">
-            <h2 class="section-title">EIXO 1 - Língua Portuguesa e Literatura</h2>
+            <h2 class="section-title">EIXO 1 - Língua Portuguesa e Literatura <span class="eixo-badge">4 atividades</span></h2>
             <p class="section-description">
+                Atividades desenvolvidas no eixo de Língua Portuguesa e Literatura, focadas em interpretação textual, 
+                análise literária e produção textual.
+            </p>
             <div class="image-container">
                 <div class="image-card" data-category="linguagem">
+                    <span class="card-category">Linguagem</span>
                     <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1" loading="lazy">
                     <div class="overlay">
+                        <h3>Análise Textual</h3>
+                        <p>Atividade de interpretação e análise de textos literários</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="linguagem">
+                    <span class="card-category">Linguagem</span>
                     <img src="ATVLINGUAGEN2.jpg" alt="Atividade de Linguagem 2" loading="lazy">
                     <div class="overlay">
+                        <h3>Gramática Aplicada</h3>
+                        <p>Exercícios de aplicação de regras gramaticais</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="redacao">
+                    <span class="card-category">Redação</span>
                     <img src="REDAÇÃOO2.png" alt="Redação" loading="lazy">
                     <div class="overlay">
+                        <h3>Produção Textual</h3>
+                        <p>Redação dissertativa-argumentativa</p>
                     </div>
                 </div>
-                <section id="eixo2" class="section fade-in delay-2">
-    <h2 class="section-title">EIXO 2</h2>
-    <p class="section-description">
-    </p>
-    <div class="image-container">
-        <div class="image-card" data-category="projeto">
-            <img src="timbradohumanass (1).jpg" alt="Imagem do projeto">
-            <div class="overlay"></div>
-        </div>
-        <div class="image-card" data-category="redacao">
-            <img src="REDAÇÃOO.png" alt="Imagem de redação">
-            <div class="overlay"></div>
-        </div>
-        <div class="image-card" data-category="projeto">
-            <img src="emma.png" alt="Imagem do projeto Emma">
-            <div class="overlay"></div>
-        </div>
-    </div>
-</section>
-        <section id="eixo3" class="section fade-in delay-3">
-            <h2 class="section-title">EIXO 3 </h2>
+            </div>
+        </section>
+
+        <section id="eixo2" class="section fade-in delay-2">
+            <h2 class="section-title">EIXO 2 - Linguagens e Sociedade <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
-             
+                Projetos e atividades que exploram a relação entre linguagem, cultura e sociedade, 
+                incluindo análises de discurso e produções culturais.
+            </p>
             <div class="image-container">
                 <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
+                    <img src="timbradohumanass (1).jpg" alt="Trabalho de Humanas" loading="lazy">
+                    <div class="overlay">
+                        <h3>Análise Sociocultural</h3>
+                        <p>Trabalho interdisciplinar de humanas</p>
+                    </div>
+                </div>
+                <div class="image-card" data-category="redacao">
+                    <span class="card-category">Redação</span>
+                    <img src="REDAÇÃOO.png" alt="Redação" loading="lazy">
+                    <div class="overlay">
+                        <h3>Redação Temática</h3>
+                        <p>Texto sobre questões sociais contemporâneas</p>
+                    </div>
+                </div>
+                <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
+                    <img src="emma.jpg" alt="Projeto Emma" loading="lazy">
+                    <div class="overlay">
+                        <h3>Projeto Emma</h3>
+                        <p>Análise de obra literária e adaptações</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="eixo3" class="section fade-in delay-3">
+            <h2 class="section-title">EIXO 3 - Linguagens Artísticas e Culturais <span class="eixo-badge">3 atividades</span></h2>
+            <p class="section-description">
+                Atividades que exploram as diferentes manifestações artísticas e culturais como formas de linguagem, 
+                incluindo literatura, artes visuais e performáticas.
+            </p>
+            <div class="image-container">
+                <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
                     <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens" loading="lazy">
                     <div class="overlay">
+                        <h3>Mapa Mental</h3>
+                        <p>Organização visual de conceitos de linguagem</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
                     <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina" loading="lazy">
                     <div class="overlay">
+                        <h3>Análise Literária</h3>
+                        <p>Estudo da obra "Morte e Vida Severina"</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
                     <img src="listadeingles2.png" alt="Atividade de Inglês" loading="lazy">
                     <div class="overlay">
+                        <h3>Língua Inglesa</h3>
+                        <p>Atividades de compreensão e produção em inglês</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo4" class="section fade-in delay-4">
-            <h2 class="section-title">EIXO 4 - Projeto Integrador</h2>
+            <h2 class="section-title">EIXO 4 - Projeto Integrador <span class="eixo-badge">Em desenvolvimento</span></h2>
             <p class="section-description">
-
-            </p>
-            <div class="empty-state">
-                <i class="fas fa-folder-plus"></i>
+            <img src="simplepastt.jpg">
             </div>
         </section>
     </div>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -491,23 +627,94 @@
                 <p><i class="fas fa-chalkboard-teacher"></i> Orientadora: <span class="footer-name">Regiane Leal</span></p>
                 <div class="footer-divider"></div>
                 <span class="institution">SESI / SENAI</span>
+                <p>Formando profissionais para o futuro</p>
             </div>
+            
+            <div class="footer-section">
+                <h3>Informações</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Aluno: Ian Joseph</span>
                     </div>
-                </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <div class="contact-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Ano: 2025</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-book"></i>
+                        <span>Curso: Informática para Internet</span>
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        
         <div class="copyright">
             <p>&copy; 2025 LINGUAGENS - Todos os direitos reservados</p>
         </div>
     </footer>
+
+    <script>
+        // Filtro de categorias
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const imageCards = document.querySelectorAll('.image-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.textContent.trim().toLowerCase();
+                    
+                    imageCards.forEach(card => {
+                        if (filter === 'todos') {
+                            card.style.display = 'block';
+                        } else {
+                            const category = card.getAttribute('data-category');
+                            if (category === filter) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Navegação suave
+            document.querySelectorAll('.nav-menu a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    document.querySelectorAll('.nav-menu a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
-
 
