@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Naturezas</title>
+    <title> Naturezas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e4fff;
-            --primary-dark: #000000;
-            --accent: #ffffec;
-            --light: #f5f5f5;
-            --gray: #2c2c2c;
-            --text-light: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s ease;
+            --primary-dark: #121212; 
+             --accent: #000000; /
+            --light: #e0e0e0; 
+            --gray: #333333; 
+            --text-light: #f0f0f0;
+
         }
         
         * {
@@ -24,10 +22,14 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: 'Source Sans Pro', sans-serif;
             background: linear-gradient(135deg, #0e0d3b 0%, #0964ec 100%);
-            color: green;
+            color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -37,14 +39,14 @@
         }
         
         .main-nav {
-            position: sticky;
-            top: 0;
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
+    position: sticky;
+    top: 0;
+    background: rgba(13, 91, 200, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
         
         .nav-container {
             max-width: 1400px;
@@ -52,14 +54,12 @@
             padding: 0 1.5rem;
         }
         
-        .main-nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+      .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
         }
-        
         .main-nav a {
             color: var(--text-light);
             text-decoration: none;
@@ -70,11 +70,11 @@
             display: block;
         }
         
-        .main-nav a:hover,
-        .main-nav a.active {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
+      .main-nav a:hover,
+.main-nav a.active {
+    background-color: var(--primary);
+    color: #fff;
+}
         
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -98,10 +98,10 @@
         }
         
         header h1 {
-            font-size: 4.2rem;
+            font-size: 5.0rem;
             margin: 0;
             position: relative;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgb(0, 0, 0);
             letter-spacing: 1px;
         }
         
@@ -225,8 +225,8 @@
             font-size: 0.8rem;
             opacity: 0.7;
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.2rem 0.6rem;
+            background: rgba(5, 10, 100, 0.2);
+            padding: 1.0rem 0.6rem;
             border-radius: 12px;
         }
         
@@ -303,7 +303,6 @@
             display: block;
         }
         
-        /* Animações */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -422,20 +421,19 @@
     
     <div class="container">
         <section id="eixo1" class="section">
-            <h2 class="section-title">EIXO 1 - </h2
-            </p>
-            
-            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
+            <h2 class="section-title">EIXO 1 </h2>
+            <p class="section-description">
+            </p>            
             <div class="image-grid">
                 <div class="image-card">
                     <img src="CADEIASCARBONICAS.png" alt="Cadeias carbônicas - Representação de estruturas moleculares orgânicas">
                     <div class="image-overlay">
-                                        </div>
+                        <h3 class="card-title">Cadeias Carbônicas</h3>
+                    </div>
                 </div>
                 <div class="image-card">
                     <img src="naturezas2.5.jpg" alt="Compostos Orgânicos - Estruturas moleculares e fórmulas">
                     <div class="image-overlay">
-                        <h3 class="card-title">Compostos Orgânicos</h3>
                     </div>
                 </div>
                 <div class="image-card">
@@ -447,36 +445,28 @@
             </div>
         </section>
 
-        <!-- Eixo 2 -->
         <section id="eixo2" class="section">
             <h2 class="section-title">EIXO 2 </h2>
-            <p class="section-description">
-            </p>
-            
-            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
+            </p>            
             <div class="image-grid">
                 <div class="image-card">
                     <img src="naturezas4.jpg" alt="Biodiversidade - Representação de ecossistemas e espécies">
                     <div class="image-overlay">
-                        <h3 class="card-title">Biodiversidade</h3>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="naturezas4.5.jpg" alt="Evolução das Espécies - Árvore filogenética e adaptações">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Evolução das Espécies</h3>  
+                    <div class="image-overlay">                
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="natureza5.jpg" alt="Genética e Hereditariedade - Padrões de herança genética">
                     <div class="image-overlay">
-                        <h3 class="card-title">Genética e Hereditariedade</h3>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="LISTADEWALLACE.png" alt="Lista de Wallace - Contribuições para a teoria da evolução">
                     <div class="image-overlay">
-                        <h3 class="card-title">Lista de Wallace</h3>
                     </div>
                 </div>
                 <div class="image-card">
@@ -487,38 +477,33 @@
                 <div class="image-card">
                     <img src="TRABALHOFISICA.png" alt="Fenômenos Físicos - Leis e princípios da física">
                     <div class="image-overlay">
-                        <h3 class="card-title">Fenômenos Físicos</h3>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3 - Estrutura Atômica e Molecular</h2
-            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
+            <h2 class="section-title">EIXO 3</h2>
+            </p>            
             <div class="image-grid">
                 <div class="image-card">
                     <img src="modelosatomicos.jpg" alt="Modelos Atômicos - Evolução das teorias atômicas">
                     <div class="image-overlay">
-                        <h3 class="card-title">Modelos Atômicos</h3>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="fisicamoderna.png" alt="Física Moderna - Teorias quânticas e relativísticas">
                     <div class="image-overlay">
-                        <h3 class="card-title">Física Moderna</h3>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="isomeria.jpg" alt="Isomeria - Compostos com mesma fórmula molecular e estruturas diferentes">
                     <div class="image-overlay">
-                        <h3 class="card-title">Isomeria</h3>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="atividadefisicasetembro.png" alt="Atividade de Física - Exercícios e aplicações práticas">
                     <div class="image-overlay">
-                        <h3 class="card-title">Atividade de Física</h3>
                     </div>
                 </div>
             </div>
@@ -528,27 +513,17 @@
             <h2 class="section-title">EIXO 4 </h2>
             <p class="section-description">
             </p>
-            
+    
             <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
             <div class="image-grid">
                 <div class="image-card">
                     <img src="perdadabiodiversidade.png" alt="Perda de Biodiversidade - Impactos ambientais e conservação">
-                    <div class="image-overlay">
-                        <span class="card-date">2024</span>
+                    <div class="image-overlay">                        
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="numeroscomplexos.png" alt="Números Complexos - Aplicações em fenômenos naturais">
                     <div class="image-overlay">
-                        <h3 class="card-title">Números Complexos</h3>
-                    </div>
-                </div>
-                <div class="image-card">
-                    </div>
-                    <div class="image-overlay">
-                        <h3 class="card-title">  </h3>
-                        <p class="card-description"> </p>
-                        <span class="card-date"> </span>
                     </div>
                 </div>
             </div>
@@ -559,7 +534,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
     
-    <!-- Rodapé -->
     <footer>
         <div class="footer-content">
             <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
@@ -570,7 +544,7 @@
     </footer>
 
     <script>
-        // Back to top functionality
+      
         const backToTop = document.getElementById('backToTop');
         
         window.addEventListener('scroll', () => {
@@ -585,7 +559,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Navegação suave
+    
         document.querySelectorAll('.main-nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -593,11 +567,10 @@
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    // Atualizar navegação ativa
                     document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Scroll suave
+              
                     targetElement.scrollIntoView({ 
                         behavior: 'smooth',
                         block: 'start'
@@ -606,7 +579,6 @@
             });
         });
 
-        // Atualizar navegação ativa ao scroll
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('.section');
             const navLinks = document.querySelectorAll('.main-nav a');
@@ -630,7 +602,5 @@
     </script>
 </body>
 </html>
-
-
 
 
