@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Naturezas</title>
+    <title>Naturezas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #121212; 
-             --accent: #000000; /
-            --light: #e0e0e0; 
-            --gray: #333333; 
+            --primary: #0964ec;
+            --primary-dark: #0e0d3b;
+            --accent: #00ffb3;
+            --light: #e0e0e0;
+            --gray: #333333;
             --text-light: #f0f0f0;
-
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+            --radius: 16px;
         }
         
         * {
@@ -39,14 +42,14 @@
         }
         
         .main-nav {
-    position: sticky;
-    top: 0;
-    background: rgba(13, 91, 200, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-}
+            position: sticky;
+            top: 0;
+            background: rgba(13, 91, 200, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+        }
         
         .nav-container {
             max-width: 1400px;
@@ -54,31 +57,35 @@
             padding: 0 1.5rem;
         }
         
-      .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0;
-        margin: 0;
+        .main-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            gap: 1rem;
+            padding: 0;
+            margin: 0;
         }
+        
         .main-nav a {
             color: var(--text-light);
             text-decoration: none;
-            padding: 0.5rem 1.2rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 25px;
             transition: var(--transition);
             font-weight: 500;
             display: block;
         }
         
-      .main-nav a:hover,
-.main-nav a.active {
-    background-color: var(--primary);
-    color: #fff;
-}
+        .main-nav a:hover,
+        .main-nav a.active {
+            background-color: var(--primary);
+            color: #fff;
+        }
         
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 3.5rem 1rem;
+            padding: 4rem 1rem;
             text-align: center;
             box-shadow: var(--shadow);
             position: relative;
@@ -98,10 +105,10 @@
         }
         
         header h1 {
-            font-size: 5.0rem;
+            font-size: 4.5rem;
             margin: 0;
             position: relative;
-            text-shadow: 2px 2px 4px rgb(0, 0, 0);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: 1px;
         }
         
@@ -122,7 +129,7 @@
         .section {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
-            border-radius: 16px;
+            border-radius: var(--radius);
             padding: 3rem 2.5rem;
             margin-bottom: 3rem;
             box-shadow: var(--shadow);
@@ -139,8 +146,8 @@
         
         .section-title {
             color: var(--accent);
-            font-size: 2.8rem;
-            margin-bottom: 2.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             padding-bottom: 0.8rem;
             border-bottom: 3px solid var(--primary);
             display: inline-block;
@@ -226,7 +233,7 @@
             opacity: 0.7;
             display: inline-block;
             background: rgba(5, 10, 100, 0.2);
-            padding: 1.0rem 0.6rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 12px;
         }
         
@@ -259,11 +266,11 @@
         .back-to-top:hover {
             background: var(--accent);
             transform: translateY(-5px);
-            color: var(--dark);
+            color: var(--primary-dark);
         }
         
         footer {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, #00ffb3 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
             color: var(--text-light);
             padding: 3.5rem 1rem;
             text-align: center;
@@ -296,7 +303,7 @@
         }
         
         .institution {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: bold;
             letter-spacing: 1px;
             margin-top: 1.5rem;
@@ -310,6 +317,11 @@
         
         .section {
             animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
         }
         
         .section:nth-child(2) {
@@ -317,11 +329,11 @@
         }
         
         .section:nth-child(3) {
-            animation-delay: 0.4s;
+            animation-delay: 0.3s;
         }
         
         .section:nth-child(4) {
-            animation-delay: 0.6s;
+            animation-delay: 0.4s;
         }
         
         @media (max-width: 992px) {
@@ -378,7 +390,7 @@
         
         @media (max-width: 480px) {
             header h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .header-subtitle {
@@ -398,7 +410,7 @@
             }
             
             .institution {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -417,113 +429,167 @@
     
     <header>
         <h1>NATUREZAS</h1>
+        <p class="header-subtitle">Portfólio de Ciências da Natureza</p>
     </header>
     
     <div class="container">
         <section id="eixo1" class="section">
-            <h2 class="section-title">EIXO 1 </h2>
+            <h2 class="section-title">EIXO 1 - Química Orgânica</h2>
             <p class="section-description">
+                Estudo das estruturas, propriedades, composição, reações e síntese de compostos orgânicos 
+                que contêm carbono, incluindo hidrocarbonetos e seus derivados.
             </p>            
             <div class="image-grid">
                 <div class="image-card">
                     <img src="CADEIASCARBONICAS.png" alt="Cadeias carbônicas - Representação de estruturas moleculares orgânicas">
                     <div class="image-overlay">
                         <h3 class="card-title">Cadeias Carbônicas</h3>
+                        <p class="card-description">Estruturas moleculares orgânicas e suas classificações</p>
+                        <span class="card-date">Química Orgânica</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="naturezas2.5.jpg" alt="Compostos Orgânicos - Estruturas moleculares e fórmulas">
                     <div class="image-overlay">
+                        <h3 class="card-title">Compostos Orgânicos</h3>
+                        <p class="card-description">Estruturas moleculares e fórmulas químicas</p>
+                        <span class="card-date">Química Orgânica</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="naturezas3.jpg" alt="Reações Orgânicas - Mecanismos e transformações químicas">
                     <div class="image-overlay">
                         <h3 class="card-title">Reações Orgânicas</h3>
+                        <p class="card-description">Mecanismos e transformações químicas</p>
+                        <span class="card-date">Química Orgânica</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo2" class="section">
-            <h2 class="section-title">EIXO 2 </h2>
+            <h2 class="section-title">EIXO 2 - Biologia e Evolução</h2>
+            <p class="section-description">
+                Exploração da diversidade biológica, processos evolutivos, genética e os princípios 
+                fundamentais que regem os seres vivos e seus ecossistemas.
             </p>            
             <div class="image-grid">
                 <div class="image-card">
                     <img src="naturezas4.jpg" alt="Biodiversidade - Representação de ecossistemas e espécies">
                     <div class="image-overlay">
+                        <h3 class="card-title">Biodiversidade</h3>
+                        <p class="card-description">Representação de ecossistemas e espécies</p>
+                        <span class="card-date">Biologia</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="naturezas4.5.jpg" alt="Evolução das Espécies - Árvore filogenética e adaptações">
-                    <div class="image-overlay">                
+                    <div class="image-overlay">
+                        <h3 class="card-title">Evolução das Espécies</h3>
+                        <p class="card-description">Árvore filogenética e adaptações evolutivas</p>
+                        <span class="card-date">Biologia</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="natureza5.jpg" alt="Genética e Hereditariedade - Padrões de herança genética">
                     <div class="image-overlay">
+                        <h3 class="card-title">Genética</h3>
+                        <p class="card-description">Padrões de herança genética e hereditariedade</p>
+                        <span class="card-date">Biologia</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="LISTADEWALLACE.png" alt="Lista de Wallace - Contribuições para a teoria da evolução">
                     <div class="image-overlay">
+                        <h3 class="card-title">Lista de Wallace</h3>
+                        <p class="card-description">Contribuições para a teoria da evolução</p>
+                        <span class="card-date">Biologia</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="oxigenadas.png" alt="Funções Oxigenadas - Compostos orgânicos contendo oxigênio">
                     <div class="image-overlay">
+                        <h3 class="card-title">Funções Oxigenadas</h3>
+                        <p class="card-description">Compostos orgânicos contendo oxigênio</p>
+                        <span class="card-date">Química</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="TRABALHOFISICA.png" alt="Fenômenos Físicos - Leis e princípios da física">
                     <div class="image-overlay">
+                        <h3 class="card-title">Fenômenos Físicos</h3>
+                        <p class="card-description">Leis e princípios fundamentais da física</p>
+                        <span class="card-date">Física</span>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3</h2>
+            <h2 class="section-title">EIXO 3 - Física e Química Moderna</h2>
+            <p class="section-description">
+                Estudo dos modelos atômicos, física moderna, isomeria e conceitos avançados que 
+                explicam a estrutura da matéria e os fenômenos naturais.
             </p>            
             <div class="image-grid">
                 <div class="image-card">
                     <img src="modelosatomicos.jpg" alt="Modelos Atômicos - Evolução das teorias atômicas">
                     <div class="image-overlay">
+                        <h3 class="card-title">Modelos Atômicos</h3>
+                        <p class="card-description">Evolução das teorias atômicas ao longo do tempo</p>
+                        <span class="card-date">Química</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="fisicamoderna.png" alt="Física Moderna - Teorias quânticas e relativísticas">
                     <div class="image-overlay">
+                        <h3 class="card-title">Física Moderna</h3>
+                        <p class="card-description">Teorias quânticas e relativísticas</p>
+                        <span class="card-date">Física</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="isomeria.jpg" alt="Isomeria - Compostos com mesma fórmula molecular e estruturas diferentes">
                     <div class="image-overlay">
+                        <h3 class="card-title">Isomeria</h3>
+                        <p class="card-description">Compostos com mesma fórmula e estruturas diferentes</p>
+                        <span class="card-date">Química</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="atividadefisicasetembro.png" alt="Atividade de Física - Exercícios e aplicações práticas">
                     <div class="image-overlay">
+                        <h3 class="card-title">Atividade de Física</h3>
+                        <p class="card-description">Exercícios e aplicações práticas de conceitos físicos</p>
+                        <span class="card-date">Física</span>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="eixo4" class="section">
-            <h2 class="section-title">EIXO 4 </h2>
+            <h2 class="section-title">EIXO 4 - Aplicações e Projetos</h2>
             <p class="section-description">
+                Projetos integradores que aplicam conceitos das ciências naturais para resolver 
+                problemas reais, incluindo questões ambientais e aplicações matemáticas.
             </p>
     
             <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
             <div class="image-grid">
                 <div class="image-card">
                     <img src="perdadabiodiversidade.png" alt="Perda de Biodiversidade - Impactos ambientais e conservação">
-                    <div class="image-overlay">                        
+                    <div class="image-overlay">
+                        <h3 class="card-title">Perda de Biodiversidade</h3>
+                        <p class="card-description">Impactos ambientais e estratégias de conservação</p>
+                        <span class="card-date">Biologia Ambiental</span>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="numeroscomplexos.png" alt="Números Complexos - Aplicações em fenômenos naturais">
                     <div class="image-overlay">
+                        <h3 class="card-title">Números Complexos</h3>
+                        <p class="card-description">Aplicações matemáticas em fenômenos naturais</p>
+                        <span class="card-date">Matemática Aplicada</span>
                     </div>
                 </div>
             </div>
@@ -544,63 +610,69 @@
     </footer>
 
     <script>
-      
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-    
-        document.querySelectorAll('.main-nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
-                    this.classList.add('active');
-                    
-              
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.main-nav a');
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTop = document.getElementById('backToTop');
             
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
                 }
             });
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            document.querySelectorAll('.main-nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.section');
+                const navLinks = document.querySelectorAll('.main-nav a');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            const images = document.querySelectorAll('.image-card img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = 'https://via.placeholder.com/400x300/2c3e50/ffffff?text=Imagem+Não+Encontrada';
+                    this.alt = 'Imagem não carregada';
+                });
             });
         });
     </script>
 </body>
 </html>
-
 
