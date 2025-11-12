@@ -322,6 +322,10 @@
             animation-delay: 0.4s;
         }
         
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+        
         @media (max-width: 992px) {
             .header__title {
                 font-size: 3rem;
@@ -415,6 +419,7 @@
             <div class="nav-tab" data-target="eixo2">EIXO 2</div>
             <div class="nav-tab" data-target="eixo3">EIXO 3</div>
             <div class="nav-tab" data-target="eixo4">EIXO 4</div>
+            <div class="nav-tab" data-target="atividades-escolhidas">ATIVIDADES ESCOLHIDAS</div>
         </nav>
         
         <section id="eixo1" class="section section--active">
@@ -515,34 +520,37 @@
             </p>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="mapamentaldecomunicaçãoprofissional.jpg">
+                    <img src="mapamentaldecomunicaçãoprofissional.png" alt="Mapa Mental de Comunicação Profissional" class="image-card__img">
                     <div class="image-card__overlay">
+                        <div class="image-card__title">Comunicação Profissional</div>
+                        <div class="image-card__description">Mapa mental de habilidades</div>
                     </div>
                 </div>
                 <div class="image-card">
-                <img src="excalidrawww">
                     <img src="LOGINSENAI.png" alt="Login SENAI" class="image-card__img">
                     <div class="image-card__overlay">
+                        <div class="image-card__title">Sistema de Login</div>
                         <div class="image-card__description">Interface de autenticação</div>
                     </div>
                 </div>
-
                 <div class="image-card">
-                <div class="image-card">
-                    <img src="novoportfolionovembro.png" alt="Portfólio HTML" class="image-card__img">
+                    <img src="portfolionovembro.png" alt="Portfólio HTML" class="image-card__img">
                     <div class="image-card__overlay">
                         <div class="image-card__title">Portfólio HTML</div>
+                        <div class="image-card__description">Documentação do projeto</div>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="comunicaçãoprofissional.jpg" alt="Comunicação Profissional" class="image-card__img">
                     <div class="image-card__overlay">
+                        <div class="image-card__title">Comunicação</div>
                         <div class="image-card__description">Habilidades profissionais</div>
                     </div>
                 </div>
                 <div class="image-card">
                     <img src="exerciciopontes.png" alt="Exercício de Pontes" class="image-card__img">
                     <div class="image-card__overlay">
+                        <div class="image-card__title">Exercício de Pontes</div>
                         <div class="image-card__description">Lógica e resolução de problemas</div>
                     </div>
                 </div>
@@ -550,21 +558,77 @@
                     <img src="designpatterns.jpg" alt="Design Patterns" class="image-card__img">
                     <div class="image-card__overlay">
                         <div class="image-card__title">Design Patterns</div>
+                        <div class="image-card__description">Padrões de projeto</div>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="eixo4" class="section section--hidden">
-            <h2 class="section__title">EIXO 4 </h2>
+            <h2 class="section__title">EIXO 4 - Aplicações Avançadas</h2>
+            <p class="section__description">
+                Projetos avançados e aplicações práticas, incluindo sistemas completos, algoritmos complexos 
+                e soluções integradas para problemas reais.
             </p>
             <div class="image-grid">
                 <div class="image-card">
                     <img src="planejamentosistemicosenai.png" alt="Planejamento Sistêmico SENAI" class="image-card__img">
                     <div class="image-card__overlay">
                         <div class="image-card__title">Planejamento Sistêmico</div>
+                        <div class="image-card__description">Estruturação de projetos</div>
                     </div>
                 </div>
+                <div class="image-card">
+                    <img src="jogodeadivinhação.jpg" alt="Jogo de Adivinhação" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Jogo de Adivinhação</div>
+                        <div class="image-card__description">Aplicação com lógica condicional</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="calculadora.png" alt="Calculadora" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Calculadora</div>
+                        <div class="image-card__description">Interface e funcionalidades</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="calculadoradeimcc.png" alt="Calculadora de IMC" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Calculadora de IMC</div>
+                        <div class="image-card__description">Aplicação de saúde digital</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="algoritmophp1.png" alt="Algoritmo PHP" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Algoritmo PHP</div>
+                        <div class="image-card__description">Lógica de programação backend</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="gerenciadordeeventos.png" alt="Gerenciador de Eventos" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Gerenciador de Eventos</div>
+                        <div class="image-card__description">Sistema de agendamento</div>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="timbradodasaudedigital.jpg" alt="Saúde Digital" class="image-card__img">
+                    <div class="image-card__overlay">
+                        <div class="image-card__title">Saúde Digital</div>
+                        <div class="image-card__description">Projeto integrado</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="atividades-escolhidas" class="section section--hidden">
+            <h2 class="section__title">Atividades Escolhidas</h2>
+            <p class="section__description">
+                Seleção das atividades mais significativas desenvolvidas ao longo do curso.
+            </p>
+            <div class="image-grid">
                 <div class="image-card">
                     <img src="jogodeadivinhação.jpg" alt="Jogo de Adivinhação" class="image-card__img">
                     <div class="image-card__overlay">
@@ -578,27 +642,10 @@
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="calculadoradeimcc.png" alt="Calculadora de IMC" class="image-card__img">
-                    <div class="image-card__overlay">
-                        <div class="image-card__title">Calculadora de IMC</div>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="algoritmophp1.png" alt="Algoritmo PHP" class="image-card__img">
-                    <div class="image-card__overlay">
-                        <div class="image-card__title">Algoritmo PHP</div>
-                    </div>
-                </div>
-                <div class="image-card">
                     <img src="gerenciadordeeventos.png" alt="Gerenciador de Eventos" class="image-card__img">
                     <div class="image-card__overlay">
                         <div class="image-card__title">Gerenciador de Eventos</div>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="timbradodasaudedigital.jpg" alt="Saúde Digital" class="image-card__img">
-                    <div class="image-card__overlay">
-                        <div class="image-card__title">Saúde Digital</div>
+                        <div class="image-card__description">Sistema completo de agendamento</div>
                     </div>
                 </div>
             </div>
@@ -625,21 +672,17 @@
             
             navTabs.addEventListener('click', function(e) {
                 if (e.target.classList.contains('nav-tab')) {
-                
                     document.querySelectorAll('.nav-tab').forEach(tab => {
                         tab.classList.remove('nav-tab--active');
                     });
                     
-                    
                     e.target.classList.add('nav-tab--active');
                     
-                   
                     sections.forEach(section => {
                         section.classList.add('section--hidden');
                         section.classList.remove('section--active');
                     });
                     
-                   
                     const targetId = e.target.getAttribute('data-target');
                     const targetSection = document.getElementById(targetId);
                     if (targetSection) {
@@ -649,7 +692,6 @@
                 }
             });
             
-         
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset > 300) {
                     backToTopBtn.classList.add('back-to-top--visible');
@@ -693,6 +735,3 @@
     </script>
 </body>
 </html>
-
-
-
