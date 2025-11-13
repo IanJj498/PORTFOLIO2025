@@ -12,9 +12,9 @@
             --secondary: #3498db;
             --accent: #e74c3c;
             --success: #2ecc71;
-            --dark: #000000;
+            --dark: #1a252f;
             --light: #ecf0f1;
-            --text: #000000;
+            --text: #2c3e50;
             --gradient: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
             --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -490,12 +490,14 @@
 <body>
     <header>
         <h1>LINGUAGENS</h1>
+        <p class="subtitle">Portfólio de Atividades e Projetos</p>
         <div class="nav-container">
             <ul class="nav-menu">
                 <li><a href="#eixo1" class="active">Eixo 1</a></li>
                 <li><a href="#eixo2">Eixo 2</a></li>
                 <li><a href="#eixo3">Eixo 3</a></li>
                 <li><a href="#eixo4">Eixo 4</a></li>
+                <li><a href="#atividades-escolhidas">Atividades Escolhidas</a></li>
             </ul>
         </div>
     </header>
@@ -503,39 +505,48 @@
     <div class="container">
         <div class="filter-container">
             <button class="filter-btn active"><i class="fas fa-layer-group"></i> Todos</button>
-            <button class="filter-btn"><i class="fas fa-language"></i> Linguagem</button>
-            <button class="filter-btn"><i class="fas fa-pen-fancy"></i> Redação</button>
-            <button class="filter-btn"><i class="fas fa-project-diagram"></i> Projetos</button>
+            <button class="filter-btn"><i class="fas fa-language"></i> Atividades escolhidas</button>
         </div>
 
         <section id="eixo1" class="section fade-in delay-1">
-            <h2 class="section-title">EIXO 1  <span class="eixo-badge">4 atividades</span></h2>
+            <h2 class="section-title">EIXO 1 - Língua Portuguesa e Literatura <span class="eixo-badge">4 atividades</span></h2>
+            <p class="section-description">
+                Atividades desenvolvidas no eixo de Língua Portuguesa e Literatura, focadas em interpretação textual, 
+                análise literária e produção textual.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
                     <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1" loading="lazy">
                     <div class="overlay">
+                        <h3>Análise Textual</h3>
+                        <p>Atividade de interpretação e análise de textos literários</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
                     <img src="ATVLINGUAGEN2.jpg" alt="Atividade de Linguagem 2" loading="lazy">
                     <div class="overlay">
+                        <h3>Gramática Aplicada</h3>
+                        <p>Exercícios de aplicação de regras gramaticais</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="redacao">
                     <span class="card-category">Redação</span>
                     <img src="REDAÇÃOO2.png" alt="Redação" loading="lazy">
                     <div class="overlay">
+                        <h3>Produção Textual</h3>
+                        <p>Redação dissertativa-argumentativa</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo2" class="section fade-in delay-2">
-            <h2 class="section-title">EIXO 2 <span class="eixo-badge">3 atividades</span></h2>
+            <h2 class="section-title">EIXO 2 - Linguagens e Sociedade <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
+                Projetos e atividades que exploram a relação entre linguagem, cultura e sociedade, 
+                incluindo análises de discurso e produções culturais.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="projeto">
@@ -566,8 +577,10 @@
         </section>
 
         <section id="eixo3" class="section fade-in delay-3">
-            <h2 class="section-title">EIXO 3  <span class="eixo-badge">3 atividades</span></h2>
+            <h2 class="section-title">EIXO 3 - Linguagens Artísticas e Culturais <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
+                Atividades focadas nas linguagens artísticas, incluindo análise de obras, 
+                produções culturais e expressões artísticas diversas.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="projeto">
@@ -575,6 +588,7 @@
                     <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens" loading="lazy">
                     <div class="overlay">
                         <h3>Mapa Mental</h3>
+                        <p>Organização visual de conceitos de linguagem</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="projeto">
@@ -582,6 +596,7 @@
                     <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina" loading="lazy">
                     <div class="overlay">
                         <h3>Morte e Vida Severina</h3>
+                        <p>Análise da obra literária de João Cabral</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="linguagem">
@@ -589,19 +604,56 @@
                     <img src="simplepast.png" alt="Atividade de Inglês" loading="lazy">
                     <div class="overlay">
                         <h3>Simple Past</h3>
+                        <p>Atividade de língua inglesa - passado simples</p>
                     </div>
                 </div>
             </div>
         </section>
+
         <section id="eixo4" class="section fade-in delay-4">
-            <h2 class="section-title">EIXO 4
+            <h2 class="section-title">EIXO 4 <span class="eixo-badge">Em breve</span></h2>
+            <p class="section-description">
+                <img src="simplepast.png">
+            </p>
             <div class="image-container">
-            <img src="simplepast.png">
+                </div>
+            </div>
+        </section>
+
+        <section id="atividades-escolhidas" class="section fade-in">
+            <h2 class="section-title">Atividades Escolhidas <span class="eixo-badge">3 atividades</span></h2>
+            <p class="section-description">
+                Seleção das atividades mais significativas desenvolvidas durante o curso.
+            </p>
+            <div class="image-container">
+                <div class="image-card" data-category="linguagem">
+                    <span class="card-category">Linguagem</span>
+                    <img src="simplepast.png" alt="Atividade de Inglês" loading="lazy">
+                    <div class="overlay">
+                        <h3>Simple Past</h3>
+                        <p>Atividade de língua inglesa - passado simples</p>
+                    </div>
+                </div>
+                <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
+                    <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens" loading="lazy">
+                    <div class="overlay">
+                        <h3>Mapa Mental</h3>
+                        <p>Organização visual de conceitos de linguagem</p>
+                    </div>
+                </div>
+                <div class="image-card" data-category="linguagem">
+                    <span class="card-category">Linguagem</span>
+                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1" loading="lazy">
+                    <div class="overlay">
+                        <h3>Análise Textual</h3>
+                        <p>Atividade de interpretação e análise de textos literários</p>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
-    
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -630,7 +682,7 @@
                 </div>
             </div>
         </div>
-        
+    
         <div class="social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -676,11 +728,9 @@
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    
                     document.querySelectorAll('.nav-menu a').forEach(link => {
                         link.classList.remove('active');
                     });
-                    
                     
                     this.classList.add('active');
                     
@@ -705,5 +755,3 @@
     </script>
 </body>
 </html>
-
-
