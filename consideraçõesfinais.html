@@ -34,6 +34,7 @@
             scroll-behavior: smooth;
     
         }
+
         header {
             background: rgba(0, 0, 0, 0.9);
             padding: 1.2rem 2rem;
@@ -525,20 +526,12 @@
     </style>
 </head>
 <body>
-   
-
     <header>
         <a href="#" class="logo">IAN JOSEPH</a>
-        
         <div class="nav-container">
             <nav id="nav">
                 <a href="conclusãofinal.html" class="active">Considerações Finais</a>
             </nav>
-            
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-            </button>
-
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -563,18 +556,15 @@
       
       <div class="info-item">
         <h3><i class="fas fa-cogs"></i>Habilidades Desenvolvidas</h3>
-        <p>Durante minha formação, adquiri diversas habilidades técnicas e comportamentais, incluindo:</p>
         <ul style="margin-left: 2rem; margin-top: 1rem;">
-          <li>Resolução de problemas complexos</li>
-          <li>Trabalho em equipe e colaboração</li>
-          <li>Comunicação eficaz</li>
-          <li>Pensamento crítico e analítico</li>
-          <li>Adaptabilidade a novas tecnologias</li>
+          <li>Programação com HTML CSS</li>
+          <li>Design UI/UX</li>
+          <li>Inteligência artificial</li>
+          <li> Redes de internet</li>
+          <li>Criação e editoração de multimídia</li>
         </ul>
       </div>
     </section>
-
-
 
 
             </div>
@@ -618,7 +608,6 @@
             }, 40);
         });
 
-        // ===== MENU TOGGLE FOR MOBILE =====
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.getElementById('nav');
         
@@ -670,43 +659,6 @@
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-
-
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-       
-        const title = document.getElementById('typewriter-title');
-        const originalText = title.textContent;
-        setTimeout(() => {
-            typeWriter(title, originalText, 150);
-        }, 1500);
-
- 
-        const scanLine = document.querySelector('.scan-line');
-        
-        function restartScanAnimation() {
-            scanLine.style.animation = 'none';
-            setTimeout(() => {
-                scanLine.style.animation = 'scan 8s linear infinite';
-            }, 10);
-        }
-
-  
-        window.addEventListener('resize', restartScanAnimation);
     </script>
 </body>
 </html>
-
-
