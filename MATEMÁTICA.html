@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: blue;
+            --primary: #3f51b5;
             --primary-dark: #303f9f;
             --accent: #ff4081;
             --light: #f5f5f5;
@@ -209,7 +209,7 @@
         }
         
         .footer-text {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 1.2rem;
         }
         
@@ -235,22 +235,10 @@
             display: block;
         }
         
-        /* Animações */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeIn 0.8s ease forwards;
-        }
-        
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .student-info {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
         
         @media (max-width: 992px) {
@@ -332,7 +320,7 @@
     </header>
 
     <div class="container">
-        <section id="eixo1" class="section fade-in delay-1">
+        <section id="eixo1" class="section">
             <h2 class="section-title">EIXO 1 - Fundamentos Matemáticos</h2>
             <div class="image-grid">
                 <div class="image-card">
@@ -352,7 +340,7 @@
             </div>
         </section>
 
-        <section id="eixo2" class="section fade-in delay-2">
+        <section id="eixo2" class="section">
             <h2 class="section-title">EIXO 2 - Matemática Aplicada</h2>
             <div class="image-grid">
                 <div class="image-card">
@@ -373,13 +361,13 @@
                     <img src="MATEMATICAA3.png" alt="Matemática A3" loading="lazy">
                     <div class="image-overlay">
                         <div class="image-title">Matemática Aplicada</div>
-                        <div class="image-desc">Aplicações práticas dos conceitos</div>
+                        <div class="image-desc">Aplicações práticas da matemática</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="eixo3" class="section fade-in delay-3">
+        <section id="eixo3" class="section">
             <h2 class="section-title">EIXO 3 - Análise de Dados</h2>
             <div class="image-grid">
                 <div class="image-card">
@@ -390,29 +378,29 @@
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="listadeirisneide.png" alt="Lista Irisneide" loading="lazy">
+                    <img src="listadeirisneide.png" alt="Lista de Exercícios" loading="lazy">
                     <div class="image-overlay">
                         <div class="image-title">Lista de Exercícios</div>
-                        <div class="image-desc">Atividades práticas de matemática</div>
+                        <div class="image-desc">Prática e aplicação de conceitos</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="eixo4" class="section fade-in">
+        <section id="eixo4" class="section">
             <h2 class="section-title">EIXO 4 - Matemática Avançada</h2>
             <div class="image-grid">
                 <div class="image-card">
                     <img src="numeroscomplexos.png" alt="Números Complexos" loading="lazy">
                     <div class="image-overlay">
                         <div class="image-title">Números Complexos</div>
-                        <div class="image-desc">Estudo de números complexos e aplicações</div>
+                        <div class="image-desc">Estudo de números complexos e suas aplicações</div>
                     </div>
                 </div>
                 <div class="empty-section">
-                    <i class="fas fa-plus-circle empty-icon"></i>
-                    <h3 class="empty-title">Novos Projetos</h3>
-                    <p class="empty-text">Em breve, novas atividades serão adicionadas a este eixo</p>
+                    <i class="fas fa-calculator empty-icon"></i>
+                    <h3 class="empty-title">Mais Conteúdo em Breve</h3>
+                    <p class="empty-text">Novas atividades e projetos de matemática serão adicionados em breve.</p>
                 </div>
             </div>
         </section>
@@ -422,40 +410,42 @@
         <div class="footer-content">
             <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
             <p class="footer-text">Orientadora: <span class="footer-name">Regiane Leal</span></p>
+            <div class="student-info">
+                <p>Aluno: Ian Joseph | Ano: 2025</p>
+            </div>
             <div class="footer-divider"></div>
             <span class="institution">SESI / SENAI</span>
-            <p class="footer-text" style="margin-top: 1.5rem;">Aluno: Ian Joseph - 2025</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Adiciona tratamento de erro para imagens
-            const images = document.querySelectorAll('.image-card img');
+            const images = document.querySelectorAll('img');
             images.forEach(img => {
                 img.addEventListener('error', function() {
-                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik0xMDAgMTUwIEwzMDAgMTUwIE0yMDAgMTAwIEwyMDAgMjAwIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMyIvPgo8dGV4dCB4PSIyMDAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JbWFnZW0gbsOjbyBlbmNvbnRyYWRhPC90ZXh0Pgo8L3N2Zz4=';
-                    this.alt = 'Imagem não encontrada';
+                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzAzMDMwIi8+CiAgPHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZW0gbsOjbyBDYXJyZWdhZGE8L3RleHQ+Cjwvc3ZnPg==';
+                    this.alt = 'Imagem não carregada';
                 });
             });
 
-            // Adiciona animação de entrada para as seções
             const sections = document.querySelectorAll('.section');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     }
                 });
             }, { threshold: 0.1 });
-            
+
             sections.forEach(section => {
-                section.style.animationPlayState = 'paused';
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(section);
             });
         });
     </script>
 </body>
 </html>
-
