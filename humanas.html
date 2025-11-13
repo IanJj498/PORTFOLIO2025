@@ -562,14 +562,9 @@
             });
         });
 
-        // Prevenir quebra de imagens
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('error', function() {
-                this.alt = 'Imagem não disponível';
-                this.src = 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f9fa"/><text x="50%" y="50%" font-family="Arial" font-size="18" fill="%236c757d" text-anchor="middle" dy=".3em">Imagem não disponível</text></svg>';
-            });
         });
     </script>
 </body>
 </html>
+
 
