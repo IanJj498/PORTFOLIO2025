@@ -362,8 +362,6 @@
                     <div class="image-number">1</div>
                     <img src="anexos1.png" alt="Anexo 1 - Documentação Inicial" loading="lazy">
                     <div class="image-overlay">
-                        <div class="image-title">Documentação Inicial</div>
-                        <div class="image-desc">Planejamento e estruturação do projeto</div>
                     </div>
                 </div>
                 
@@ -371,8 +369,6 @@
                     <div class="image-number">2</div>
                     <img src="anexos2.png" alt="Anexo 2 - Pesquisa e Referências" loading="lazy">
                     <div class="image-overlay">
-                        <div class="image-title">Pesquisa e Referências</div>
-                        <div class="image-desc">Materiais de pesquisa utilizados</div>
                     </div>
                 </div>
                 
@@ -380,8 +376,6 @@
                     <div class="image-number">3</div>
                     <img src="anexos3.png" alt="Anexo 3 - Desenvolvimento" loading="lazy">
                     <div class="image-overlay">
-                        <div class="image-title">Processo de Desenvolvimento</div>
-                        <div class="image-desc">Etapas de criação e implementação</div>
                     </div>
                 </div>
                 
@@ -389,8 +383,6 @@
                     <div class="image-number">4</div>
                     <img src="anexos4.png" alt="Anexo 4 - Resultados Finais" loading="lazy">
                     <div class="image-overlay">
-                        <div class="image-title">Resultados e Conclusões</div>
-                        <div class="image-desc">Análise final e considerações</div>
                     </div>
                 </div>
             </div>
@@ -412,10 +404,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('.image-card img');
-            
             images.forEach(img => {
                 img.addEventListener('error', function() {
-                    // Cria um fallback visual quando a imagem não carrega
                     this.style.background = 'linear-gradient(45deg, #2d3436, #1e07cc)';
                     this.style.display = 'flex';
                     this.style.alignItems = 'center';
@@ -457,3 +447,4 @@
     </script>
 </body>
 </html>
+
