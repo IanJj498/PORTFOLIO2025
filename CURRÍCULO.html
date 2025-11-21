@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Currículo </title>
+  <title>Currículo - Ian Joseph</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -15,6 +15,7 @@
       --dark: #1f2937;
       --accent: #3b82f6;
       --background: #f9fafb;
+      --success: #10b981;
     }
     
     * {
@@ -86,6 +87,12 @@
       background: rgba(255, 255, 255, 0.15);
       padding: 8px 15px;
       border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
     }
     
     .contact-item i {
@@ -226,6 +233,15 @@
       border-radius: 4px;
     }
     
+    .skill-level-bar.html { width: 85%; }
+    .skill-level-bar.css { width: 80%; }
+    .skill-level-bar.js { width: 60%; }
+    .skill-level-bar.filmora { width: 75%; }
+    .skill-level-bar.audio { width: 70%; }
+    .skill-level-bar.word { width: 80%; }
+    .skill-level-bar.excel { width: 65%; }
+    .skill-level-bar.powerpoint { width: 75%; }
+    
     .projects-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -283,6 +299,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--light);
     }
     
     .language-name {
@@ -292,6 +310,30 @@
     .language-level {
       color: var(--secondary);
       font-size: 0.9rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
     }
     
     @media (max-width: 900px) {
@@ -345,7 +387,7 @@
     <div class="header">
       <img src="ijjj.png" alt="Foto de Ian Joseph" class="profile-image">
       <h1>Ian Joseph Pinheiro de Amorim</h1>
-      <div class="subtitle"></div>
+      <div class="subtitle">Estudante de Desenvolvimento Web</div>
       
       <div class="contact-info">
         <div class="contact-item">
@@ -361,11 +403,27 @@
           <span>Brasil</span>
         </div>
       </div>
+      
+      <div class="social-links">
+        <a href="#" class="social-link">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
     </div>
     
     <div class="content">
       <div class="main-content">
         <section class="section">
+          <h2 class="section-title"><i class="fas fa-user"></i> Objetivo Profissional</h2>
+          <div class="objective">
+            <p>Estudante dedicado de Desenvolvimento Web com foco em HTML, CSS e JavaScript. Busco oportunidades para aplicar e expandir meus conhecimentos em um ambiente profissional, contribuindo para projetos desafiadores enquanto continuo meu desenvolvimento técnico.</p>
+          </div>
         </section>
         
         <section class="section">
@@ -374,11 +432,38 @@
             <div class="timeline-date">2025 – Cursando</div>
             <div class="timeline-content">
               <strong>Curso Técnico de Informática para Internet</strong>
-              <p>SENAI</p>
+              <p>SENAI - Desenvolvimento de habilidades em programação web, design de interfaces e desenvolvimento de aplicações.</p>
             </div>
           </div>
         </section>
-       
+        
+        <section class="section">
+          <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiências</h2>
+          <div class="timeline-item">
+            <div class="timeline-date">2025 - Presente</div>
+            <div class="timeline-content">
+              <strong>Desenvolvimento de Portfólio Digital</strong>
+              <p>Criação e manutenção de portfólio pessoal com projetos de desenvolvimento web, demonstrando habilidades em HTML, CSS e JavaScript.</p>
+            </div>
+          </div>
+        </section>
+        
+        <section class="section">
+          <h2 class="section-title"><i class="fas fa-project-diagram"></i> Projetos</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <h4><i class="fas fa-globe"></i> Portfólio Pessoal</h4>
+              <p>Site pessoal desenvolvido com HTML, CSS e JavaScript para demonstrar habilidades e projetos.</p>
+              <div>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+              </div>
+            </div>
+            <div class="project-card">
+        </section>
+      </div>
+      
       <div class="sidebar">
         <section class="section">
           <h2 class="section-title"><i class="fas fa-star"></i> Habilidades</h2>
@@ -388,15 +473,19 @@
               <div class="skill-item">
                 <div class="skill-name">HTML5</div>
                 <div class="skill-level">
+                  <div class="skill-level-bar html"></div>
                 </div>
               </div>
               <div class="skill-item">
                 <div class="skill-name">CSS3</div>
                 <div class="skill-level">
+                  <div class="skill-level-bar css"></div>
                 </div>
               </div>
               <div class="skill-item">
                 <div class="skill-name">JavaScript</div>
+                <div class="skill-level">
+                  <div class="skill-level-bar js"></div>
                 </div>
               </div>
             </div>
@@ -405,10 +494,14 @@
               <h4><i class="fas fa-film"></i> Edição de Vídeo</h4>
               <div class="skill-item">
                 <div class="skill-name">Filmora</div>
+                <div class="skill-level">
+                  <div class="skill-level-bar filmora"></div>
                 </div>
               </div>
               <div class="skill-item">
                 <div class="skill-name">Edição de Áudio</div>
+                <div class="skill-level">
+                  <div class="skill-level-bar audio"></div>
                 </div>
               </div>
             </div>
@@ -417,23 +510,39 @@
               <h4><i class="fas fa-desktop"></i> Pacote Office</h4>
               <div class="skill-item">
                 <div class="skill-name">Word</div>
-                <div class="skill-name">Excel</div>
-                <div class="skill-name">Powerpoint</div>
+                <div class="skill-level">
+                  <div class="skill-level-bar word"></div>
                 </div>
               </div>
               <div class="skill-item">
                 <div class="skill-name">Excel</div>
+                <div class="skill-level">
+                  <div class="skill-level-bar excel"></div>
                 </div>
               </div>
               <div class="skill-item">
                 <div class="skill-name">PowerPoint</div>
+                <div class="skill-level">
+                  <div class="skill-level-bar powerpoint"></div>
                 </div>
               </div>
             </div>
           </div>
-       
+        </section>
+        
+        <section class="section">
+          <h2 class="section-title"><i class="fas fa-language"></i> Idiomas</h2>
+          <ul class="languages-list">
+            <li>
+              <span class="language-name">Português</span>
+              <span class="language-level">Nativo</span>
+            </li>
+            <li>
+              <span class="language-name">Inglês</span>
+              <span class="language-level">Intermediário</span>
+            </li>
+          </ul>
+        </section>
   </div>
 </body>
-
 </html>
-
