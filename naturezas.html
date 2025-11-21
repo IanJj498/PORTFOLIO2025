@@ -485,139 +485,26 @@
                 </div>
             </div>
         </section>
-        
-        <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3</h2>
-            </p>            
-            <div class="image-grid">
-                <div class="image-card">
-                    <img src="modelosatomicos.jpg" alt="Modelos Atômicos - Evolução das teorias atômicas">
-                    <div class="image-overlay">
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="fisicamoderna.png" alt="Física Moderna - Teorias quânticas e relativísticas">
-                    <div class="image-overlay">
-                    </div>
-                </div>
-                </div>
-                <div class="image-card">
-                    <img src="atividadefisicasetembro.png" alt="Atividade de Física - Exercícios e aplicações práticas">
-                    <div class="image-overlay">
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="eixo4" class="section">
-            <h2 class="section-title">EIXO 4 </h2>
-            <p class="section-description">
-            </p>
-    
-            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
-            <div class="image-grid">
-                <div class="image-card">
-                    <img src="perdadabiodiversidade.png" alt="Perda de Biodiversidade - Impactos ambientais e conservação">
-                    <div class="image-overlay">                        
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="numeroscomplexos.png" alt="Números Complexos - Aplicações em fenômenos naturais">
-                    <div class="image-overlay">
-                    </div>
-                </div>
-            </div>
-<h3 class="section-subtitle">Atividades Escolhidas</h3>
-
-<div class="image-card">
-    <img src="perdadabiodiversidade.png" alt="Perda da Biodiversidade" class="image-card__img">
-    <div class="image-card__overlay">
-        <div class="image-card__title">Perda da Biodiversidade</div>
-        <div class="image-card__description">Impactos ambientais e preservação da fauna e flora.</div>
+       <section id="eixo4" class="section">
+  <h2 class="section-title">EIXO 4</h2>
+  <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
+  <div class="image-grid">
+    <div class="image-card">
+      <img src="perdadabiodiversidade.png" alt="Perda de Biodiversidade - Impactos ambientais e conservação">
     </div>
-</div>
-
-<div class="image-card">
-    <img src="modelosatomicos.jpg" alt="Modelos Atômicos" class="image-card__img">
-    <div class="image-card__overlay">
-        <div class="image-card__title">Modelos Atômicos</div>
-        <div class="image-card__description">Dalton, Thomson, Rutherford, Bohr e Schrödinger.</div>
+    <div class="image-card">
+      <img src="numeroscomplexos.png" alt="Números Complexos - Aplicações em fenômenos naturais">
     </div>
-</div>
-        
-        </section>
+  </div>
+
+  <h3 class="section-subtitle">Atividades Escolhidas</h3>
+  <div class="image-grid">
+    <div class="image-card">
+      <img src="perdadabiodiversidade.png" alt="Atividade sobre biodiversidade">
+      <div class="image-card__title">Calculadora</div>
     </div>
-    
-    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
-            <p class="footer-text">Orientadora: <span class="footer-name">Regiane Leal</span></p>
-            <div class="footer-divider"></div>
-            <span class="institution">SESI / SENAI</span>
-        </div>
-    </footer>
-
-    <script>
-      
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-    
-        document.querySelectorAll('.main-nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
-                    this.classList.add('active');
-                    
-              
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.main-nav a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
-
+    <div class="image-card">
+      <img src="modelosatomicos.jpg" alt="Modelos Atômicos">
+    </div>
+  </div>
+</section>
