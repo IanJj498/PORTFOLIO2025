@@ -1,593 +1,731 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naturezas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --dark: #1a252f;
-            --light: #ecf0f1;
-            --text: #2c3e50;
-            --gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --radius: 16px;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        
-        header {
-            background: var(--gradient);
-            padding: 2.5rem 1rem;
-            color: white;
-            text-align: center;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-            background-size: 100% 100%;
-            transform: rotate(180deg);
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        
-        .header-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
-            position: relative;
-        }
-        
-        .nav-container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 0.8rem;
-            margin: 1.5rem auto;
-            max-width: 800px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-        
-        .nav-menu li a {
-            color: white;
-            text-decoration: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 30px;
-            transition: var(--transition);
-            display: block;
-            font-weight: 500;
-            border: 2px solid transparent;
-        }
-        
-        .nav-menu li a:hover,
-        .nav-menu li a.active {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-        
-        .section {
-            background: white;
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border-left: 5px solid var(--secondary);
-        }
-        
-        .section:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .section-title {
-            color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 3px solid var(--secondary);
-            display: inline-block;
-            font-weight: 600;
-        }
-        
-        .section-subtitle {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin: 2rem 0 1rem;
-            font-weight: 600;
-        }
-        
-        .section-description {
-            margin-bottom: 1.8rem;
-            color: #555;
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-        
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-        
-        .image-card {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            height: 300px;
-            background: #f8f9fa;
-        }
-        
-        .image-card:hover {
-            transform: scale(1.03) translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .image-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .image-card:hover img {
-            transform: scale(1.1);
-        }
-        
-        .image-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 1.5rem;
-            color: white;
-            opacity: 0;
-            transition: var(--transition);
-            transform: translateY(20px);
-        }
-        
-        .image-card:hover .image-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .card-description {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            border: none;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        footer {
-            background: var(--gradient);
-            color: white;
-            padding: 4rem 1.5rem 2.5rem;
-            text-align: center;
-            margin-top: 5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: 100% 100%;
-            transform: rotate(180deg);
-        }
-        
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .footer-text {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-        
-        .footer-name {
-            font-weight: bold;
-            color: var(--light);
-        }
-        
-        .footer-divider {
-            height: 2px;
-            width: 100px;
-            background: rgba(255, 255, 255, 0.3);
-            margin: 1.5rem auto;
-        }
-        
-        .institution {
-            font-size: 2rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-top: 1.5rem;
-            position: relative;
-        }
-        
-        /* Efeito de brilho nos cards */
-        .image-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: 0.5s;
-            z-index: 1;
-        }
-        
-        .image-card:hover::before {
-            left: 100%;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfólio SENAI</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+            :root {
+                --primary: #0069b4;
+                --primary-dark: #00457c;
+                --accent: #00ffc8;
+                --light: #f5f5f5;
+                --dark: #121212;
+                --gray: #2c2c2c;
+                --text-light: #ffffff;
+                --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                --transition: all 0.3s ease;
+                --border-radius: 12px;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
             
-            .image-grid {
-                grid-template-columns: 1fr;
+            html {
+                scroll-behavior: smooth;
             }
             
-            .nav-menu {
-                flex-direction: column;
-                align-items: center;
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+                color: var(--text-light);
+                line-height: 1.6;
+                overflow-x: hidden;
             }
             
-            .nav-menu li {
-                width: 100%;
+            .header {
+                background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+                padding: 6rem 1rem;
                 text-align: center;
+                box-shadow: var(--shadow);
+                position: relative;
+                overflow: hidden;
             }
             
-            .nav-menu li a {
+            .header::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100%;
+                height: 100%;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L100,0 L100,100 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
+                background-size: 100% 100%;
             }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
+            
+            .header__title {
+                font-size: 4rem;
+                margin: 0 0 1rem 0;
+                position: relative;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                letter-spacing: 2px;
+            }
+            
+            .header__subtitle {
+                font-size: 1.2rem;
+                opacity: 0.9;
+                position: relative;
+            }
+            
+            .container {
+                max-width: 1400px;
+                margin: 2rem auto;
+                padding: 0 1.5rem;
             }
             
             .section {
-                padding: 1.5rem;
+                background: rgba(30, 30, 30, 0.8);
+                backdrop-filter: blur(10px);
+                border-radius: var(--border-radius);
+                padding: 2.5rem 2rem;
+                margin-bottom: 3rem;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                border-left: 4px solid var(--accent);
+                animation: fadeIn 0.6s ease forwards;
+                opacity: 0;
             }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .section {
-            animation: fadeIn 0.8s ease forwards;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>NATUREZAS</h1>
-        <p class="header-subtitle">Explorando as Ciências da Natureza</p>
-        <div class="nav-container">
-            <ul class="nav-menu">
-                <li><a href="#eixo1" class="active">Eixo 1</a></li>
-                <li><a href="#eixo2">Eixo 2</a></li>
-                <li><a href="#eixo3">Eixo 3</a></li>
-                <li><a href="#eixo4">Eixo 4</a></li>
-            </ul>
-        </div>
-    </header>
-    
-    <div class="container">
-        <section id="eixo1" class="section">
-            <h2 class="section-title">EIXO 1 - Química Orgânica</h2>
-            <p class="section-description">
-                Estudo das estruturas, propriedades e reações dos compostos orgânicos, com foco nas cadeias carbônicas e suas transformações.
-            </p>            
-            <div class="image-grid">
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/2c3e50/ffffff?text=Cadeias+Carbônicas" alt="Cadeias carbônicas - Representação de estruturas moleculares orgânicas">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Cadeias Carbônicas</h3>
-                        <p class="card-description">Estruturas fundamentais dos compostos orgânicos</p>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/3498db/ffffff?text=Compostos+Orgânicos" alt="Compostos Orgânicos - Estruturas moleculares e fórmulas">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Compostos Orgânicos</h3>
-                        <p class="card-description">Diversidade e classificação dos compostos orgânicos</p>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/e74c3c/ffffff?text=Reações+Orgânicas" alt="Reações Orgânicas - Mecanismos e transformações químicas">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Reações Orgânicas</h3>
-                        <p class="card-description">Mecanismos e transformações químicas</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="eixo2" class="section">
-            <h2 class="section-title">EIXO 2 - Biologia e Evolução</h2>
-            <p class="section-description">
-                Exploração da biodiversidade, genética, evolução das espécies e suas interações com o ambiente.
-            </p>            
-            <div class="image-grid">
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/27ae60/ffffff?text=Biodiversidade" alt="Biodiversidade - Representação de ecossistemas e espécies">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Biodiversidade</h3>
-                        <p class="card-description">Variedade de vida nos ecossistemas</p>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/2980b9/ffffff?text=Evolução" alt="Evolução das Espécies - Árvore filogenética e adaptações">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Evolução</h3>
-                        <p class="card-description">Processos evolutivos e adaptações</p>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/8e44ad/ffffff?text=Genética" alt="Genética e Hereditariedade - Padrões de herança genética">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Genética</h3>
-                        <p class="card-description">Padrões de herança e variabilidade</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="eixo3" class="section">
-            <h2 class="section-title">EIXO 3 - Física e Estrutura Atômica</h2>
-            <p class="section-description">
-                Estudo dos modelos atômicos, física moderna e aplicações práticas dos conceitos físicos.
-            </p>            
-            <div class="image-grid">
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/34495e/ffffff?text=Modelos+Atômicos" alt="Modelos Atômicos - Evolução das teorias atômicas">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Modelos Atômicos</h3>
-                        <p class="card-description">Evolução das teorias atômicas</p>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/16a085/ffffff?text=Física+Moderna" alt="Física Moderna - Teorias quânticas e relativísticas">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Física Moderna</h3>
-                        <p class="card-description">Teorias quânticas e relativísticas</p>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/d35400/ffffff?text=Atividades+Práticas" alt="Atividade de Física - Exercícios e aplicações práticas">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Atividades Práticas</h3>
-                        <p class="card-description">Exercícios e aplicações práticas</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="eixo4" class="section">
-            <h2 class="section-title">EIXO 4 - Trabalhos e Aplicações</h2>
-            <p class="section-description">
-                Projetos desenvolvidos e atividades selecionadas que integram os conhecimentos adquiridos nos eixos anteriores.
-            </p>
-
-            <h3 class="section-subtitle">Trabalhos Desenvolvidos</h3>
-            <div class="image-grid">
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/c0392b/ffffff?text=Biodiversidade" alt="Perda de Biodiversidade - Impactos ambientais e conservação">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Perda de Biodiversidade</h3>
-                        <p class="card-description">Impactos ambientais e conservação</p>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/7f8c8d/ffffff?text=Números+Complexos" alt="Números Complexos - Aplicações em fenômenos naturais">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Números Complexos</h3>
-                        <p class="card-description">Aplicações em fenômenos naturais</p>
-                    </div>
-                </div>
-            </div>
-
-            <h3 class="section-subtitle">Atividades Escolhidas</h3>
-            <div class="image-grid">
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/f39c12/ffffff?text=Calculadora" alt="Calculadora - Ferramenta para cálculos científicos">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Calculadora</h3>
-                        <p class="card-description">Ferramenta para cálculos científicos</p>
-                    </div>
-                </div>
-                <div class="image-card">
-                    <img src="https://via.placeholder.com/400x300/9b59b6/ffffff?text=Modelos+Atômicos" alt="Modelos atômicos - Representações da estrutura atômica">
-                    <div class="image-overlay">
-                        <h3 class="card-title">Modelos Atômicos</h3>
-                        <p class="card-description">Modelos de Dalton, Bohr, Rutherford, Schrödinger, Thomson</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
-            <p class="footer-text">Orientadora: <span class="footer-name">Regiane Leal</span></p>
-            <div class="footer-divider"></div>
-            <span class="institution">SESI / SENAI</span>
-        </div>
-    </footer>
-
-    <script>
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        document.querySelectorAll('.nav-menu a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.nav-menu a');
             
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
+            .section:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            }
+            
+            .section--active {
+                display: block;
+            }
+            
+            .section--hidden {
+                display: none;
+            }
+            
+            .section__title {
+                color: var(--accent);
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 2px solid var(--primary);
+                display: inline-block;
+            }
+            
+            .section__description {
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
+                line-height: 1.7;
+                opacity: 0.9;
+            }
+            
+            .nav-tabs {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 2rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .nav-tab {
+                padding: 0.8rem 1.5rem;
+                background: rgba(30, 30, 30, 0.7);
+                border-radius: 30px;
+                cursor: pointer;
+                transition: var(--transition);
+                border: 1px solid var(--primary);
+                font-weight: 600;
+                min-width: 120px;
+                text-align: center;
+            }
+            
+            .nav-tab:hover, .nav-tab--active {
+                background: var(--primary);
+                transform: translateY(-3px);
+            }
+            
+            .image-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.8rem;
+                margin-top: 1.5rem;
+            }
+            
+            .image-card {
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                position: relative;
+                height: 260px;
+                background: var(--gray);
+            }
+            
+            .image-card:hover {
+                transform: scale(1.03) rotate(1deg);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .image-card__img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: var(--transition);
+            }
+            
+            .image-card:hover .image-card__img {
+                transform: scale(1.1);
+            }
+            
+            .image-card__overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+                padding: 1.2rem;
+                color: white;
+                opacity: 0;
+                transform: translateY(10px);
+                transition: var(--transition);
+            }
+            
+            .image-card:hover .image-card__overlay {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .image-card__title {
+                font-weight: 600;
+                margin-bottom: 0.3rem;
+                font-size: 1.1rem;
+            }
+            
+            .image-card__description {
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+            
+            .empty-section {
+                text-align: center;
+                padding: 3rem 2rem;
+                background: rgba(40, 40, 40, 0.5);
+                border-radius: 10px;
+                border: 2px dashed var(--primary);
+            }
+            
+            .empty-section__icon {
+                font-size: 3.5rem;
+                color: var(--primary);
+                margin-bottom: 1.2rem;
+            }
+            
+            .empty-section__title {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+                color: var(--accent);
+            }
+            
+            .empty-section__text {
+                font-size: 1.1rem;
+                max-width: 500px;
+                margin: 0 auto;
+                opacity: 0.8;
+            }
+            
+            .footer {
+                background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark) 100%);
+                color: var(--text-light);
+                padding: 3rem 1rem;
+                text-align: center;
+                margin-top: 4rem;
+            }
+            
+            .footer__content {
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+            
+            .footer__text {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .footer__name {
+                font-weight: bold;
+                color: var(--accent);
+            }
+            
+            .footer__divider {
+                height: 2px;
+                width: 100px;
+                background: var(--accent);
+                margin: 1.5rem auto;
+            }
+            
+            .footer__logo {
+                font-size: 2rem;
+                font-weight: bold;
+                letter-spacing: 2px;
+                margin-top: 1.5rem;
+            }
+            
+            .back-to-top {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+                background: var(--primary);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: var(--transition);
+                opacity: 0;
+                visibility: hidden;
+                z-index: 1000;
+                box-shadow: var(--shadow);
+                border: none;
+            }
+            
+            .back-to-top--visible {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .back-to-top:hover {
+                background: var(--accent);
+                transform: translateY(-5px);
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .section:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+            
+            .section:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            
+            .section:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+            
+            .section:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+            
+            .section:nth-child(5) {
+                animation-delay: 0.5s;
+            }
+            
+            @media (max-width: 992px) {
+                .header__title {
+                    font-size: 3rem;
                 }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
+                
+                .section__title {
+                    font-size: 2rem;
                 }
+                
+                .image-grid {
+                    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .header {
+                    padding: 4rem 1rem;
+                }
+                
+                .header__title {
+                    font-size: 2.5rem;
+                }
+                
+                .section {
+                    padding: 2rem 1.5rem;
+                }
+                
+                .section__title {
+                    font-size: 1.8rem;
+                }
+                
+                .image-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+                
+                .image-card {
+                    height: 300px;
+                }
+                
+                .nav-tabs {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .nav-tab {
+                    width: 80%;
+                    margin-bottom: 0.8rem;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .header__title {
+                    font-size: 2rem;
+                }
+                
+                .header__subtitle {
+                    font-size: 1rem;
+                }
+                
+                .section__title {
+                    font-size: 1.6rem;
+                }
+                
+                .empty-section__title {
+                    font-size: 1.5rem;
+                }
+                
+                .footer__text {
+                    font-size: 1rem;
+                }
+                
+                .back-to-top {
+                    bottom: 20px;
+                    right: 20px;
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="header__title">SENAI</h1>
+            <p class="header__subtitle">Portfólio de Atividades - Desenvolvimento de Sistemas</p>
+        </header>
+        
+        <main class="container">
+            <nav class="nav-tabs" id="navTabs">
+                <div class="nav-tab nav-tab--active" data-target="eixo1">EIXO 1</div>
+                <div class="nav-tab" data-target="eixo2">EIXO 2</div>
+                <div class="nav-tab" data-target="eixo3">EIXO 3</div>
+                <div class="nav-tab" data-target="eixo4">EIXO 4</div>
+                <div class="nav-tab" data-target="atividades-escolhidas">ATIVIDADES ESCOLHIDAS</div>
+            </nav>
+            
+            <section id="eixo1" class="section section--active">
+                <h2 class="section__title">EIXO 1 </h2>
+                <p class="section__description">
+                </p>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="SENAIMAPAMENTAL1.png" alt="Mapa Mental SENAI" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Mapa Mental</div>
+                            <div class="image-card__description">Organização visual de conceitos</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="SENAICYBERSEC.jpg" alt="Cyber Segurança SENAI" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Cyber Segurança</div>
+                            <div class="image-card__description">Conceitos de segurança digital</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="INTERFACEWEB.jpg" alt="Interface Web" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Interface Web</div>
+                            <div class="image-card__description">Desenvolvimento front-end</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="eixo2" class="section section--hidden">
+                <h2 class="section__title">EIXO 2 </h2>
+                </p>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="RELOGIODIGITAL.PNG" alt="Relógio Digital" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Relógio Digital</div>
+                            <div class="image-card__description">Projeto de interface com JavaScript</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="bancodedados.png" alt="Banco de Dados" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Banco de Dados</div>
+                            <div class="image-card__description">Modelagem e estruturação de dados</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="SIMBOLO.png" alt="Símbolo Lógico" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Símbolos Lógicos</div>
+                            <div class="image-card__description">Lógica de programação e algoritmos</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="LOGOMARCA.png" alt="Logomarca" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Logomarca</div>
+                            <div class="image-card__description">Design e identidade visual</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="codificaçãodoportfolio.png" alt="Codificação do Portfólio HTML" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Codificação HTML</div>
+                            <div class="image-card__description">Desenvolvimento do portfólio</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="DIAGRAMASUML.png" alt="Diagrama UML" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Diagrama UML</div>
+                            <div class="image-card__description">Modelagem de sistemas</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="timbrado clientside.png" alt="Timbrado Client Side" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Client Side</div>
+                            <div class="image-card__description">Desenvolvimento front-end</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="eixo3" class="section section--hidden">
+                <h2 class="section__title">EIXO 3 - Projetos Integrados</h2>
+                <p class="section__description">
+                   
+                </p>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="mapamentaldecomunicaçãoprofissional.png" alt="Mapa Mental de Comunicação Profissional" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Comunicação Profissional</div>
+                            <div class="image-card__description">Mapa mental de habilidades</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="LOGINSENAI.png" alt="Login SENAI" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Sistema de Login</div>
+                            <div class="image-card__description">Interface de autenticação</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="portfolionovembro.png" alt="Portfólio HTML" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Portfólio HTML</div>
+                            <div class="image-card__description">Documentação do projeto</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="comunicaçãoprofissional.jpg" alt="Comunicação Profissional" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Comunicação</div>
+                            <div class="image-card__description">Habilidades profissionais</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="exerciciopontes.png" alt="Exercício de Pontes" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Exercício de Pontes</div>
+                            <div class="image-card__description">Lógica e resolução de problemas</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="designpatterns.jpg" alt="Design Patterns" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Design Patterns</div>
+                            <div class="image-card__description">Padrões de projeto</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="eixo4" class="section section--hidden">
+                <h2 class="section__title">EIXO 4 - Aplicações Avançadas</h2>
+                <p class="section__description">
+                    Projetos avançados e aplicações práticas, incluindo sistemas completos, algoritmos complexos 
+                    e soluções integradas para problemas reais.
+                </p>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="planejamentosistemicosenai.png" alt="Planejamento Sistêmico SENAI" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Planejamento Sistêmico</div>
+                            <div class="image-card__description">Estruturação de projetos</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="jogodeadivinhação.jpg" alt="Jogo de Adivinhação" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Jogo de Adivinhação</div>
+                            <div class="image-card__description">Aplicação com lógica condicional</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="calculadora.png" alt="Calculadora" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Calculadora</div>
+                            <div class="image-card__description">Interface e funcionalidades</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="calculadoradeimcc.png" alt="Calculadora de IMC" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Calculadora de IMC</div>
+                            <div class="image-card__description">Aplicação de saúde digital</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="algoritmophp1.png" alt="Algoritmo PHP" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Algoritmo PHP</div>
+                            <div class="image-card__description">Lógica de programação backend</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="gerenciadordeeventos.png" alt="Gerenciador de Eventos" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Gerenciador de Eventos</div>
+                            <div class="image-card__description">Sistema de agendamento</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="timbradodasaudedigital.jpg" alt="Saúde Digital" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Saúde Digital</div>
+                            <div class="image-card__description">Projeto integrado</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="atividades-escolhidas" class="section section--hidden">
+                <h2 class="section__title">Atividades Escolhidas</h2>
+                <p class="section__description">
+                    Seleção das atividades mais significativas desenvolvidas ao longo do curso.
+                </p>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="jogodeadivinhação.jpg" alt="Jogo de Adivinhação" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Jogo de Adivinhação</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="calculadora.png" alt="Calculadora" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Calculadora</div>
+                        </div>
+                    </div>
+                    <div class="image-card">
+                        <img src="gerenciadordeeventos.png" alt="Gerenciador de Eventos" class="image-card__img">
+                        <div class="image-card__overlay">
+                            <div class="image-card__title">Gerenciador de Eventos</div>
+                            <div class="image-card__description">Sistema completo de agendamento</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <footer class="footer">
+            <div class="footer__content">
+                <p class="footer__text">Trabalho orientado pelo professor <span class="footer__name">Cleiton Jérico</span></p>
+                <div class="footer__divider"></div>
+                <p class="footer__logo">SENAI/SESI</p>
+            </div>
+        </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const navTabs = document.getElementById('navTabs');
+                const sections = document.querySelectorAll('.section');
+                const backToTopBtn = document.getElementById('backToTop');
+                
+                navTabs.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('nav-tab')) {
+                        document.querySelectorAll('.nav-tab').forEach(tab => {
+                            tab.classList.remove('nav-tab--active');
+                        });
+                        
+                        e.target.classList.add('nav-tab--active');
+                        
+                        sections.forEach(section => {
+                            section.classList.add('section--hidden');
+                            section.classList.remove('section--active');
+                        });
+                        
+                        const targetId = e.target.getAttribute('data-target');
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                            targetSection.classList.remove('section--hidden');
+                            targetSection.classList.add('section--active');
+                        }
+                    }
+                });
+                
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.classList.add('back-to-top--visible');
+                    } else {
+                        backToTopBtn.classList.remove('back-to-top--visible');
+                    }
+                });
+                
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                const images = document.querySelectorAll('.image-card__img');
+                images.forEach(img => {
+                    img.addEventListener('error', function() {
+                        this.src = 'https://via.placeholder.com/300x200/2c2c2c/ffffff?text=Imagem+Não+Encontrada';
+                        this.alt = 'Imagem não encontrada';
+                    });
+                });
+                
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animationPlayState = 'running';
+                        }
+                    });
+                }, observerOptions);
+                
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
             });
-        });
-    </script>
-</body>
-</html>
-
-
+        </script>
+    </body>
+    </html>
