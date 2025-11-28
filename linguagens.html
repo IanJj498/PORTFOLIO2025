@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Linguagens | SESI/SENAI</title>
-    <meta name="description" content="Portfólio de atividades e projetos desenvolvidos na área de Linguagens">
+    <meta name="description" content="Portfólio de atividades e projetos de Linguagens do aluno Ian Joseph">
+    <meta name="keywords" content="linguagens, portfólio, atividades, projetos, SESI, SENAI">
+    <title>Portfólio de Linguagens - Ian Joseph</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
@@ -20,12 +21,17 @@
             --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             --radius: 16px;
+            --card-hover: translateY(-8px) scale(1.02);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -36,7 +42,6 @@
             min-height: 100vh;
         }
         
-        /* Header */
         header {
             background: var(--gradient);
             padding: 2.5rem 1rem;
@@ -112,7 +117,6 @@
             transform: translateY(-2px);
         }
         
-        /* Main Content */
         .container {
             max-width: 1200px;
             margin: 3rem auto;
@@ -149,7 +153,6 @@
             box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
         }
         
-        /* Sections */
         .section {
             background: white;
             border-radius: var(--radius);
@@ -184,7 +187,6 @@
             font-size: 1.1rem;
         }
         
-        /* Image Grid */
         .image-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -203,7 +205,7 @@
         }
         
         .image-card:hover {
-            transform: scale(1.03) translateY(-5px);
+            transform: var(--card-hover);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
         }
         
@@ -266,7 +268,6 @@
             font-size: 1.3rem;
         }
         
-        /* Footer */
         footer {
             background: var(--gradient);
             color: white;
@@ -440,7 +441,118 @@
             vertical-align: middle;
         }
         
-        /* Responsividade */
+        /* Botão de voltar ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* Modal para visualização de imagens */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            color: var(--secondary);
+            transform: rotate(90deg);
+        }
+        
+        /* Melhorias para acessibilidade */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Progress bar para navegação */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1001;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--secondary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -471,6 +583,13 @@
             .nav-menu li a {
                 width: 100%;
             }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -491,10 +610,30 @@
             .section {
                 padding: 1.5rem;
             }
+            
+            .modal-content {
+                max-width: 95%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- Botão voltar ao topo -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- Modal para visualização de imagens -->
+    <div class="modal" id="imageModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="Visualização ampliada">
+    </div>
+    
     <header>
         <h1>LINGUAGENS</h1>
         <p class="subtitle">Portfólio de Atividades e Projetos</p>
@@ -509,11 +648,11 @@
         </div>
     </header>
 
-    <main class="container">
+    <div class="container">
         <div class="filter-container">
             <button class="filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> Todos</button>
             <button class="filter-btn" data-filter="linguagem"><i class="fas fa-language"></i> Linguagem</button>
-            <button class="filter-btn" data-filter="redacao"><i class="fas fa-pen-fancy"></i> Redação</button>
+            <button class="filter-btn" data-filter="redacao"><i class="fas fa-pen"></i> Redação</button>
             <button class="filter-btn" data-filter="projeto"><i class="fas fa-project-diagram"></i> Projeto</button>
         </div>
 
@@ -526,7 +665,7 @@
             <div class="image-container">
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
-                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1">
+                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1 - Análise Textual" loading="lazy">
                     <div class="overlay">
                         <h3>Análise Textual</h3>
                         <p>Atividade de interpretação e análise de textos literários</p>
@@ -534,7 +673,7 @@
                 </div>
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
-                    <img src="ATVLINGUAGEN2.jpg" alt="Atividade de Linguagem 2">
+                    <img src="ATVLINGUAGEN2.jpg" alt="Atividade de Linguagem 2 - Gramática Aplicada" loading="lazy">
                     <div class="overlay">
                         <h3>Gramática Aplicada</h3>
                         <p>Exercícios de aplicação de regras gramaticais</p>
@@ -542,112 +681,101 @@
                 </div>
                 <div class="image-card" data-category="redacao">
                     <span class="card-category">Redação</span>
-                    <img src="REDAÇÃOO2.png" alt="Redação">
+                    <img src="REDAÇÃOO2.png" alt="Redação - Produção Textual" loading="lazy">
                     <div class="overlay">
                         <h3>Produção Textual</h3>
-                        <p>Redação sobre tema específico</p>
+                        <p>Exercício de redação e produção de textos</p>
                     </div>
                 </div>
-                <div class="image-card" data-category="projeto">
-                    <span class="card-category">Projeto</span>
-                    <img src="https://via.placeholder.com/400x300" alt="Projeto de Literatura">
+                <div class="image-card" data-category="linguagem">
+                    <span class="card-category">Linguagem</span>
+                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 3" loading="lazy">
                     <div class="overlay">
-                        <h3>Projeto Literário</h3>
-                        <p>Análise de obra literária brasileira</p>
+                        <h3>Análise Literária</h3>
+                        <p>Estudo de obras literárias e seus elementos</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo2" class="section fade-in delay-2">
-            <h2 class="section-title">EIXO 2 - Língua Inglesa e Produção Cultural <span class="eixo-badge">3 atividades</span></h2>
+            <h2 class="section-title">EIXO 2 - Linguagens e Códigos <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
-                Atividades relacionadas ao aprendizado da Língua Inglesa e produção cultural, com foco em comunicação 
-                e expressão em diferentes contextos.
+                Atividades relacionadas a diferentes formas de linguagem e códigos, incluindo projetos interdisciplinares.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="projeto">
                     <span class="card-category">Projeto</span>
-                    <img src="timbradohumanass (1).jpg" alt="Trabalho de Humanas">
+                    <img src="timbradohumanass (1).jpg" alt="Trabalho de Humanas - Projeto Interdisciplinar" loading="lazy">
                     <div class="overlay">
-                        <h3>Trabalho de Humanas</h3>
-                        <p>Projeto interdisciplinar sobre cultura e sociedade</p>
+                        <h3>Projeto Interdisciplinar</h3>
+                        <p>Trabalho integrando diferentes áreas do conhecimento</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="redacao">
                     <span class="card-category">Redação</span>
-                    <img src="REDAÇÃOO.png" alt="Redação">
+                    <img src="REDAÇÃOO.png" alt="Redação - Tema Específico" loading="lazy">
                     <div class="overlay">
-                        <h3>Redação Argumentativa</h3>
-                        <p>Texto dissertativo-argumentativo sobre tema atual</p>
+                        <h3>Redação Temática</h3>
+                        <p>Produção textual sobre tema específico</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="projeto">
                     <span class="card-category">Projeto</span>
-                    <img src="emma.png" alt="Projeto Emma">
+                    <img src="emma.png" alt="Projeto Emma - Análise Literária" loading="lazy">
                     <div class="overlay">
-                        <h3>Projeto Emma</h3>
-                        <p>Análise de obra literária em língua inglesa</p>
+                        <h3>Análise de Obra</h3>
+                        <p>Estudo e interpretação de obra literária específica</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo3" class="section fade-in delay-3">
-            <h2 class="section-title">EIXO 3 - Análise Linguística e Produção Textual <span class="eixo-badge">3 atividades</span></h2>
+            <h2 class="section-title">EIXO 3 - Produção e Interpretação <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
-                Atividades de análise linguística e produção textual, explorando diferentes gêneros textuais 
-                e recursos linguísticos.
+                Atividades focadas na produção e interpretação de diferentes tipos de textos e linguagens.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="projeto">
                     <span class="card-category">Projeto</span>
-                    <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens">
+                    <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens" loading="lazy">
                     <div class="overlay">
                         <h3>Mapa Mental</h3>
-                        <p>Organização visual de conceitos de linguagem</p>
+                        <p>Organização visual de conceitos de linguagens</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="projeto">
                     <span class="card-category">Projeto</span>
-                    <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina">
+                    <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina - Análise Literária" loading="lazy">
                     <div class="overlay">
-                        <h3>Morte e Vida Severina</h3>
-                        <p>Análise da obra de João Cabral de Melo Neto</p>
+                        <h3>Análise Literária</h3>
+                        <p>Estudo da obra "Morte e Vida Severina"</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
-                    <img src="simplepast.png" alt="Atividade de Inglês">
+                    <img src="simplepast.png" alt="Atividade de Inglês - Simple Past" loading="lazy">
                     <div class="overlay">
-                        <h3>Simple Past</h3>
-                        <p>Exercícios de gramática em língua inglesa</p>
+                        <h3>Inglês - Simple Past</h3>
+                        <p>Exercícios de gramática inglesa</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo4" class="section fade-in delay-4">
-            <h2 class="section-title">EIXO 4 - Práticas de Leitura e Escrita <span class="eixo-badge">2 atividades</span></h2>
+            <h2 class="section-title">EIXO 4 - Língua Estrangeira <span class="eixo-badge">1 atividade</span></h2>
             <p class="section-description">
-                Atividades práticas de leitura e escrita, desenvolvendo habilidades de compreensão 
-                e produção textual em diferentes contextos.
+                Atividades relacionadas ao aprendizado e prática de línguas estrangeiras.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
-                    <img src="listaderute.png" alt="Lista de Rute">
+                    <img src="listaderute.png" alt="Lista de Rute - Atividade de Inglês" loading="lazy">
                     <div class="overlay">
-                        <h3>Lista de Rute</h3>
-                        <p>Atividade de interpretação de texto</p>
-                    </div>
-                </div>
-                <div class="image-card" data-category="projeto">
-                    <span class="card-category">Projeto</span>
-                    <img src="https://via.placeholder.com/400x300" alt="Projeto de Escrita Criativa">
-                    <div class="overlay">
-                        <h3>Escrita Criativa</h3>
-                        <p>Produção de textos literários autorais</p>
+                        <h3>Atividade de Inglês</h3>
+                        <p>Exercícios práticos de língua inglesa</p>
                     </div>
                 </div>
             </div>
@@ -656,37 +784,36 @@
         <section id="atividades-escolhidas" class="section fade-in">
             <h2 class="section-title">Atividades Escolhidas <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
-                Seleção das atividades mais significativas desenvolvidas ao longo do curso, 
-                representando o crescimento e aprendizado na área de Linguagens.
+                Seleção das atividades mais representativas desenvolvidas ao longo do curso.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
-                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1">
+                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem Escolhida" loading="lazy">
                     <div class="overlay">
                         <h3>Análise Textual</h3>
-                        <p>Atividade de interpretação e análise de textos literários</p>
+                        <p>Atividade selecionada por sua profundidade analítica</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="projeto">
                     <span class="card-category">Projeto</span>
-                    <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina">
+                    <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina - Análise Escolhida" loading="lazy">
                     <div class="overlay">
-                        <h3>Morte e Vida Severina</h3>
-                        <p>Análise da obra de João Cabral de Melo Neto</p>
+                        <h3>Análise Literária</h3>
+                        <p>Projeto selecionado por sua abordagem crítica</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="redacao">
                     <span class="card-category">Redação</span>
-                    <img src="REDAÇÃOO.png" alt="Redação">
+                    <img src="REDAÇÃOO.png" alt="Redação Escolhida" loading="lazy">
                     <div class="overlay">
-                        <h3>Redação Argumentativa</h3>
-                        <p>Texto dissertativo-argumentativo sobre tema atual</p>
+                        <h3>Produção Textual</h3>
+                        <p>Redação selecionada por sua qualidade argumentativa</p>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -732,11 +859,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Elementos DOM
             const filterButtons = document.querySelectorAll('.filter-btn');
             const imageCards = document.querySelectorAll('.image-card');
             const navLinks = document.querySelectorAll('.nav-menu a');
+            const backToTopBtn = document.getElementById('backToTop');
+            const progressBar = document.getElementById('progressBar');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
             
-            // Sistema de filtros
+            // Filtro de categorias
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     // Remove active class de todos os botões
@@ -761,14 +894,15 @@
                 });
             });
             
-            // Navegação suave e destaque de seção ativa
+            // Navegação suave
             navLinks.forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    // Remove active class de todos os links
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    // Adiciona active class ao link clicado
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    
                     this.classList.add('active');
                     
                     const targetId = this.getAttribute('href');
@@ -781,7 +915,54 @@
                 });
             });
             
-            // Destacar seção ativa durante o scroll
+            // Botão voltar ao topo
+            window.addEventListener('scroll', function() {
+                // Mostrar/ocultar botão voltar ao topo
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+                
+                // Atualizar barra de progresso
+                const winHeight = window.innerHeight;
+                const docHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset;
+                const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Modal para visualização de imagens
+            imageCards.forEach(card => {
+                const img = card.querySelector('img');
+                img.addEventListener('click', function() {
+                    modalImage.src = this.src;
+                    modalImage.alt = this.alt;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Atualizar navegação ativa baseada na rolagem
             window.addEventListener('scroll', function() {
                 let current = '';
                 const sections = document.querySelectorAll('section');
@@ -789,7 +970,7 @@
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
-                    if (scrollY >= (sectionTop - 150)) {
+                    if (pageYOffset >= (sectionTop - 150)) {
                         current = section.getAttribute('id');
                     }
                 });
@@ -801,11 +982,26 @@
                     }
                 });
             });
+            
+            // Adicionar lazy loading para imagens que não estão na viewport inicial
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
         });
     </script>
 </body>
 </html>
-
 
 
 
