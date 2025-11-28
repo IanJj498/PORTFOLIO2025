@@ -514,10 +514,7 @@
             <div class="image-container">
                 <div class="image-card" data-category="humanas">
                     <span class="card-category">Humanas</span>
-                    <img src="constituição.jpg" alt="Atividade de humanas 1" loading="lazy">
-                    <div class="overlay">
-                        <h3>Análise Textual</h3>
-                        <p>Atividade de interpretação e análise de textos literários</p>
+                    <img src="constituição.jpg" >
                     </div>
                 </div>
             </div>
@@ -534,7 +531,6 @@
     </footer>
 
     <script>
-        // Botão voltar ao topo
         const backToTop = document.getElementById('backToTop');
 
         window.addEventListener('scroll', () => {
@@ -549,17 +545,14 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Navegação suave
         document.querySelectorAll('.nav-menu a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Remove active class from all links
                 document.querySelectorAll('.nav-menu a').forEach(link => {
                     link.classList.remove('active');
                 });
                 
-                // Add active class to clicked link
                 this.classList.add('active');
                 
                 const targetId = this.getAttribute('href');
@@ -574,7 +567,6 @@
             });
         });
 
-        // Atualizar navegação ativa ao scroll
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('.section');
             const navLinks = document.querySelectorAll('.nav-menu a');
@@ -599,6 +591,7 @@
     </script>
 </body>
 </html>
+
 
 
 
