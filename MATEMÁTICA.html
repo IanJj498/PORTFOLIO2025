@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MATEMÁTICA </title>
+    <title>MATEMÁTICA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -101,12 +101,13 @@
             display: inline-block;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
-      .image-grid {
-  display: flex;           
-  gap: 20px;               
-  justify-content: center;  
-}
-
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
         .image-card {
             border-radius: 12px;
             overflow: hidden;
@@ -133,7 +134,18 @@
             transform: scale(1.1);
         }
         
-    
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: var(--transition);
+            opacity: 0;
+        }
         
         .image-card:hover .image-overlay {
             opacity: 1;
@@ -307,105 +319,102 @@
 
     <div class="container">
         <section id="eixo1" class="section">
-            <h2 class="section-title">EIXO 1 </h2>
+            <h2 class="section-title">EIXO 1</h2>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="timbradodeirisneide2.jpg" alt="timbradoirisneide2">
-                    </div>
+                    <img src="timbradodeirisneide2.jpg" alt="Timbra do Irisneide 2">
                 </div>
                 <div class="image-card">
-                    <img src="timbradodeirisneide3.jpg" alt="timbradoirisneide3">
-        
-                    </div>
+                    <img src="timbradodeirisneide3.jpg" alt="Timbra do Irisneide 3">
                 </div>
             </div>
         </section>
 
         <section id="eixo2" class="section">
-            <h2 class="section-title">EIXO 2 </h2>
+            <h2 class="section-title">EIXO 2</h2>
             <div class="image-grid">
                 <div class="image-card">
-                    <img src="MATEMATICAA.png" >
+                    <img src="MATEMATICAA.png" alt="Matemática">
+                </div>
+                <div class="image-card">
+                    <img src="MATEMATICAA2.png" alt="Matemática 2">
+                </div>
+                <div class="image-card">
+                    <img src="MATEMATICAA3.png" alt="Matemática 3">
+                </div>
+            </div>
+        </section>
+
+        <section id="eixo3" class="section">
+            <h2 class="section-title">EIXO 3</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="graficoseestatistica.png" alt="Gráficos e Estatística">
+                </div>
+                <div class="image-card">
+                    <img src="ciclodavida.jpeg" alt="Ciclo da Vida">
+                </div>
+                <div class="image-card">
+                    <img src="graficosetabelaaaaaaaaaaas.jpeg" alt="Gráficos e Tabelas">
+                </div>
+                <div class="image-card">
+                    <img src="listairiseregianecompleto.png" alt="Lista Iris e Regiane">
+                </div>
+            </div>
+        </section>
+
+        <section id="eixo4" class="section">
+            <h2 class="section-title">EIXO 4</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="numeroscomplexos.png" alt="Números Complexos">
+                    <div class="image-overlay">
+                        <div class="image-title">Números Complexos</div>
+                        <div class="image-desc">Representações e aplicações dos números complexos</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="MATEMATICAA2.png">
+                    <img src="numeroscomplexos.jpeg" alt="Números Complexos - Ilustração">
+                    <div class="image-overlay">
+                        <div class="image-title">Números Complexos</div>
+                        <div class="image-desc">Visualização gráfica dos números complexos</div>
                     </div>
                 </div>
                 <div class="image-card">
-                    <img src="MATEMATICAA3.png" alt=" matematica">
+                    <img src="graficosetabelaaaaaaaaaaas.jpeg" alt="Gráficos e Tabelas">
+                    <div class="image-overlay">
+                        <div class="image-title">Gráficos e Tabelas</div>
+                        <div class="image-desc">Organização e análise de dados</div>
                     </div>
                 </div>
+                <div class="image-card">
+                    <img src="listairiseregianecompleto.png" alt="Lista Iris e Regiane">
+                </div>
             </div>
-      <section id="eixo3" class="section">
-    <h2 class="section-title">EIXO 3</h2>
-    <div class="image-grid">
-        
-        <div class="image-card">
-            <img src="graficoseestatistica.png" alt="Gráficos e Estatística">
-        </div>
+        </section>
 
-        <div class="image-card">
-            <img src="ciclodavida.jpeg" alt="Ciclo da Vida">
-            <div clas
-        </div>
-
-        <div class="image-card">
-            <img src="graficosetabelaaaaaaaaaaas.jpeg" alt="Gráficos e Tabelas"
-        </div>
-
-        <div class="image-card">
-            <img src="listairiseregianecompleto.png" alt="listairiseregiane">
-        </div>
-
+        <section id="atividade-escolhida" class="section">
+            <h2 class="section-title">Atividade escolhida</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="MATEMATICAA3.png" alt="Atividade Escolhida">
+                </div>
+            </div>
+        </section>
     </div>
-</section>
-<section id="eixo4" class="section">
-    <h2 class="section-title">EIXO 4</h2>
-    <div class="image-grid">
-        <div class="image-card">
-            <img src="numeroscomplexos.png">
-                <div class="image-title">Números Complexos</div>
-                <div class="image-desc">Representações e aplicações dos números complexos</div>
-            </div>
-        </div>
-        <div class="image-card">
-            <img src="numeroscomplexos.jpeg" alt="Números Complexos - Ilustração" loading="lazy">
-                <div class="image-title">Números Complexos</div>
-                <div class="image-desc">Visualização gráfica dos números complexos</div>
-            </div>
-        </div>
-        <div class="image-card">
-            <img src="graficosetabelaaaaaaaaaaas.jpeg" alt="Gráficos e Tabelas" loading="lazy">
-                <div class="image-title">Gráficos e Tabelas</div>
-                <div class="image-desc">Organização e análise de dados</div>
-            </div>
-            <div class="image-card">
-            <img src="listairiseregianecompleto.png">
-        </div
-    </div>
-</section>
-<section id="atividade-escolhida" class="section">
-  <h2 class="section-title">Atividade escolhida</h2>
-  <div class="image-grid">
-    <div class="image-card">
-      <img src="MATEMATICAA3.png" >
-    </div>
-  </div>
-</section>
 
-<footer>
-</footer>
+    <footer>
         <div class="footer-content">
             <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
             <p class="footer-text">Orientadora: <span class="footer-name">Regiane Leal</span></p>
             <div class="student-info">
-                <p> Ian Joseph | Ano: 2025</p>
+                <p>Ian Joseph | Ano: 2025</p>
             </div>
             <div class="footer-divider"></div>
             <span class="institution">SESI / SENAI</span>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('img');
@@ -437,21 +446,6 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
