@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINGUAGENS</title>
+    <title>Portfólio de Linguagens | SESI/SENAI</title>
+    <meta name="description" content="Portfólio de atividades e projetos desenvolvidos na área de Linguagens">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
@@ -35,6 +36,7 @@
             min-height: 100vh;
         }
         
+        /* Header */
         header {
             background: var(--gradient);
             padding: 2.5rem 1rem;
@@ -110,6 +112,7 @@
             transform: translateY(-2px);
         }
         
+        /* Main Content */
         .container {
             max-width: 1200px;
             margin: 3rem auto;
@@ -146,6 +149,7 @@
             box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
         }
         
+        /* Sections */
         .section {
             background: white;
             border-radius: var(--radius);
@@ -180,6 +184,7 @@
             font-size: 1.1rem;
         }
         
+        /* Image Grid */
         .image-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -248,6 +253,7 @@
             text-align: center;
             padding: 4rem 2rem;
             color: #777;
+            grid-column: 1 / -1;
         }
         
         .empty-state i {
@@ -260,6 +266,7 @@
             font-size: 1.3rem;
         }
         
+        /* Footer */
         footer {
             background: var(--gradient);
             color: white;
@@ -433,6 +440,7 @@
             vertical-align: middle;
         }
         
+        /* Responsividade */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -501,10 +509,12 @@
         </div>
     </header>
 
-    <div class="container">
+    <main class="container">
         <div class="filter-container">
-            <button class="filter-btn active"><i class="fas fa-layer-group"></i> Todos</button>
-            <button class="filter-btn"><i class="fas fa-language"></i> Atividades escolhidas</button>
+            <button class="filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> Todos</button>
+            <button class="filter-btn" data-filter="linguagem"><i class="fas fa-language"></i> Linguagem</button>
+            <button class="filter-btn" data-filter="redacao"><i class="fas fa-pen-fancy"></i> Redação</button>
+            <button class="filter-btn" data-filter="projeto"><i class="fas fa-project-diagram"></i> Projeto</button>
         </div>
 
         <section id="eixo1" class="section fade-in delay-1">
@@ -516,7 +526,7 @@
             <div class="image-container">
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
-                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1" >
+                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1">
                     <div class="overlay">
                         <h3>Análise Textual</h3>
                         <p>Atividade de interpretação e análise de textos literários</p>
@@ -532,98 +542,151 @@
                 </div>
                 <div class="image-card" data-category="redacao">
                     <span class="card-category">Redação</span>
-                    <img src="REDAÇÃOO2.png" alt="Redação" >
+                    <img src="REDAÇÃOO2.png" alt="Redação">
                     <div class="overlay">
+                        <h3>Produção Textual</h3>
+                        <p>Redação sobre tema específico</p>
+                    </div>
+                </div>
+                <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
+                    <img src="https://via.placeholder.com/400x300" alt="Projeto de Literatura">
+                    <div class="overlay">
+                        <h3>Projeto Literário</h3>
+                        <p>Análise de obra literária brasileira</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo2" class="section fade-in delay-2">
-            <h2 class="section-title">EIXO 2 <span class="eixo-badge">3 atividades</span></h2>
+            <h2 class="section-title">EIXO 2 - Língua Inglesa e Produção Cultural <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
+                Atividades relacionadas ao aprendizado da Língua Inglesa e produção cultural, com foco em comunicação 
+                e expressão em diferentes contextos.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="projeto">
                     <span class="card-category">Projeto</span>
                     <img src="timbradohumanass (1).jpg" alt="Trabalho de Humanas">
+                    <div class="overlay">
+                        <h3>Trabalho de Humanas</h3>
+                        <p>Projeto interdisciplinar sobre cultura e sociedade</p>
                     </div>
-                
+                </div>
                 <div class="image-card" data-category="redacao">
-    <span class="card-category">Redação</span>
-    <img src="REDAÇÃOO.png" alt="Redação" >
-    <div class="overlay">
-    </div>
-</div>
-
-<div class="image-card" data-category="projeto">
-    <span class="card-category">Projeto</span>
-    <img src="emma.png" alt="Projeto" >
-    <div class="overlay">
-    </div>
-</div>
-
+                    <span class="card-category">Redação</span>
+                    <img src="REDAÇÃOO.png" alt="Redação">
+                    <div class="overlay">
+                        <h3>Redação Argumentativa</h3>
+                        <p>Texto dissertativo-argumentativo sobre tema atual</p>
+                    </div>
+                </div>
+                <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
+                    <img src="emma.png" alt="Projeto Emma">
+                    <div class="overlay">
+                        <h3>Projeto Emma</h3>
+                        <p>Análise de obra literária em língua inglesa</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo3" class="section fade-in delay-3">
-            <h2 class="section-title">EIXO 3  <span class="eixo-badge">3 atividades</span></h2>
+            <h2 class="section-title">EIXO 3 - Análise Linguística e Produção Textual <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
-               
+                Atividades de análise linguística e produção textual, explorando diferentes gêneros textuais 
+                e recursos linguísticos.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="projeto">
                     <span class="card-category">Projeto</span>
-                    <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens" >
+                    <img src="mapamentaldelinguagens.png" alt="Mapa Mental de Linguagens">
                     <div class="overlay">
-
+                        <h3>Mapa Mental</h3>
+                        <p>Organização visual de conceitos de linguagem</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="projeto">
                     <span class="card-category">Projeto</span>
-                    <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina" >
+                    <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina">
                     <div class="overlay">
-                    
+                        <h3>Morte e Vida Severina</h3>
+                        <p>Análise da obra de João Cabral de Melo Neto</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
-                    <img src="simplepast.png" alt="Atividade de Inglês" >
+                    <img src="simplepast.png" alt="Atividade de Inglês">
                     <div class="overlay">
+                        <h3>Simple Past</h3>
+                        <p>Exercícios de gramática em língua inglesa</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="eixo4" class="section fade-in delay-4">
-            <h2 class="section-title">EIXO 4 <span class="eixo-badge"></span></h2>
+            <h2 class="section-title">EIXO 4 - Práticas de Leitura e Escrita <span class="eixo-badge">2 atividades</span></h2>
             <p class="section-description">
-                <img src="simplepast.png">
+                Atividades práticas de leitura e escrita, desenvolvendo habilidades de compreensão 
+                e produção textual em diferentes contextos.
             </p>
             <div class="image-container">
+                <div class="image-card" data-category="linguagem">
+                    <span class="card-category">Linguagem</span>
+                    <img src="listaderute.png" alt="Lista de Rute">
+                    <div class="overlay">
+                        <h3>Lista de Rute</h3>
+                        <p>Atividade de interpretação de texto</p>
+                    </div>
                 </div>
-            <img src="listaderute.png">
+                <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
+                    <img src="https://via.placeholder.com/400x300" alt="Projeto de Escrita Criativa">
+                    <div class="overlay">
+                        <h3>Escrita Criativa</h3>
+                        <p>Produção de textos literários autorais</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="atividades-escolhidas" class="section fade-in">
             <h2 class="section-title">Atividades Escolhidas <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
+                Seleção das atividades mais significativas desenvolvidas ao longo do curso, 
+                representando o crescimento e aprendizado na área de Linguagens.
             </p>
             <div class="image-container">
                 <div class="image-card" data-category="linguagem">
                     <span class="card-category">Linguagem</span>
-                <div class="image-card" data-category="linguagem">
-                    <span class="card-category">Linguagem</span>
-                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1" >
+                    <img src="ATVLINGUAGEM.png" alt="Atividade de Linguagem 1">
                     <div class="overlay">
+                        <h3>Análise Textual</h3>
+                        <p>Atividade de interpretação e análise de textos literários</p>
+                    </div>
+                </div>
+                <div class="image-card" data-category="projeto">
+                    <span class="card-category">Projeto</span>
+                    <img src="morteevidaseverina.jpg" alt="Morte e Vida Severina">
+                    <div class="overlay">
+                        <h3>Morte e Vida Severina</h3>
+                        <p>Análise da obra de João Cabral de Melo Neto</p>
+                    </div>
+                </div>
+                <div class="image-card" data-category="redacao">
+                    <span class="card-category">Redação</span>
+                    <img src="REDAÇÃOO.png" alt="Redação">
+                    <div class="overlay">
+                        <h3>Redação Argumentativa</h3>
+                        <p>Texto dissertativo-argumentativo sobre tema atual</p>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-content">
@@ -655,15 +718,15 @@
         </div>
     
         <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
         
         <div class="copyright">
             <p>&copy; 2025 LINGUAGENS - Todos os direitos reservados</p>
-            <p> Atividade orientada pelo Orientador Cleiton jérico</p>
+            <p>Atividade orientada pelo Professor Cleiton Jérico</p>
         </div>
     </footer>
 
@@ -671,18 +734,20 @@
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const imageCards = document.querySelectorAll('.image-card');
+            const navLinks = document.querySelectorAll('.nav-menu a');
             
+            // Sistema de filtros
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
+                    // Remove active class de todos os botões
                     filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
+                    // Adiciona active class ao botão clicado
                     this.classList.add('active');
                     
-                    const filter = this.textContent.trim().toLowerCase();
+                    const filter = this.getAttribute('data-filter');
                     
                     imageCards.forEach(card => {
-                        if (filter === 'todos') {
+                        if (filter === 'all') {
                             card.style.display = 'block';
                         } else {
                             const category = card.getAttribute('data-category');
@@ -696,14 +761,14 @@
                 });
             });
             
-            document.querySelectorAll('.nav-menu a').forEach(anchor => {
+            // Navegação suave e destaque de seção ativa
+            navLinks.forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    document.querySelectorAll('.nav-menu a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    
+                    // Remove active class de todos os links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    // Adiciona active class ao link clicado
                     this.classList.add('active');
                     
                     const targetId = this.getAttribute('href');
@@ -713,6 +778,27 @@
                         top: targetSection.offsetTop - 100,
                         behavior: 'smooth'
                     });
+                });
+            });
+            
+            // Destacar seção ativa durante o scroll
+            window.addEventListener('scroll', function() {
+                let current = '';
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
                 });
             });
         });
