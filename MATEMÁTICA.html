@@ -101,14 +101,12 @@
             display: inline-block;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
-        
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
+      .image-grid {
+  display: flex;           
+  gap: 20px;               
+  justify-content: center;  
+}
+
         .image-card {
             border-radius: 12px;
             overflow: hidden;
@@ -375,18 +373,14 @@
                     </div>
                 </div>
                     </div>
-                </div>
-            </div>
-        </section>
-<section id="eixo4" class="section">
+        <section id="eixo4" class="section">
   <h2 class="section-title">EIXO 4</h2>
   <div class="image-grid">
     <div class="image-card">
-      <img src="numeroscomplexos.png" >
-  <div class="image-grid">
+      <img src="numeroscomplexos.png" alt="Números Complexos">
+    </div>
     <div class="image-card">
-        <img src="numeroscomplexos.jpeg" >
-      </div>
+      <img src="numeroscomplexos.jpeg" alt="Números Complexos Alternativo">
     </div>
   </div>
 </section>
@@ -401,7 +395,6 @@
 </section>
 
 <footer>
-  <!-- Conteúdo do rodapé -->
 </footer>
         <div class="footer-content">
             <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
@@ -444,6 +437,7 @@
     </script>
 </body>
 </html>
+
 
 
 
