@@ -5,1449 +5,467 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividades escolhidas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #000000;   
-            --white: #ffffff;
-            --gray-10: #1a1a1a;
-            --gray-20: #2a2a2a;
-            --gray-30: #3a3a3a;
-            --gray-40: #4a4a4a;
-            --gray-50: #5a5a5a;
-            --accent: #00ffff;
-            --accent-glow: rgba(0, 255, 255, 0.3);
-            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --primary: #1e07cc;
+            --primary-dark: #1000a3;
+            --accent: #ffffff;
+            --light: #f5f5f5;
+            --dark: #121212;
+            --gray: #2d3436;
+            --text-light: #ffffff;
+            --text-dark: #2d3436;
+            --shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        
         body {
-            font-family: 'Exo 2', sans-serif;
-            background: var(--black);
-            color: var(--white);
-            overflow-x: hidden;
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #2d3436 0%, #1a1a1a 100%);
+            color: var(--text-light);
             line-height: 1.6;
+            min-height: 100vh;
         }
-
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--black);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease;
+        
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
         }
-
-        .loader-text {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            color: var(--white);
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            letter-spacing: 3px;
-        }
-
-        .loader-bar {
-            width: 300px;
-            height: 2px;
-            background: var(--gray-30);
-            position: relative;
-            overflow: hidden;
-            border-radius: 2px;
-        }
-
-        .loader-progress {
-            position: absolute;
-            height: 100%;
-            width: 0%;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-            transition: width 2s ease;
-        }
-
+        
         header {
-            background: rgba(0, 0, 0, 0.95);
-            width: 100%;
-            padding: 1.5rem 2rem;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--gray-30);
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-        }
-
-        .logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-        }
-
-        nav {
-            display: flex;
-            gap: 1rem;
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.8rem 1.2rem;
-            border: 1px solid transparent;
-            transition: var(--transition);
-            font-weight: 500;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
-            font-family: 'Exo 2', sans-serif;
         }
-
-        nav a::before {
+        
+        header::before {
             content: "";
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        nav a:hover::before {
-            left: 100%;
-        }
-
-        nav a:hover, nav a.active {
-            border: 1px solid var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-            color: var(--accent);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: 1px solid var(--gray-40);
-            color: var(--white);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.8rem;
-            transition: var(--transition);
-            border-radius: 4px;
-        }
-
-        .menu-toggle:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 6rem 2rem 2rem;
-            position: relative;
-            overflow: hidden;
-            background: 
-                linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000"/><path d="M0 0 L100 100 M100 0 L0 100" stroke="%23333" stroke-width="0.5"/></svg>');
-        }
-
-        .scan-line {
-            position: absolute;
-            top: 0;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-            animation: scan 8s linear infinite;
-            z-index: 1;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 Q25,25 50,50 Q75,75 100,50 L100,100 L0,100 Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
+            background-size: 120% 120%;
+            background-position: center;
         }
-
-        @keyframes scan {
-            0% { top: 0%; }
-            50% { top: 100%; }
-            100% { top: 0%; }
-        }
-
-        .hero-content {
+        
+        header h1 {
+            font-size: 4.5rem;
+            margin: 0;
             position: relative;
-            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .header-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+            position: relative;
+            font-style: italic;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section-title {
+            color: var(--accent);
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-description {
+            color: #cccccc;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
             max-width: 800px;
-            width: 100%;
+            line-height: 1.8;
         }
-
-        .profile-image-container {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 2rem;
-            position: relative;
-            border: 2px solid var(--gray-40);
-            padding: 5px;
-            background: var(--gray-10);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .image-card {
+            border-radius: 15px;
             overflow: hidden;
+            box-shadow: var(--shadow);
             transition: var(--transition);
+            position: relative;
+            height: 320px;
+            background: var(--gray);
         }
-
-        .profile-image-container:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 30px var(--accent-glow);
-            transform: scale(1.05);
+        
+        .image-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
         }
-
-        .profile-image {
+        
+        .image-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(20%) contrast(110%);
             transition: var(--transition);
         }
-
-        .profile-image-container:hover .profile-image {
-            filter: grayscale(0%) contrast(120%);
+        
+        .image-card:hover img {
             transform: scale(1.1);
         }
-
-        .profile-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--white);
-            position: relative;
-            display: inline-block;
-            letter-spacing: 2px;
-        }
-
-        .profile-title::after {
-            content: "";
+        
+        .image-overlay {
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .profile-subtitle {
-            font-family: 'Exo 2', sans-serif;
-            font-size: 1.5rem;
-            margin: 2rem 0;
-            color: var(--gray-50);
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        .status-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 10px var(--accent-glow);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { 
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% { 
-                opacity: 0.5;
-                transform: scale(1.2);
-            }
-            100% { 
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-            z-index: 2;
-            position: relative;
-        }
-
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            transition: var(--transition);
-            border: 1px solid var(--gray-40);
-            width: 50px;
-            height: 50px;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gray-10);
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
-            transform: translateY(-5px) rotate(5deg);
-            color: var(--accent);
-        }
-
-        main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 1rem;
-        }
-
-        .section-slideshow {
-            background: var(--gray-10);
-            border: 1px solid var(--gray-30);
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 1.8rem;
+            color: white;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(15px);
             transition: var(--transition);
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
         }
-
-        .section-slideshow.visible {
+        
+        .image-card:hover .image-overlay {
             opacity: 1;
             transform: translateY(0);
         }
-
-        .section-slideshow::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            font-family: 'Orbitron', monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--white);
-            font-size: 1.8rem;
-        }
-
-        .section-header::before {
-            content: "//";
-            color: var(--accent);
-            margin-right: 15px;
-            font-weight: 400;
-            font-size: 2rem;
-        }
-
-        .slideshow-container {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--gray-30);
-            background: var(--gray-20);
-        }
-
-        .slides-wrapper {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 100%;
-        }
-
-        .slide {
-            min-width: 100%;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .slide-image-container {
-            width: 100%;
-            max-width: 800px;
-            height: 400px;
-            margin-bottom: 2rem;
-            border: 2px solid var(--gray-30);
-            overflow: hidden;
-            position: relative;
-            background: var(--black);
-        }
-
-        .slide-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.5s ease;
-        }
-
-        .slide:hover .slide-image {
-            transform: scale(1.05);
-        }
-
-        .slide-info {
-            max-width: 800px;
-            width: 100%;
-        }
-
-        .slide-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .slide-description {
-            color: var(--gray-50);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .slide-details {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--white);
-            font-size: 0.9rem;
-        }
-
-        .detail-item i {
-            color: var(--accent);
-        }
-
-        .slideshow-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
-            padding: 0 1rem;
-        }
-
-        .eixo-indicator {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .eixo-number {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        .slideshow-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .slideshow-btn {
-            background: var(--gray-20);
-            border: 1px solid var(--gray-40);
-            color: var(--white);
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .slideshow-btn:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
-            transform: translateY(-3px);
-            color: var(--accent);
-        }
-
-        .slideshow-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .slideshow-btn:disabled:hover {
-            border-color: var(--gray-40);
-            box-shadow: none;
-            color: var(--white);
-        }
-
-        .slide-dots {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--gray-40);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .dot.active {
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-            transform: scale(1.2);
-        }
-
-        .dot:hover {
-            background: var(--accent);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--gray-10);
-            color: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-top: 1px solid var(--gray-30);
-        }
-
-        footer::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-text {
-            margin: 0.8rem 0;
-            font-size: 1.1rem;
-            color: var(--gray-50);
-            line-height: 1.8;
-        }
-
-        .footer-name {
-            color: var(--accent);
+        
+        .image-title {
             font-weight: 600;
-            text-shadow: 0 0 5px var(--accent-glow);
+            margin-bottom: 0.6rem;
+            font-size: 1.3rem;
         }
-
-        .footer-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gray-40), transparent);
-            margin: 1.5rem auto;
-            width: 100%;
-            max-width: 400px;
+        
+        .image-desc {
+            font-size: 1rem;
+            opacity: 0.9;
         }
-
-        .institution {
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            color: var(--white);
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            margin-top: 1rem;
-            display: block;
-            text-transform: uppercase;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--gray-20);
-            color: var(--white);
-            border: 1px solid var(--gray-40);
-            border-radius: 0;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            display: none;
-            z-index: 1000;
-            transition: var(--transition);
-            font-size: 1.2rem;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .back-to-top.visible {
+        
+        .image-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 1;
-            transform: translateY(0);
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 2;
         }
-
-        .back-to-top:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
-            transform: translateY(-5px);
+        
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .circle-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .circle-2 {
+            width: 60px;
+            height: 60px;
+            bottom: 30%;
+            right: 15%;
+            animation-delay: 3s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #2d3436 100%);
+            color: var(--text-light);
+            padding: 3.5rem 1rem;
+            text-align: center;
+            margin-top: 5rem;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .footer-text {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .footer-name {
+            font-weight: bold;
             color: var(--accent);
         }
-
+        
+        .footer-divider {
+            height: 3px;
+            width: 120px;
+            background: var(--accent);
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+        
+        .institution {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 1.5rem;
+            display: block;
+        }
+        
+        .student-info {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .profile-title {
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.3rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
                 font-size: 2.8rem;
             }
             
-            nav {
-                gap: 0.8rem;
-            }
-            
-            nav a {
-                padding: 0.7rem 1rem;
-                font-size: 0.8rem;
-            }
-            
-            .slide-image-container {
-                height: 350px;
-            }
-        }
-
-        @media (max-width: 900px) {
-            nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                right: 0;
-                background: var(--gray-10);
-                width: 100%;
-                padding: 1rem;
-                border-top: 1px solid var(--gray-30);
-                border-left: 1px solid var(--gray-30);
-                z-index: 1001;
-            }
-            
-            nav.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            header {
-                padding: 1rem;
-            }
-            
-            .section-slideshow {
-                padding: 1.5rem;
-                min-height: 500px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .profile-title {
-                font-size: 2.5rem;
-            }
-            
-            .profile-subtitle {
+            .header-subtitle {
                 font-size: 1.2rem;
             }
             
-            .profile-image-container {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .section-header {
-                font-size: 1.5rem;
-            }
-            
-            .slide-image-container {
-                height: 300px;
-            }
-            
-            .slide-title {
-                font-size: 1.3rem;
-            }
-            
-            .social-links a {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-            }
-            
-            .slideshow-btn {
-                width: 45px;
-                height: 45px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-title {
+            .section-title {
                 font-size: 2rem;
             }
             
-            .profile-subtitle {
+            .image-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .image-card {
+                height: 300px;
+            }
+            
+            .decorative-circle {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-subtitle {
                 font-size: 1rem;
             }
             
-            .hero {
-                padding: 5rem 1rem 1rem;
+            .section-title {
+                font-size: 1.8rem;
             }
             
-            .profile-image-container {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .section-header {
-                font-size: 1.3rem;
-            }
-            
-            .slide-image-container {
-                height: 250px;
-            }
-            
-            .slide-title {
+            .footer-text {
                 font-size: 1.1rem;
-            }
-            
-            .slide-description {
-                font-size: 1rem;
-            }
-            
-            .social-links {
-                gap: 1rem;
-            }
-            
-            .social-links a {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-            
-            footer {
-                padding: 2rem 1rem;
             }
             
             .institution {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
-            
-            .section-slideshow {
-                padding: 1rem;
-                min-height: 450px;
-            }
-            
-            .slideshow-nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
+        }
+        
+        .image-card img {
+            background: linear-gradient(45deg, #2d3436, #1e07cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .image-card img::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-text">CARREGANDO PORTFÓLIO</div>
-        <div class="loader-bar">
-            <div class="loader-progress"></div>
-        </div>
-    </div>
-
     <header>
-        <div class="Atividades">ESCOLHIDAS<span><</div>
-        <div class="nav-container">
-            <nav id="nav">
-                <a href="#historia" class="active">HISTÓRIA</a>
-                <a href="#linguagens">LINGUAGENS</a>
-                <a href="#humanas">HUMANAS</a>
-                <a href="#naturezas">NATUREZAS</a>
-                <a href="#matematica">MATEMÁTICA</a>
-                <a href="#senai">SENAI</a>
-            </nav>
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
+        <h1>ANEXOS</h1>
+        <p> Atividades escolhidas</p>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="scan-line"></div>
-        <div class="hero-content">
-            <div class="profile-image-container">
-                <img src="ijjj.png" alt="Ian Joseph" class="profile-image">
-            </div>
-            <h1 class="profile-title">IAN JOSEPH</h1>
-            <h2 class="profile-subtitle">
-                <span class="status-indicator"></span>
-                Ativiadade escolhidas.
-            </h2>            
-            <div class="social-links">
-                <a href="https://www.instagram.com/ianjosepph/" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.canva.com/design/DAF-TvFsFgI/z9R7gsfr45Q01L0hudI56Q/edit" target="_blank" aria-label="Canva">
-                    <i class="fab fa-canva" style="font-style: normal; font-weight: bold;">C</i>
-                </a>
-            </div>
-        </div>
-    </section>
+    <div class="container">
+        <section>
+            <p class="section-description">
+            </p>
+            
+            <div class="image-grid">
+                <div class="image-card">
+                    <div class="image-number">1</div>
+                    <img src=" ATVLINGUAGEM.PNG" alt="Anexo 1 - Documentação Inicial" loading="lazy">
+                    <div class="image-overlay">
+                     <img src=" ATVLINGUAGEN2.JPG" alt="Anexo 1 - Documentação Inicial" loading="lazy">
+                      <div class="image-overlay">
+                     <img src="emma.png " alt="Anexo 1 - Documentação Inicial" loading="lazy">
+                    <div class="image-overlay">
+                      <img src="listaderute.png" alt="Anexo 1 - Documentação Inicial" loading="lazy">
 
-    
-                    <div class="slide">
-                        <div class="slide-image-container">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Objetivos" class="slide-image">
-                        </div>
-                       
-            </div>
-            <div class="slideshow-nav">
-                <div class="eixo-indicator">
-                    EIXO: <span class="eixo-number">1</span>/2
+
+
+                    </div>
                 </div>
-                <div class="slideshow-buttons">
-                    <button class="slideshow-btn prev-btn" onclick="changeSlide('historia', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slideshow-btn next-btn" onclick="changeSlide('historia', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                
+                <div class="image-card">
+                    <div class="image-number">2</div>
+                    <img src="anexos2.png" alt="Anexo 2 - Pesquisa e Referências" loading="lazy">
+                    <div class="image-overlay">
+                    </div>
                 </div>
-            </div>
-            <div class="slide-dots" id="historia-dots">
-                <span class="dot active" onclick="goToSlide('historia', 0)"></span>
-                <span class="dot" onclick="goToSlide('historia', 1)"></span>
+                 <H1>
+                    Humanas
+                 </H1>
+                <div class="image-card">
+                    <img src="venezuelaportfolioo.png" loading="lazy">
+                    <div class="ima ge-overlay">
+                    <img src="fluxomigratorio.png" loading="lazy">
+                 <div class="image-overlay">
+                 <img src="midiaepolitica.jpg" loading="lazy">
+                <div class="image-overlay">
+                <img src="fimdesemananoparquetexto.png" loading="lazy">
+
+
+
+
+                    </div>
+                </div>
+                <h1>
+                    Naturezas
+                </h1>
+                <div class="image-card">
+                    <div class="image-number">4</div>
+                    <img src="anexos4.png" alt="Anexo 4 - Resultados Finais" loading="lazy">
+                    <div class="image-overlay">
+                    </div>
+                </div>
             </div>
         </section>
-
-      <section class="section-slideshow" id="linguagens">
-    <h2 class="section-header">LINGUAGENS</h2>
-    <div class="slideshow-container">
-        <div class="slides-wrapper" id="linguagens-slides">
-            
-            <!-- Slide 1 -->
-            <div class="slide">
-                <div class="slide-image-container">
-                    <img src="ATVLINGUAGEM.PNG" alt="Atividade de Linguagem 1">
-                </div>
-                <div class="slide-info">
-                    <h3 class="slide-title">ATIVIDADE 1 - ANÁLISE CRÍTICA</h3>
-                    <p class="slide-description">
-                        Descrição da atividade de análise crítica.
-                    </p>
-                    <div class="slide-details">
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>Abril 2024</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-file-alt"></i>
-                            <span>Análise Crítica</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-star"></i>
-                            <span>Nota: 9.5</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 2 -->
-            <div class="slide">
-                <div class="slide-image-container">
-                    <img src="ATVLINGUAGEN2.JPG" alt="Atividade de Linguagem 2">
-                </div>
-                <div class="slide-info">
-                    <h3 class="slide-title">ATIVIDADE 2 - PRODUÇÃO TEXTUAL</h3>
-                    <p class="slide-description">
-                        Descrição da atividade de produção textual.
-                    </p>
-                    <div class="slide-details">
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>Maio 2024</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-file-alt"></i>
-                            <span>Produção Textual</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-star"></i>
-                            <span>Nota: 9.0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 3 -->
-            <div class="slide">
-                <div class="slide-image-container">
-                    <img src="emma.png" alt="Atividade de Linguagem 3">
-                </div>
-                <div class="slide-info">
-                    <h3 class="slide-title">ATIVIDADE 3</h3>
-                    </p>
-                    <div class="slide-details">
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>Maio 2024</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-file-alt"></i>
-                            <span>Apresentação Oral</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-star"></i>
-                            <span>Nota: 9.2</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
     </div>
-</section>
-            <div class="slideshow-nav">
-                <div class="eixo-indicator">
-                    EIXO: <span class="eixo-number">1</span>/3
-                </div>
-                <div class="slideshow-buttons">
-                    <button class="slideshow-btn prev-btn" onclick="changeSlide('linguagens', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slideshow-btn next-btn" onclick="changeSlide('linguagens', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="slide-dots" id="linguagens-dots">
-                <span class="dot active" onclick="goToSlide('linguagens', 0)"></span>
-                <span class="dot" onclick="goToSlide('linguagens', 1)"></span>
-                <span class="dot" onclick="goToSlide('linguagens', 2)"></span>
-            </div>
-        </section>
 
-        <!-- Humanas -->
-        <section class="section-slideshow" id="humanas">
-            <h2 class="section-header">CIÊNCIAS HUMANAS</h2>
-            <div class="slideshow-container">
-                <div class="slides-wrapper" id="humanas-slides">
-                    <div class="slide">
-                        <div class="slide-image-container">
-                            <img src="https://images.unsplash.com/photo-1585208798174-7afe72dc0fbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Atividade 1 - Humanas" class="slide-image">
-                        </div>
-                        <div class="slide-info">
-                            <h3 class="slide-title">ATIVIDADE 1 - REVOLUÇÃO INDUSTRIAL</h3>
-                            <p class="slide-description">
-                                Estudo sobre os impactos sociais e econômicos da Revolução Industrial na sociedade moderna.
-                                Análise das transformações no mundo do trabalho.
-                            </p>
-                            <div class="slide-details">
-                                <div class="detail-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Março 2024</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>Pesquisa Histórica</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-star"></i>
-                                    <span>Nota: 9.3</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slideshow-nav">
-                <div class="eixo-indicator">
-                    EIXO: <span class="eixo-number">1</span>/1
-                </div>
-                <div class="slideshow-buttons">
-                    <button class="slideshow-btn prev-btn" onclick="changeSlide('humanas', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slideshow-btn next-btn" onclick="changeSlide('humanas', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="slide-dots" id="humanas-dots">
-                <span class="dot active" onclick="goToSlide('humanas', 0)"></span>
-            </div>
-        </section>
-
-        <!-- Naturezas -->
-        <section class="section-slideshow" id="naturezas">
-            <h2 class="section-header">CIÊNCIAS DA NATUREZA</h2>
-            <div class="slideshow-container">
-                <div class="slides-wrapper" id="naturezas-slides">
-                    <div class="slide">
-                        <div class="slide-image-container">
-                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Atividade 1 - Naturezas" class="slide-image">
-                        </div>
-                        <div class="slide-info">
-                            <h3 class="slide-title">ATIVIDADE 1 - EXPERIMENTO QUÍMICO</h3>
-                            <p class="slide-description">
-                                Realização de experimento prático sobre reações químicas e análise dos resultados obtidos.
-                                Aplicação do método científico em laboratório.
-                            </p>
-                            <div class="slide-details">
-                                <div class="detail-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Abril 2024</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>Relatório Científico</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-star"></i>
-                                    <span>Nota: 9.7</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slideshow-nav">
-                <div class="eixo-indicator">
-                    EIXO: <span class="eixo-number">1</span>/1
-                </div>
-                <div class="slideshow-buttons">
-                    <button class="slideshow-btn prev-btn" onclick="changeSlide('naturezas', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slideshow-btn next-btn" onclick="changeSlide('naturezas', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="slide-dots" id="naturezas-dots">
-                <span class="dot active" onclick="goToSlide('naturezas', 0)"></span>
-            </div>
-        </section>
-
-        <!-- Matemática -->
-        <section class="section-slideshow" id="matematica">
-            <h2 class="section-header">MATEMÁTICA</h2>
-            <div class="slideshow-container">
-                <div class="slides-wrapper" id="matematica-slides">
-                    <div class="slide">
-                        <div class="slide-image-container">
-                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Atividade 1 - Matemática" class="slide-image">
-                        </div>
-                        <div class="slide-info">
-                            <h3 class="slide-title">ATIVIDADE 1 - GEOMETRIA ANALÍTICA</h3>
-                            <p class="slide-description">
-                                Resolução de problemas envolvendo geometria analítica e suas aplicações no cotidiano.
-                                Desenvolvimento de raciocínio lógico-matemático.
-                            </p>
-                            <div class="slide-details">
-                                <div class="detail-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Maio 2024</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>Problemas Resolvidos</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-star"></i>
-                                    <span>Nota: 9.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slideshow-nav">
-                <div class="eixo-indicator">
-                    EIXO: <span class="eixo-number">1</span>/1
-                </div>
-                <div class="slideshow-buttons">
-                    <button class="slideshow-btn prev-btn" onclick="changeSlide('matematica', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slideshow-btn next-btn" onclick="changeSlide('matematica', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="slide-dots" id="matematica-dots">
-                <span class="dot active" onclick="goToSlide('matematica', 0)"></span>
-            </div>
-        </section>
-
-        <!-- SENAI -->
-        <section class="section-slideshow" id="senai">
-            <h2 class="section-header">TÉCNICO SENAI</h2>
-            <div class="slideshow-container">
-                <div class="slides-wrapper" id="senai-slides">
-                    <div class="slide">
-                        <div class="slide-image-container">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Atividade 1 - SENAI" class="slide-image">
-                        </div>
-                        <div class="slide-info">
-                            <h3 class="slide-title">ATIVIDADE 1 - DESENVOLVIMENTO WEB</h3>
-                            <p class="slide-description">
-                                Criação de site responsivo utilizando HTML5, CSS3 e JavaScript.
-                                Aplicação dos conceitos aprendidos no curso técnico de Informática para Internet.
-                            </p>
-                            <div class="slide-details">
-                                <div class="detail-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Junho 2024</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>Projeto Prático</span>
-                                </div>
-                                <div class="detail-item">
-                                    <i class="fas fa-star"></i>
-                                    <span>Nota: 10.0</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slideshow-nav">
-                <div class="eixo-indicator">
-                    EIXO: <span class="eixo-number">1</span>/1
-                </div>
-                <div class="slideshow-buttons">
-                    <button class="slideshow-btn prev-btn" onclick="changeSlide('senai', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slideshow-btn next-btn" onclick="changeSlide('senai', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="slide-dots" id="senai-dots">
-                <span class="dot active" onclick="goToSlide('senai', 0)"></span>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p class="footer-text">TRABALHO ORIENTADO PELO PROFESSOR <span class="footer-name">CLEITON LEAL</span></p>
-            <p class="footer-text">ORIENTADORA: <span class="footer-name">REGIANE LEAL</span></p>
+            <p class="footer-text">Trabalho orientado pelo professor <span class="footer-name">Cleiton Jérico</span></p>
+            <p class="footer-text">Orientadora: <span class="footer-name">Regiane Leal</span></p>
+            <div class="student-info">
+            </div>
             <div class="footer-divider"></div>
             <span class="institution">SESI / SENAI</span>
-            <p class="footer-text" style="margin-top: 1.5rem; font-size: 0.9rem;">
-                © 2024 - Portfólio Acadêmico | Desenvolvido por Ian Joseph
-            </p>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
     <script>
-        // Slideshow state
-        const slideshowState = {
-            'historia': { currentSlide: 0, totalSlides: 2 },
-            'linguagens': { currentSlide: 0, totalSlides: 3 },
-            'humanas': { currentSlide: 0, totalSlides: 1 },
-            'naturezas': { currentSlide: 0, totalSlides: 1 },
-            'matematica': { currentSlide: 0, totalSlides: 1 },
-            'senai': { currentSlide: 0, totalSlides: 1 }
-        };
-
-        // Preloader
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            const loaderProgress = document.querySelector('.loader-progress');
-            
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += 1;
-                loaderProgress.style.width = progress + '%';
-                
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        preloader.style.opacity = '0';
-                        setTimeout(() => {
-                            preloader.style.display = 'none';
-                        }, 800);
-                    }, 500);
-                }
-            }, 20);
-        });
-
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const nav = document.getElementById('nav');
-        
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuToggle.innerHTML = nav.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        // Slideshow Functions
-        function changeSlide(sectionId, direction) {
-            const state = slideshowState[sectionId];
-            const newIndex = state.currentSlide + direction;
-            
-            if (newIndex >= 0 && newIndex < state.totalSlides) {
-                goToSlide(sectionId, newIndex);
-            }
-        }
-
-        function goToSlide(sectionId, slideIndex) {
-            const state = slideshowState[sectionId];
-            state.currentSlide = slideIndex;
-            
-            // Update slides position
-            const slidesWrapper = document.getElementById(`${sectionId}-slides`);
-            const translateX = -(slideIndex * 100);
-            slidesWrapper.style.transform = `translateX(${translateX}%)`;
-            
-            // Update dots
-            const dots = document.querySelectorAll(`#${sectionId}-dots .dot`);
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === slideIndex);
-            });
-            
-            // Update eixo indicator
-            const eixoNumber = document.querySelector(`#${sectionId} .eixo-number`);
-            eixoNumber.textContent = slideIndex + 1;
-            
-            // Update button states
-            const prevBtn = document.querySelector(`#${sectionId} .prev-btn`);
-            const nextBtn = document.querySelector(`#${sectionId} .next-btn`);
-            
-            prevBtn.disabled = slideIndex === 0;
-            nextBtn.disabled = slideIndex === state.totalSlides - 1;
-        }
-
-        // Initialize all slideshows
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize each slideshow
-            Object.keys(slideshowState).forEach(sectionId => {
-                goToSlide(sectionId, 0);
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.image-card img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.background = 'linear-gradient(45deg, #2d3436, #1e07cc)';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    this.style.color = 'white';
+                    this.style.fontSize = '1.2rem';
+                    this.style.fontWeight = '600';
+                    this.style.fontFamily = 'Montserrat, sans-serif';
+                    
+                    const cardNumber = this.closest('.image-card').querySelector('.image-number').textContent;
+                    this.alt = `Anexo ${cardNumber} - Imagem não disponível`;
+                    
+                    const text = document.createElement('div');
+                    text.textContent = `Anexo ${cardNumber}`;
+                    text.style.textAlign = 'center';
+                    text.style.padding = '2rem';
+                    this.parentNode.appendChild(text);
+                });
             });
 
-            // Scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
+            const imageCards = document.querySelectorAll('.image-card');
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1 });
 
-            document.querySelectorAll('.section-slideshow').forEach(section => {
-                observer.observe(section);
-            });
-
-            // Back to Top button
-            const backToTop = document.getElementById('backToTop');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            });
-
-            backToTop.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // Active link navigation
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            window.addEventListener('scroll', () => {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (scrollY >= (sectionTop - 150)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-
-            // Smooth scroll for navigation links
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Auto-advance slides (optional)
-            /* 
-            setInterval(() => {
-                Object.keys(slideshowState).forEach(sectionId => {
-                    const state = slideshowState[sectionId];
-                    const nextIndex = (state.currentSlide + 1) % state.totalSlides;
-                    goToSlide(sectionId, nextIndex);
-                });
-            }, 5000);
-            */
-        });
-
-        // Keyboard navigation for slideshows
-        document.addEventListener('keydown', (e) => {
-            const activeSection = document.querySelector('.section-slideshow.visible');
-            if (activeSection) {
-                const sectionId = activeSection.id;
-                if (e.key === 'ArrowLeft') {
-                    changeSlide(sectionId, -1);
-                } else if (e.key === 'ArrowRight') {
-                    changeSlide(sectionId, 1);
-                }
-            }
-        });
-
-        // Touch/swipe support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.querySelectorAll('.slideshow-container').forEach(container => {
-            container.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            container.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                const sectionId = container.closest('.section-slideshow').id;
-                handleSwipe(sectionId);
+            imageCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
             });
         });
+    </script>
+</body>
+</html>
 
-        function handleSwipe(sectionId) {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
 
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    // Swipe left - next slide
-                    changeSlide(sectionId, 1);
-                } else {
-                    // Swipe right - previous slide
+
+
+
+
                     changeSlide(sectionId, -1);
                 }
             }
