@@ -440,39 +440,7 @@
             vertical-align: middle;
         }
         
-        /* Botão de voltar ao topo */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 1000;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        /* Modal para visualização de imagens */
+       
         .modal {
             display: none;
             position: fixed;
@@ -521,7 +489,6 @@
             transform: rotate(90deg);
         }
         
-        /* Melhorias para acessibilidade */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -617,7 +584,6 @@
 </head>
 <body>
    
-    <!-- Modal para visualização de imagens -->
     <div class="modal" id="imageModal">
         <span class="close-modal" id="closeModal">&times;</span>
         <img class="modal-content" id="modalImage" src="" alt="Visualização ampliada">
@@ -646,7 +612,7 @@
         </div>
 
         <section id="eixo1" class="section fade-in delay-1">
-            <h2 class="section-title">EIXO 1 - Língua Portuguesa e Literatura <span class="eixo-badge">4 atividades</span></h2>
+            <h2 class="section-title">EIXO 1  <span class="eixo-badge">4 atividades</span></h2>
             <p class="section-description">
             </p>
             <div class="image-container">
@@ -684,7 +650,7 @@
         </section>
 
         <section id="eixo2" class="section fade-in delay-2">
-            <h2 class="section-title">EIXO 2 - Linguagens e Códigos <span class="eixo-badge">3 atividades</span></h2>
+            <h2 class="section-title">EIXO 2 <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
                 Atividades relacionadas a diferentes formas de linguagem e códigos, incluindo projetos interdisciplinares.
             </p>
@@ -693,8 +659,6 @@
                     <span class="card-category">Projeto</span>
                     <img src="timbradohumanass (1).jpg" alt="Trabalho de Humanas - Projeto Interdisciplinar" loading="lazy">
                     <div class="overlay">
-                        <h3>Projeto Interdisciplinar</h3>
-                        <p>Trabalho integrando diferentes áreas do conhecimento</p>
                     </div>
                 </div>
                 <div class="image-card" data-category="redacao">
@@ -715,7 +679,7 @@
         </section>
 
         <section id="eixo3" class="section fade-in delay-3">
-            <h2 class="section-title">EIXO 3 - Produção e Interpretação <span class="eixo-badge">3 atividades</span></h2>
+            <h2 class="section-title">EIXO 3 <span class="eixo-badge">3 atividades</span></h2>
             <p class="section-description">
             </p>
             <div class="image-container">
@@ -980,6 +944,7 @@
     </script>
 </body>
 </html>
+
 
 
 
