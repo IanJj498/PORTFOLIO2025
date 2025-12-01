@@ -305,7 +305,6 @@
             transform: translateY(-5px);
         }
 
-        /* ===== MAIN CONTENT ===== */
         main {
             max-width: 1200px;
             margin: 0 auto;
@@ -466,7 +465,6 @@
             display: block;
         }
 
-        /* ===== BACK TO TOP ===== */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -490,7 +488,6 @@
             transform: translateY(-5px);
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .profile-title {
                 font-size: 2.8rem;
@@ -731,12 +728,10 @@
     </button>
 
     <script>
-        // ===== PRELOADER =====
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
             const loaderProgress = document.getElementById('loaderProgress');
             
-            // Simular progresso do loader
             let progress = 0;
             const interval = setInterval(() => {
                 progress += 2;
@@ -754,7 +749,6 @@
             }, 40);
         });
 
-        // ===== MENU TOGGLE FOR MOBILE =====
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.getElementById('nav');
         
@@ -764,7 +758,6 @@
             });
         }
 
-        // ===== SCROLL ANIMATIONS =====
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -795,7 +788,6 @@
             observer.observe(section);
         });
 
-        // ===== BACK TO TOP =====
         const backToTop = document.getElementById('backToTop');
 
         window.addEventListener('scroll', () => {
@@ -810,29 +802,9 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ===== TYPEWRITER EFFECT =====
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
+    
 
-        // Aplicar efeito typewriter no título
-        const title = document.getElementById('typewriter-title');
-        const originalText = title.textContent;
-        setTimeout(() => {
-            typeWriter(title, originalText, 150);
-        }, 1500);
-
-        // ===== SCAN LINE ANIMATION =====
+      
         const scanLine = document.querySelector('.scan-line');
         
         function restartScanAnimation() {
@@ -842,11 +814,11 @@
             }, 10);
         }
 
-        // Reiniciar animação ao redimensionar a janela
         window.addEventListener('resize', restartScanAnimation);
     </script>
 </body>
 </html>
+
 
 
 
