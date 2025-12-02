@@ -692,75 +692,93 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navTabs = document.getElementById('navTabs');
-            const sections = document.querySelectorAll('.section');
-            const backToTopBtn = document.getElementById('backToTop');
-            
-            navTabs.addEventListener('click', function(e) {
-                if (e.target.classList.contains('nav-tab')) {
-                    document.querySelectorAll('.nav-tab').forEach(tab => {
-                        tab.classList.remove('nav-tab--active');
-                    });
-                    
-                    e.target.classList.add('nav-tab--active');
-                    
-                    sections.forEach(section => {
-                        section.classList.add('section--hidden');
-                        section.classList.remove('section--active');
-                    });
-                    
-                    const targetId = e.target.getAttribute('data-target');
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        targetSection.classList.remove('section--hidden');
-                        targetSection.classList.add('section--active');
-                    }
-                }
-            });
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('back-to-top--visible');
-                } else {
-                    backToTopBtn.classList.remove('back-to-top--visible');
-                }
-            });
-            
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            const images = document.querySelectorAll('.image-card__img');
-            images.forEach(img => {
-                img.addEventListener('error', function() {
-                    this.src = 'https://via.placeholder.com/300x200/2c2c2c/ffffff?text=Imagem+Não+Encontrada';
-                    this.alt = 'Imagem não encontrada';
-                });
-            });
-            
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    }
-                });
-            }, observerOptions);
-            
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+    const navTabs = document.getElementById('navTabs');
+    const sections = document.querySelectorAll('.section');
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    // Função para mostrar uma seção específica
+    function showSection(sectionId) {
+        sections.forEach(section => {
+            section.classList.add('section--hidden');
+            section.classList.remove('section--active');
         });
+        
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.classList.remove('section--hidden');
+            targetSection.classList.add('section--active');
+            
+            // Scroll suave para a seção
+            setTimeout(() => {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    }
+    
+    // Event listener para as abas
+    navTabs.addEventListener('click', function(e) {
+        if (e.target.classList.contains('nav-tab')) {
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('nav-tab--active');
+            });
+            
+            e.target.classList.add('nav-tab--active');
+            
+            const targetId = e.target.getAttribute('data-target');
+            showSection(targetId);
+        }
+    });
+    
+    // Botão voltar ao topo
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('back-to-top--visible');
+        } else {
+            backToTopBtn.classList.remove('back-to-top--visible');
+        }
+    });
+    
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Tratamento de erro para imagens
+    const images = document.querySelectorAll('.image-card__img');
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            this.src = 'https://via.placeholder.com/300x200/2c2c2c/ffffff?text=Imagem+Não+Encontrada';
+            this.alt = 'Imagem não encontrada';
+        });
+    });
+    
+    // Animação de entrada das seções
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, observerOptions);
+    
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Mostrar a seção inicial (EIXO 1)
+    showSection('eixo1');
+});
     </script>
 </body>
 </html>
+
 
 
 
